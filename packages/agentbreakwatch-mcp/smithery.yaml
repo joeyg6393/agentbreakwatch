@@ -1,0 +1,18 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      apiUrl:
+        type: string
+        description: Optional custom AgentBreakWatch API endpoint
+        default: https://agentbreakwatch.vercel.app/api/mcp
+  commandFunction:
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['index.mjs'],
+      env: {
+        AGENTBREAKWATCH_MCP_URL: config.apiUrl || 'https://agentbreakwatch.vercel.app/api/mcp'
+      }
+    })
