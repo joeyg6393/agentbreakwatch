@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { catalog } from "@/lib/catalog";
+import { catalog, CATEGORY_HUBS } from "@/lib/catalog";
 
 export function Footer() {
   return (
     <footer className="border-t border-zinc-800/80 bg-zinc-950 py-12 text-sm text-zinc-400">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 font-mono text-base font-bold text-white">
               <span className="text-emerald-400">Δ</span> AgentBreakWatch
@@ -22,7 +22,7 @@ export function Footer() {
 
           <div>
             <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-zinc-200">
-              Product & Tools
+              Product &amp; Reports
             </h3>
             <ul className="mt-3 space-y-2 text-xs">
               <li>
@@ -31,8 +31,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/drift-report" className="text-amber-300 hover:text-white">
+                  Oct 2026 Volatility &amp; Drift Report
+                </Link>
+              </li>
+              <li>
                 <Link href="/#directory" className="hover:text-white">
-                  SDK & MCP Stability Directory
+                  SDK &amp; MCP Stability Directory
                 </Link>
               </li>
               <li>
@@ -50,7 +55,22 @@ export function Footer() {
 
           <div>
             <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-zinc-200">
-              Machine & LLM Feeds
+              Category Hubs
+            </h3>
+            <ul className="mt-3 space-y-1.5 text-xs">
+              {CATEGORY_HUBS.slice(0, 7).map((hub) => (
+                <li key={hub.slug}>
+                  <Link href={`/c/${hub.slug}`} className="hover:text-white">
+                    {hub.shortTitle}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-zinc-200">
+              Machine &amp; LLM Feeds
             </h3>
             <ul className="mt-3 space-y-2 font-mono text-xs">
               <li>
@@ -61,6 +81,11 @@ export function Footer() {
               <li>
                 <Link href="/llms-full.txt" className="text-emerald-400 hover:underline">
                   /llms-full.txt
+                </Link>
+              </li>
+              <li>
+                <Link href="/openapi.json" className="text-emerald-400 hover:underline">
+                  /openapi.json
                 </Link>
               </li>
               <li>

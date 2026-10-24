@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { catalog } from "@/lib/catalog";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://agentbreakwatch.vercel.app"),
   title: {
     default: "AgentBreakWatch | AI Agent SDK & MCP Breaking-Change Alerts",
     template: "%s | AgentBreakWatch"
@@ -13,7 +14,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AgentBreakWatch | AI Agent SDK & MCP Breaking-Change Alerts",
     description: `Audit your .mcp.json, package.json, or requirements.txt against ${catalog.totalTracked} live AI Agent SDKs and MCP servers.`,
-    type: "website"
+    type: "website",
+    url: "https://agentbreakwatch.vercel.app"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AgentBreakWatch | AI Agent SDK & MCP Breaking-Change Alerts",
+    description: `Live breaking-change and MCP schema drift index across ${catalog.totalTracked} AI Agent SDKs and MCP servers.`
   }
 };
 

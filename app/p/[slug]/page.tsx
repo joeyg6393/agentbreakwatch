@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { catalog, getItemBySlug } from "@/lib/catalog";
+import { catalog, getItemBySlug, getPrimaryCategoryHubForItem } from "@/lib/catalog";
 import { SubscribeBox } from "@/components/SubscribeBox";
 
 export async function generateStaticParams() {
@@ -19,8 +19,11 @@ export async function generateMetadata({
     return { title: "Package Not Found" };
   }
   return {
-    title: `${item.packageName} (v${item.latestVersion}) Breaking Changes & Schema History`,
-    description: `${item.displayName} live ${item.registry.toUpperCase()} version v${item.latestVersion} (published ${item.latestPublishedAt.slice(0, 10)}). Stability score ${item.stabilityScore}/100. ${item.breakingSummary}`
+    title: `${item.packageName} (v${item.latestVersion}) Breaking Changes, MCP Schema Drift & Stability Score`,
+    description: `${item.displayName} (${item.packageName}) live ${item.registry.toUpperCase()} version is v${item.latestVersion} (published ${item.latestPublishedAt.slice(0, 10)}). Stability score ${item.stabilityScore}/100 (${item.stabilityGrade}). ${item.breakingSummary}`,
+    alternates: {
+      canonical: `https://agentbreakwatch.vercel.app/p/${item.slug}`
+    }
   };
 }
 
@@ -35,6 +38,9 @@ export default async function PackageDetailPage({
     notFound();
   }
 
+  const primaryHub = getPrimaryCategoryHubForItem(item);
+  const prevVersion = item.recentVersions?.[1]?.version;
+
   const related = catalog.items
     .filter((i) => i.slug !== item.slug && (i.subcategory === item.subcategory || i.kind === item.kind))
     .slice(0, 6);
@@ -46,16 +52,83 @@ export default async function PackageDetailPage({
       ? "border-amber-500/40 bg-amber-500/15 text-amber-300"
       : "border-emerald-500/40 bg-emerald-500/15 text-emerald-300";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareSourceCode",
-    name: item.packageName,
-    version: item.latestVersion,
-    dateModified: item.latestPublishedAt,
-    codeRepository: item.githubUrl,
-    programmingLanguage: item.registry === "npm" ? "TypeScript / JavaScript" : "Python",
-    description: item.breakingSummary
-  };
+  const scoreBarColor =
+    item.stabilityScore >= 85
+      ? "bg-emerald-500"
+      : item.stabilityScore >= 75
+      ? "bg-amber-400"
+      : "bg-rose-500";
+
+  const faqs = [
+    {
+      question: `What is the latest version of ${item.packageName} on ${item.registry.toUpperCase()}?`,
+      answer: `As of ${catalog.generatedAt.slice(0, 10)}, the latest stable version of ${item.packageName} (${item.displayName} by ${item.vendor}) on ${item.registry.toUpperCase()} is v${item.latestVersion}, published on ${item.latestPublishedAt.slice(0, 10)}. It has shipped ${item.releasesLast90d} releases in the last 90 days.`
+    },
+    {
+      question: `Does ${item.packageName} v${item.latestVersion} have breaking changes or MCP schema drift risk?`,
+      answer: `${item.packageName} currently carries a ${item.schemaDriftRisk.toUpperCase()} schema drift risk rating with a Stability Score of ${item.stabilityScore}/100 (Grade ${item.stabilityGrade}). ${item.breakingSummary}`
+    },
+    {
+      question: `How do I safely pin ${item.packageName} in production?`,
+      answer: `Avoid unpinned @latest tags in production agent configs. Pin the exact verified version using \`${item.installCommand}\` and monitor ${item.affectedSymbols.join(", ")} for parameter or schema changes.`
+    }
+  ];
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      name: item.packageName,
+      alternateName: item.displayName,
+      version: item.latestVersion,
+      dateModified: item.latestPublishedAt,
+      codeRepository: item.githubUrl,
+      url: `https://agentbreakwatch.vercel.app/p/${item.slug}`,
+      programmingLanguage: item.registry === "npm" ? "TypeScript / JavaScript" : "Python",
+      license: item.license,
+      author: {
+        "@type": "Organization",
+        name: item.vendor
+      },
+      description: item.breakingSummary
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "AgentBreakWatch Directory",
+          item: "https://agentbreakwatch.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: primaryHub.shortTitle,
+          item: `https://agentbreakwatch.vercel.app/c/${primaryHub.slug}`
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: item.packageName,
+          item: `https://agentbreakwatch.vercel.app/p/${item.slug}`
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer
+        }
+      }))
+    }
+  ];
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
@@ -65,14 +138,33 @@ export default async function PackageDetailPage({
       />
 
       {/* Breadcrumb */}
-      <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-zinc-400">
-        <Link href="/" className="hover:text-white">
-          Directory
-        </Link>
-        <span>/</span>
-        <span className="uppercase">{item.kind === "sdk" ? "Agent SDKs" : "MCP Servers"}</span>
-        <span>/</span>
-        <span className="text-emerald-400">{item.packageName}</span>
+      <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs text-zinc-400">
+        <div className="flex flex-wrap items-center gap-2">
+          <Link href="/" className="hover:text-white">
+            Directory
+          </Link>
+          <span>/</span>
+          <Link href={`/c/${primaryHub.slug}`} className="hover:text-white">
+            {primaryHub.shortTitle}
+          </Link>
+          <span>/</span>
+          <span className="text-emerald-400">{item.packageName}</span>
+        </div>
+
+        <div className="flex items-center gap-3 text-[11px]">
+          <Link
+            href={`/p/${item.slug}/llms.txt`}
+            className="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-emerald-400 hover:border-emerald-500/50"
+          >
+            /p/{item.slug}/llms.txt
+          </Link>
+          <Link
+            href={`/api/p/${item.slug}`}
+            className="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300 hover:border-zinc-500"
+          >
+            JSON API
+          </Link>
+        </div>
       </div>
 
       {/* Header Card */}
@@ -80,9 +172,12 @@ export default async function PackageDetailPage({
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded border border-zinc-700 bg-zinc-950 px-2.5 py-0.5 font-mono text-xs uppercase text-zinc-300">
+              <Link
+                href={`/c/${primaryHub.slug}`}
+                className="rounded border border-zinc-700 bg-zinc-950 px-2.5 py-0.5 font-mono text-xs uppercase text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-300"
+              >
                 {item.subcategory}
-              </span>
+              </Link>
               <span className="rounded border border-zinc-700 bg-zinc-950 px-2.5 py-0.5 font-mono text-xs uppercase text-zinc-300">
                 {item.registry}
               </span>
@@ -103,15 +198,18 @@ export default async function PackageDetailPage({
           </div>
 
           <div className="flex flex-col items-start sm:items-end rounded-lg border border-zinc-800 bg-zinc-950 px-5 py-4 font-mono">
-            <span className="text-[10px] uppercase tracking-wider text-zinc-500">Live Version</span>
+            <span className="text-[10px] uppercase tracking-wider text-zinc-500">Live Registry Version</span>
             <span className="text-2xl font-bold text-emerald-400">v{item.latestVersion}</span>
+            {prevVersion && (
+              <span className="mt-0.5 text-[11px] text-zinc-500">Previous: v{prevVersion}</span>
+            )}
             <span className="mt-1 text-xs text-zinc-400">
               Published {item.latestPublishedAt.slice(0, 10)}
             </span>
           </div>
         </div>
 
-        {/* Key Metrics Strip */}
+        {/* Key Metrics Strip with Visual Bars */}
         <div className="mt-6 grid grid-cols-2 gap-3 border-t border-zinc-800 pt-5 sm:grid-cols-4 font-mono">
           <div className="rounded-lg border border-zinc-800/80 bg-zinc-950/60 p-3">
             <div className="text-[11px] uppercase text-zinc-500">Stability Grade</div>
@@ -119,18 +217,26 @@ export default async function PackageDetailPage({
               {item.stabilityGrade}{" "}
               <span className="text-xs font-normal text-zinc-400">({item.stabilityScore}/100)</span>
             </div>
+            <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
+              <div className={`h-full rounded-full ${scoreBarColor}`} style={{ width: `${item.stabilityScore}%` }} />
+            </div>
           </div>
           <div className="rounded-lg border border-zinc-800/80 bg-zinc-950/60 p-3">
-            <div className="text-[11px] uppercase text-zinc-500">90-Day Releases</div>
+            <div className="text-[11px] uppercase text-zinc-500">90-Day Velocity</div>
             <div className="mt-1 text-lg font-bold text-white">{item.releasesLast90d} releases</div>
+            <div className="mt-2 text-[10px] text-zinc-500">
+              {item.releasesLast90d > 15 ? "High release cadence" : item.releasesLast90d > 4 ? "Moderate cadence" : "Stable release cadence"}
+            </div>
           </div>
           <div className="rounded-lg border border-zinc-800/80 bg-zinc-950/60 p-3">
             <div className="text-[11px] uppercase text-zinc-500">Dependencies</div>
             <div className="mt-1 text-lg font-bold text-white">{item.dependenciesCount} direct</div>
+            <div className="mt-2 text-[10px] text-zinc-500">{item.registry.toUpperCase()} manifest</div>
           </div>
           <div className="rounded-lg border border-zinc-800/80 bg-zinc-950/60 p-3">
             <div className="text-[11px] uppercase text-zinc-500">License</div>
             <div className="mt-1 truncate text-lg font-bold text-white">{item.license}</div>
+            <div className="mt-2 text-[10px] text-zinc-500">Verified on {item.registry.toUpperCase()}</div>
           </div>
         </div>
 
@@ -159,6 +265,30 @@ export default async function PackageDetailPage({
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Cite-Ready TL;DR Verdict Block for AI Assistants & Developers */}
+      <div className="mt-6 rounded-xl border border-emerald-500/30 bg-emerald-950/15 p-5">
+        <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+          <span className="font-bold uppercase tracking-wider text-emerald-400">
+            TL;DR Verdict &amp; Quick Citation Summary ({catalog.generatedAt.slice(0, 10)})
+          </span>
+          <span className="text-[11px] text-zinc-400">
+            Source: AgentBreakWatch Live {item.registry.toUpperCase()} Index
+          </span>
+        </div>
+        <p className="mt-2 text-xs sm:text-sm leading-relaxed text-zinc-200">
+          <strong>{item.displayName}</strong> (<code className="text-emerald-300">{item.packageName}</code>) is currently at{" "}
+          <strong>v{item.latestVersion}</strong> on {item.registry.toUpperCase()} (published{" "}
+          {item.latestPublishedAt.slice(0, 10)}), with a 90-day stability score of{" "}
+          <strong>
+            {item.stabilityScore}/100 ({item.stabilityGrade})
+          </strong>{" "}
+          and <strong>{item.schemaDriftRisk.toUpperCase()}</strong> schema drift risk across{" "}
+          {item.releasesLast90d} releases in the past 90 days. {item.breakingSummary} Production teams should pin{" "}
+          <code className="text-emerald-300">{item.installCommand}</code> rather than using unpinned{" "}
+          <code>@latest</code> tags.
+        </p>
       </div>
 
       {/* Breaking Changes & Migration Diffs */}
@@ -191,7 +321,7 @@ export default async function PackageDetailPage({
               <div>
                 <div className="mb-1.5 flex items-center justify-between font-mono text-xs">
                   <span className="font-semibold uppercase text-rose-400">
-                    Before (Deprecated / Breaking Pattern)
+                    Before (Deprecated / Unpinned Pattern)
                   </span>
                 </div>
                 <pre className="overflow-x-auto rounded-lg border border-rose-500/30 bg-rose-950/15 p-4 font-mono text-xs leading-relaxed text-rose-200">
@@ -209,6 +339,23 @@ export default async function PackageDetailPage({
                   <code>{item.migrationAfter}</code>
                 </pre>
               </div>
+            </div>
+          </section>
+
+          {/* Package FAQ Section for SEO & AI Search */}
+          <section className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
+            <h2 className="font-mono text-lg font-bold text-white">
+              Frequently Asked Questions: {item.packageName}
+            </h2>
+            <div className="mt-4 space-y-4 divide-y divide-zinc-800/80">
+              {faqs.map((f) => (
+                <div key={f.question} className="pt-4 first:pt-0">
+                  <h3 className="font-mono text-xs sm:text-sm font-bold text-emerald-300">
+                    {f.question}
+                  </h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-zinc-300">{f.answer}</p>
+                </div>
+              ))}
             </div>
           </section>
 
@@ -250,9 +397,14 @@ export default async function PackageDetailPage({
           </section>
 
           <section className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
-            <h2 className="font-mono text-sm font-bold uppercase tracking-wider text-zinc-200">
-              Related {item.kind === "sdk" ? "Agent SDKs" : "MCP Servers"}
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="font-mono text-sm font-bold uppercase tracking-wider text-zinc-200">
+                Related in {primaryHub.shortTitle}
+              </h2>
+              <Link href={`/c/${primaryHub.slug}`} className="font-mono text-[11px] text-emerald-400 hover:underline">
+                View Hub -&gt;
+              </Link>
+            </div>
             <div className="mt-3 space-y-2.5">
               {related.map((rel) => (
                 <Link
@@ -261,10 +413,12 @@ export default async function PackageDetailPage({
                   className="block rounded-lg border border-zinc-800/80 bg-zinc-950/60 p-3 hover:border-emerald-500/40 transition"
                 >
                   <div className="flex items-center justify-between font-mono text-xs">
-                    <span className="font-semibold text-white">{rel.packageName}</span>
-                    <span className="text-emerald-400">v{rel.latestVersion}</span>
+                    <span className="truncate font-semibold text-white">{rel.packageName}</span>
+                    <span className="shrink-0 text-emerald-400">v{rel.latestVersion}</span>
                   </div>
-                  <p className="mt-1 truncate text-[11px] text-zinc-400">{rel.displayName}</p>
+                  <p className="mt-1 truncate text-[11px] text-zinc-400">
+                    {rel.displayName} • Stability {rel.stabilityGrade} ({rel.stabilityScore})
+                  </p>
                 </Link>
               ))}
             </div>

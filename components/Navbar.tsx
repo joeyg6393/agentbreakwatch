@@ -37,14 +37,17 @@ export function Navbar() {
             <Link href="/#directory" className="hover:text-white transition">
               Directory ({catalog.totalTracked})
             </Link>
+            <Link href="/c/agent-sdks" className="hover:text-white transition">
+              Categories
+            </Link>
+            <Link href="/drift-report" className="text-amber-300 hover:text-amber-200 transition">
+              Drift Report
+            </Link>
             <Link href="/check" className="hover:text-white transition">
               Stack Checker
             </Link>
             <Link href="/pricing" className="hover:text-white transition">
               Pricing
-            </Link>
-            <Link href="/sponsor" className="hover:text-white transition">
-              Sponsor
             </Link>
             <Link href="/llms.txt" className="font-mono text-xs text-zinc-500 hover:text-emerald-400 transition">
               /llms.txt

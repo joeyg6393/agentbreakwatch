@@ -70,7 +70,7 @@ export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
             Live Agent SDK &amp; MCP Stability Index ({items.length} Packages)
           </h2>
           <p className="mt-1 text-sm text-zinc-400">
-            Real-time versions, 90-day release velocity, `tools/list` schema drift risk, and copy-paste migration snippets across {sdkCount} Agent SDKs and {mcpCount} MCP servers.
+            Real-time versions, 90-day release velocity bars, `tools/list` schema drift risk, and copy-paste migration snippets across {sdkCount} Agent SDKs and {mcpCount} MCP servers.
           </p>
         </div>
 
@@ -189,6 +189,20 @@ export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
               ? "border-amber-500/30 bg-amber-500/10 text-amber-300"
               : "border-emerald-500/30 bg-emerald-500/10 text-emerald-300";
 
+          const regBadge =
+            item.registry === "npm"
+              ? "border-cyan-500/30 bg-cyan-500/10 text-cyan-300"
+              : "border-indigo-500/30 bg-indigo-500/10 text-indigo-300";
+
+          const scoreColor =
+            item.stabilityScore >= 85
+              ? "bg-emerald-500"
+              : item.stabilityScore >= 75
+              ? "bg-amber-400"
+              : "bg-rose-500";
+
+          const prevVer = item.recentVersions?.[1]?.version;
+
           return (
             <Link
               key={item.slug}
@@ -196,22 +210,34 @@ export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
               className="group flex flex-col justify-between rounded-xl border border-zinc-800/90 bg-zinc-900/40 p-5 hover:border-emerald-500/50 hover:bg-zinc-900/80 transition"
             >
               <div>
-                <div className="flex items-center justify-between gap-2">
-                  <span className="rounded border border-zinc-700 bg-zinc-950 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-zinc-300">
-                    {item.kind === "sdk" ? "AGENT SDK" : "MCP SERVER"} • {item.registry.toUpperCase()}
-                  </span>
+                <div className="flex flex-wrap items-center justify-between gap-1.5">
+                  <div className="flex items-center gap-1.5">
+                    <span className="rounded border border-zinc-700 bg-zinc-950 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-zinc-300">
+                      {item.kind === "sdk" ? "AGENT SDK" : "MCP"}
+                    </span>
+                    <span className={`rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase ${regBadge}`}>
+                      {item.registry}
+                    </span>
+                  </div>
                   <span className={`rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase ${riskBadge}`}>
                     {item.schemaDriftRisk} drift
                   </span>
                 </div>
 
                 <div className="mt-3">
-                  <h3 className="font-mono text-base font-bold text-white group-hover:text-emerald-400 transition">
+                  <h3 className="truncate font-mono text-base font-bold text-white group-hover:text-emerald-400 transition">
                     {item.packageName}
                   </h3>
-                  <p className="text-xs text-zinc-400">
+                  <p className="mt-0.5 truncate text-xs text-zinc-400">
                     {item.displayName} • <span className="text-zinc-500">{item.vendor}</span>
                   </p>
+                  <div className="mt-1.5 flex items-center gap-2 font-mono text-[10px] text-zinc-500">
+                    <span className="rounded bg-zinc-950 px-1.5 py-0.5 text-zinc-400 border border-zinc-800">
+                      {item.subcategory}
+                    </span>
+                    <span>•</span>
+                    <span>{item.releasesLast90d} releases / 90d</span>
+                  </div>
                 </div>
 
                 <p className="mt-3 line-clamp-3 text-xs leading-relaxed text-zinc-300">
@@ -221,17 +247,33 @@ export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
 
               <div className="mt-4 border-t border-zinc-800/80 pt-3">
                 <div className="flex items-center justify-between font-mono text-xs">
-                  <div>
-                    <span className="text-zinc-500">Live: </span>
+                  <div className="flex items-center gap-1.5">
                     <span className="font-semibold text-emerald-400">v{item.latestVersion}</span>
+                    {prevVer && (
+                      <span className="text-[10px] text-zinc-500">
+                        (was v{prevVer})
+                      </span>
+                    )}
                   </div>
-                  <div className="text-zinc-400" title="Latest Registry Publish Date">
+                  <div className="text-[11px] text-zinc-400" title="Latest Registry Publish Date">
                     {item.latestPublishedAt.slice(0, 10)}
                   </div>
-                  <div>
-                    <span className="text-zinc-500">Stability: </span>
-                    <span className="font-bold text-white">{item.stabilityGrade}</span>{" "}
-                    <span className="text-[11px] text-zinc-500">({item.stabilityScore})</span>
+                </div>
+
+                {/* Visual Stability Score Meter */}
+                <div className="mt-2.5">
+                  <div className="flex items-center justify-between font-mono text-[11px]">
+                    <span className="text-zinc-500">Stability Score</span>
+                    <span className="font-bold text-zinc-200">
+                      {item.stabilityGrade}{" "}
+                      <span className="font-normal text-zinc-400">({item.stabilityScore}/100)</span>
+                    </span>
+                  </div>
+                  <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
+                    <div
+                      className={`h-full rounded-full ${scoreColor}`}
+                      style={{ width: `${item.stabilityScore}%` }}
+                    />
                   </div>
                 </div>
               </div>
