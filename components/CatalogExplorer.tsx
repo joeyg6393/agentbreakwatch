@@ -7,7 +7,17 @@ import type { CatalogItem } from "@/lib/catalog";
 export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
   const [filterTab, setFilterTab] = useState<"all" | "sdk" | "mcp" | "recent" | "high_risk">("all");
   const [registryFilter, setRegistryFilter] = useState<"all" | "npm" | "pypi">("all");
+  const [subcategoryFilter, setSubcategoryFilter] = useState<string>("all");
   const [search, setSearch] = useState<string>("");
+  const [visibleCount, setVisibleCount] = useState<number>(48);
+
+  const subcategories = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const item of items) {
+      counts.set(item.subcategory, (counts.get(item.subcategory) || 0) + 1);
+    }
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  }, [items]);
 
   const filtered = useMemo(() => {
     let list = [...items];
@@ -27,6 +37,10 @@ export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
       list = list.filter((i) => i.registry === registryFilter);
     }
 
+    if (subcategoryFilter !== "all") {
+      list = list.filter((i) => i.subcategory === subcategoryFilter);
+    }
+
     if (search.trim()) {
       const q = search.trim().toLowerCase();
       list = list.filter(
@@ -40,21 +54,23 @@ export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
     }
 
     return list;
-  }, [items, filterTab, registryFilter, search]);
+  }, [items, filterTab, registryFilter, subcategoryFilter, search]);
 
   const sdkCount = items.filter((i) => i.kind === "sdk").length;
   const mcpCount = items.filter((i) => i.kind === "mcp").length;
   const highRiskCount = items.filter((i) => i.schemaDriftRisk === "high").length;
+
+  const displayed = search.trim() ? filtered : filtered.slice(0, visibleCount);
 
   return (
     <section id="directory" className="mt-14 scroll-mt-20">
       <div className="flex flex-col justify-between gap-4 border-b border-zinc-800 pb-5 md:flex-row md:items-end">
         <div>
           <h2 className="font-mono text-xl font-bold text-white sm:text-2xl">
-            Live Agent SDK & MCP Stability Index
+            Live Agent SDK &amp; MCP Stability Index ({items.length} Packages)
           </h2>
           <p className="mt-1 text-sm text-zinc-400">
-            Real-time versions, 90-day release velocity, `tools/list` schema drift risk, and copy-paste migration snippets.
+            Real-time versions, 90-day release velocity, `tools/list` schema drift risk, and copy-paste migration snippets across {sdkCount} Agent SDKs and {mcpCount} MCP servers.
           </p>
         </div>
 
@@ -64,7 +80,7 @@ export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search package, vendor, or tool..."
+            placeholder={`Search all ${items.length} SDKs & MCP servers...`}
             className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3.5 py-2 font-mono text-xs text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none"
           />
         </div>
@@ -83,7 +99,10 @@ export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
             <button
               key={tab.id}
               type="button"
-              onClick={() => setFilterTab(tab.id as any)}
+              onClick={() => {
+                setFilterTab(tab.id as any);
+                setVisibleCount(48);
+              }}
               className={`rounded-md px-3 py-1.5 font-mono text-xs font-medium transition ${
                 filterTab === tab.id
                   ? "bg-emerald-500 text-zinc-950 font-semibold"
@@ -95,28 +114,74 @@ export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
           ))}
         </div>
 
-        <div className="flex items-center gap-1.5 font-mono text-xs">
-          <span className="text-zinc-500">Registry:</span>
-          {(["all", "npm", "pypi"] as const).map((reg) => (
-            <button
-              key={reg}
-              type="button"
-              onClick={() => setRegistryFilter(reg)}
-              className={`rounded px-2.5 py-1 uppercase transition ${
-                registryFilter === reg
-                  ? "border border-emerald-500/40 bg-emerald-500/15 text-emerald-300"
-                  : "border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white"
-              }`}
+        <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
+          <div className="flex items-center gap-1.5">
+            <span className="text-zinc-500">Category:</span>
+            <select
+              value={subcategoryFilter}
+              onChange={(e) => {
+                setSubcategoryFilter(e.target.value);
+                setVisibleCount(48);
+              }}
+              className="rounded border border-zinc-800 bg-zinc-900 px-2.5 py-1 font-mono text-xs text-zinc-300 focus:border-emerald-500 focus:outline-none"
             >
-              {reg}
-            </button>
-          ))}
+              <option value="all">All Categories ({subcategories.length})</option>
+              {subcategories.map(([sub, count]) => (
+                <option key={sub} value={sub}>
+                  {sub} ({count})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            <span className="text-zinc-500">Registry:</span>
+            {(["all", "npm", "pypi"] as const).map((reg) => (
+              <button
+                key={reg}
+                type="button"
+                onClick={() => {
+                  setRegistryFilter(reg);
+                  setVisibleCount(48);
+                }}
+                className={`rounded px-2.5 py-1 uppercase transition ${
+                  registryFilter === reg
+                    ? "border border-emerald-500/40 bg-emerald-500/15 text-emerald-300"
+                    : "border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white"
+                }`}
+              >
+                {reg}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
+      {/* Results Counter */}
+      <div className="mt-3 flex items-center justify-between font-mono text-xs text-zinc-500">
+        <span>
+          Showing {displayed.length} of {filtered.length} matching packages
+        </span>
+        {(filterTab !== "all" || registryFilter !== "all" || subcategoryFilter !== "all" || search.trim() !== "") && (
+          <button
+            type="button"
+            onClick={() => {
+              setFilterTab("all");
+              setRegistryFilter("all");
+              setSubcategoryFilter("all");
+              setSearch("");
+              setVisibleCount(48);
+            }}
+            className="text-emerald-400 hover:underline"
+          >
+            Reset filters
+          </button>
+        )}
+      </div>
+
       {/* Package Cards Grid */}
-      <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((item) => {
+      <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {displayed.map((item) => {
           const riskBadge =
             item.schemaDriftRisk === "high"
               ? "border-rose-500/30 bg-rose-500/10 text-rose-300"
@@ -174,6 +239,26 @@ export function CatalogExplorer({ items }: { items: CatalogItem[] }) {
           );
         })}
       </div>
+
+      {/* Load More / Show All Buttons */}
+      {!search.trim() && filtered.length > visibleCount && (
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={() => setVisibleCount((prev) => prev + 60)}
+            className="rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-5 py-2.5 font-mono text-xs font-semibold text-emerald-300 hover:bg-emerald-500/20 transition"
+          >
+            Load 60 More ({filtered.length - visibleCount} remaining)
+          </button>
+          <button
+            type="button"
+            onClick={() => setVisibleCount(filtered.length)}
+            className="rounded-lg border border-zinc-700 bg-zinc-900 px-5 py-2.5 font-mono text-xs font-medium text-zinc-300 hover:border-zinc-500 hover:text-white transition"
+          >
+            Show All {filtered.length} Packages
+          </button>
+        </div>
+      )}
     </section>
   );
 }

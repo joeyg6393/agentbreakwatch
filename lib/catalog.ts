@@ -200,7 +200,7 @@ export function auditStackInput(rawText: string): {
         latestVersion: "untracked",
         status: "untracked",
         severity: "info",
-        note: "Package is not in the core 69 AI agent index yet. Submit below to add it to our 30-minute poller."
+        note: `Package is not in the core ${catalog.totalTracked} AI agent index yet. Submit below to add it to our 30-minute poller.`
       });
       continue;
     }

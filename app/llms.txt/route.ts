@@ -8,7 +8,7 @@ export async function GET() {
   const lines: string[] = [
     "# AgentBreakWatch",
     "",
-    "> AgentBreakWatch tracks breaking changes, tool schema drift (`tools/list`), and release velocity across 25 core AI Agent SDKs and 44 official and community Model Context Protocol (MCP) servers from live npm and PyPI registries.",
+    `> AgentBreakWatch tracks breaking changes, tool schema drift (\`tools/list\`), and release velocity across ${catalog.sdkCount} core AI Agent SDKs and ${catalog.mcpCount} official and community Model Context Protocol (MCP) servers from live npm and PyPI registries.`,
     "",
     `Last Registry Snapshot: ${catalog.generatedAt}`,
     `Total Indexed Packages: ${catalog.totalTracked} (${catalog.sdkCount} Agent SDKs, ${catalog.mcpCount} MCP Servers)`,
