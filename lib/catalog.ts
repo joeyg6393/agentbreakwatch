@@ -48,7 +48,14 @@ export function getAllItems(): CatalogItem[] {
 }
 
 export function getItemBySlug(slug: string): CatalogItem | undefined {
-  return catalog.items.find((i) => i.slug === slug);
+  const norm = slug.trim().toLowerCase();
+  return (
+    catalog.items.find((i) => i.slug.toLowerCase() === norm) ||
+    catalog.items.find((i) => i.packageName.toLowerCase() === norm) ||
+    catalog.items.find(
+      (i) => i.packageName.replace(/^@/, "").replace(/[\/.]/g, "-").toLowerCase() === norm
+    )
+  );
 }
 
 export function findItemByPackageName(pkgName: string, preferredRegistry?: "npm" | "pypi"): CatalogItem | undefined {
