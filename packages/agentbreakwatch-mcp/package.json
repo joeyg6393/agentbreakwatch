@@ -2,7 +2,7 @@
   "name": "agentbreakwatch-mcp",
   "version": "1.1.0",
   "description": "MCP server for AgentBreakWatch: audit .mcp.json, package.json, and requirements.txt against 256 live AI Agent SDKs and MCP servers for breaking changes and tool schema drift.",
-  "homepage": "https://agentbreakwatch.vercel.app",
+  "homepage": "https://agentbreakwatch.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/joeyg6393/agentbreakwatch-mcp.git"
@@ -11,7 +11,7 @@
     "url": "https://github.com/joeyg6393/agentbreakwatch-mcp/issues"
   },
   "license": "MIT",
-  "author": "AgentBreakWatch (https://agentbreakwatch.vercel.app)",
+  "author": "AgentBreakWatch (https://agentbreakwatch.com)",
   "type": "module",
   "main": "./index.mjs",
   "bin": {

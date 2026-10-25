@@ -12,12 +12,12 @@ export async function GET() {
       auth: { type: "none" },
       api: {
         type: "openapi",
-        url: "https://agentbreakwatch.vercel.app/openapi.json"
+        url: "https://agentbreakwatch.com/openapi.json"
       },
-      llms_txt: "https://agentbreakwatch.vercel.app/llms.txt",
-      llms_full_txt: "https://agentbreakwatch.vercel.app/llms-full.txt",
-      contact_email: "alerts@agentbreakwatch.vercel.app",
-      legal_info_url: "https://agentbreakwatch.vercel.app/pricing"
+      llms_txt: "https://agentbreakwatch.com/llms.txt",
+      llms_full_txt: "https://agentbreakwatch.com/llms-full.txt",
+      contact_email: "alerts@agentbreakwatch.com",
+      legal_info_url: "https://agentbreakwatch.com/pricing"
     },
     {
       headers: {

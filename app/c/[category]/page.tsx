@@ -28,7 +28,7 @@ export async function generateMetadata({
     title: `${hub.title} (${items.length} Live Packages)`,
     description: `${hub.description} Compare live npm and PyPI versions, 90-day release velocity, and schema drift scores across ${items.length} ${hub.shortTitle} packages.`,
     alternates: {
-      canonical: `https://agentbreakwatch.vercel.app/c/${hub.slug}`
+      canonical: `https://agentbreakwatch.com/c/${hub.slug}`
     }
   };
 }
@@ -83,7 +83,7 @@ export default async function CategoryHubPage({
       "@type": "CollectionPage",
       name: hub.title,
       description: hub.description,
-      url: `https://agentbreakwatch.vercel.app/c/${hub.slug}`,
+      url: `https://agentbreakwatch.com/c/${hub.slug}`,
       mainEntity: {
         "@type": "ItemList",
         numberOfItems: items.length,
@@ -91,7 +91,7 @@ export default async function CategoryHubPage({
           "@type": "ListItem",
           position: idx + 1,
           name: `${item.packageName} v${item.latestVersion}`,
-          url: `https://agentbreakwatch.vercel.app/p/${item.slug}`
+          url: `https://agentbreakwatch.com/p/${item.slug}`
         }))
       }
     },
@@ -103,13 +103,13 @@ export default async function CategoryHubPage({
           "@type": "ListItem",
           position: 1,
           name: "AgentBreakWatch Directory",
-          item: "https://agentbreakwatch.vercel.app/"
+          item: "https://agentbreakwatch.com/"
         },
         {
           "@type": "ListItem",
           position: 2,
           name: hub.shortTitle,
-          item: `https://agentbreakwatch.vercel.app/c/${hub.slug}`
+          item: `https://agentbreakwatch.com/c/${hub.slug}`
         }
       ]
     },

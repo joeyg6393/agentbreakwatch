@@ -4,6 +4,9 @@ import { SubscribeBox } from "@/components/SubscribeBox";
 import { catalog } from "@/lib/catalog";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://agentbreakwatch.com/pricing"
+  },
   title: "Pricing & Alert Plans",
   description:
     "Start free with 3 watched SDKs or MCP servers, or upgrade to Indie Pro ($9/mo or $90/yr) and Team ($29/mo or $290/yr) for full .mcp.json and package.json monitoring, instant breaking-change alerts, and Slack/Discord webhooks."

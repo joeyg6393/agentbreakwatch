@@ -17,7 +17,7 @@ export default function HomePage() {
       name: "AgentBreakWatch",
       applicationCategory: "DeveloperApplication",
       operatingSystem: "Web",
-      url: "https://agentbreakwatch.vercel.app",
+      url: "https://agentbreakwatch.com",
       description: `Breaking-change tracker and MCP tool schema drift monitor across ${catalog.sdkCount} core AI Agent SDKs and ${catalog.mcpCount} Model Context Protocol servers.`,
       offers: {
         "@type": "Offer",

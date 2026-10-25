@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "October 2026 AI Agent Stack Volatility & MCP Schema Drift Report",
   description: `Empirical analysis of release velocity, breaking changes, and MCP tools/list schema drift across ${catalog.sdkCount} core AI Agent SDKs and ${catalog.mcpCount} Model Context Protocol servers on npm and PyPI.`,
   alternates: {
-    canonical: "https://agentbreakwatch.vercel.app/drift-report"
+    canonical: "https://agentbreakwatch.com/drift-report"
   }
 };
 
@@ -63,7 +63,7 @@ export default function DriftReportPage() {
     name: "October 2026 AI Agent Stack Volatility & MCP Schema Drift Report",
     datePublished: catalog.generatedAt,
     dateModified: catalog.generatedAt,
-    url: "https://agentbreakwatch.vercel.app/drift-report",
+    url: "https://agentbreakwatch.com/drift-report",
     author: {
       "@type": "Organization",
       name: "AgentBreakWatch"

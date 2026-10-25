@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { catalog, CATEGORY_HUBS } from "@/lib/catalog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agentbreakwatch.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agentbreakwatch.com";
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/`, lastModified: new Date(), changeFrequency: "hourly", priority: 1.0 },
     { url: `${baseUrl}/drift-report`, lastModified: new Date(), changeFrequency: "daily", priority: 0.95 },

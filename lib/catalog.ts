@@ -1,5 +1,7 @@
 import catalogData from "@/data/catalog.json";
 
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://agentbreakwatch.com";
+
 export interface VersionEntry {
   version: string;
   publishedAt: string;

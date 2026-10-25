@@ -4,6 +4,9 @@ import { SubscribeBox } from "@/components/SubscribeBox";
 import { catalog } from "@/lib/catalog";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://agentbreakwatch.com/sponsor"
+  },
   title: "Sponsor AgentBreakWatch",
   description:
     "Put your AI SDK, MCP server, gateway, or observability tool in front of engineers actively maintaining production AI agents."

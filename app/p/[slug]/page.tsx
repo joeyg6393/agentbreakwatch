@@ -22,7 +22,7 @@ export async function generateMetadata({
     title: `${item.packageName} (v${item.latestVersion}) Breaking Changes, MCP Schema Drift & Stability Score`,
     description: `${item.displayName} (${item.packageName}) live ${item.registry.toUpperCase()} version is v${item.latestVersion} (published ${item.latestPublishedAt.slice(0, 10)}). Stability score ${item.stabilityScore}/100 (${item.stabilityGrade}). ${item.breakingSummary}`,
     alternates: {
-      canonical: `https://agentbreakwatch.vercel.app/p/${item.slug}`
+      canonical: `https://agentbreakwatch.com/p/${item.slug}`
     }
   };
 }
@@ -83,7 +83,7 @@ export default async function PackageDetailPage({
       version: item.latestVersion,
       dateModified: item.latestPublishedAt,
       codeRepository: item.githubUrl,
-      url: `https://agentbreakwatch.vercel.app/p/${item.slug}`,
+      url: `https://agentbreakwatch.com/p/${item.slug}`,
       programmingLanguage: item.registry === "npm" ? "TypeScript / JavaScript" : "Python",
       license: item.license,
       author: {
@@ -100,19 +100,19 @@ export default async function PackageDetailPage({
           "@type": "ListItem",
           position: 1,
           name: "AgentBreakWatch Directory",
-          item: "https://agentbreakwatch.vercel.app/"
+          item: "https://agentbreakwatch.com/"
         },
         {
           "@type": "ListItem",
           position: 2,
           name: primaryHub.shortTitle,
-          item: `https://agentbreakwatch.vercel.app/c/${primaryHub.slug}`
+          item: `https://agentbreakwatch.com/c/${primaryHub.slug}`
         },
         {
           "@type": "ListItem",
           position: 3,
           name: item.packageName,
-          item: `https://agentbreakwatch.vercel.app/p/${item.slug}`
+          item: `https://agentbreakwatch.com/p/${item.slug}`
         }
       ]
     },

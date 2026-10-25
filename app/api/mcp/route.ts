@@ -11,7 +11,7 @@ import {
 const SERVER_INFO = {
   name: "agentbreakwatch-mcp",
   version: "1.1.0",
-  homepage: "https://agentbreakwatch.vercel.app",
+  homepage: "https://agentbreakwatch.com",
   description: `Official AgentBreakWatch MCP server. Query live npm and PyPI versions, 90-day release velocity, MCP tools/list schema drift risk, and copy-paste migration diffs across ${catalog.sdkCount} core AI Agent SDKs and ${catalog.mcpCount} MCP servers (${catalog.totalTracked} total packages).`
 };
 
@@ -85,31 +85,31 @@ const ARCHIVED_REPLACEMENTS = [
     legacyPackage: "@modelcontextprotocol/server-github",
     status: "Archived at v2025.4.8",
     replacement: "Remote https://api.githubcopilot.com/mcp/ or github-mcp-server",
-    detailsUrl: "https://agentbreakwatch.vercel.app/p/mcp-server-github"
+    detailsUrl: "https://agentbreakwatch.com/p/mcp-server-github"
   },
   {
     legacyPackage: "@modelcontextprotocol/server-postgres",
     status: "Frozen at v0.6.2",
     replacement: "@supabase/mcp-server-supabase or @neondatabase/mcp-server-neon",
-    detailsUrl: "https://agentbreakwatch.vercel.app/p/mcp-server-postgres"
+    detailsUrl: "https://agentbreakwatch.com/p/mcp-server-postgres"
   },
   {
     legacyPackage: "@modelcontextprotocol/server-puppeteer",
     status: "Archived at v2025.5.12",
     replacement: "@playwright/mcp or chrome-devtools-mcp",
-    detailsUrl: "https://agentbreakwatch.vercel.app/p/mcp-server-puppeteer"
+    detailsUrl: "https://agentbreakwatch.com/p/mcp-server-puppeteer"
   },
   {
     legacyPackage: "@modelcontextprotocol/server-brave-search",
     status: "Frozen at v0.6.2",
     replacement: "@brave/brave-search-mcp-server",
-    detailsUrl: "https://agentbreakwatch.vercel.app/p/mcp-server-brave-search"
+    detailsUrl: "https://agentbreakwatch.com/p/mcp-server-brave-search"
   },
   {
     legacyPackage: "@modelcontextprotocol/server-redis",
     status: "Archived at v2025.4.25",
     replacement: "redis-mcp-server (PyPI) or @upstash/mcp-server (npm)",
-    detailsUrl: "https://agentbreakwatch.vercel.app/p/mcp-server-redis"
+    detailsUrl: "https://agentbreakwatch.com/p/mcp-server-redis"
   }
 ];
 
@@ -123,7 +123,7 @@ function executeToolCall(name: string, args: Record<string, any> = {}) {
           type: "text",
           text: JSON.stringify(
             {
-              source: "https://agentbreakwatch.vercel.app/check",
+              source: "https://agentbreakwatch.com/check",
               snapshotAt: catalog.generatedAt,
               ...report
             },
@@ -144,7 +144,7 @@ function executeToolCall(name: string, args: Record<string, any> = {}) {
         content: [
           {
             type: "text",
-            text: `Package '${q}' was not found in the ${catalog.totalTracked}-package AgentBreakWatch index. Browse all packages at https://agentbreakwatch.vercel.app`
+            text: `Package '${q}' was not found in the ${catalog.totalTracked}-package AgentBreakWatch index. Browse all packages at https://agentbreakwatch.com`
           }
         ]
       };
@@ -155,8 +155,8 @@ function executeToolCall(name: string, args: Record<string, any> = {}) {
           type: "text",
           text: JSON.stringify(
             {
-              canonicalUrl: `https://agentbreakwatch.vercel.app/p/${item.slug}`,
-              llmsTxtUrl: `https://agentbreakwatch.vercel.app/p/${item.slug}/llms.txt`,
+              canonicalUrl: `https://agentbreakwatch.com/p/${item.slug}`,
+              llmsTxtUrl: `https://agentbreakwatch.com/p/${item.slug}/llms.txt`,
               tldrVerdict: `${item.displayName} (${item.packageName}) is at v${item.latestVersion} on ${item.registry.toUpperCase()} (published ${item.latestPublishedAt.slice(0, 10)}), stability ${item.stabilityScore}/100 (${item.stabilityGrade}), drift risk ${item.schemaDriftRisk.toUpperCase()}. ${item.breakingSummary}`,
               package: item
             },
@@ -199,7 +199,7 @@ function executeToolCall(name: string, args: Record<string, any> = {}) {
       stabilityScore: i.stabilityScore,
       stabilityGrade: i.stabilityGrade,
       installCommand: i.installCommand,
-      url: `https://agentbreakwatch.vercel.app/p/${i.slug}`
+      url: `https://agentbreakwatch.com/p/${i.slug}`
     }));
 
     return {
@@ -208,7 +208,7 @@ function executeToolCall(name: string, args: Record<string, any> = {}) {
           type: "text",
           text: JSON.stringify(
             {
-              reportUrl: "https://agentbreakwatch.vercel.app/drift-report",
+              reportUrl: "https://agentbreakwatch.com/drift-report",
               count: slice.length,
               packages: slice
             },
@@ -227,7 +227,7 @@ function executeToolCall(name: string, args: Record<string, any> = {}) {
           type: "text",
           text: JSON.stringify(
             {
-              reportUrl: "https://agentbreakwatch.vercel.app/drift-report",
+              reportUrl: "https://agentbreakwatch.com/drift-report",
               replacements: ARCHIVED_REPLACEMENTS
             },
             null,
@@ -250,13 +250,13 @@ export async function GET() {
       protocol: "mcp",
       protocolVersion: "2025-06-18",
       transport: "streamable-http",
-      endpoint: "https://agentbreakwatch.vercel.app/api/mcp",
+      endpoint: "https://agentbreakwatch.com/api/mcp",
       serverInfo: SERVER_INFO,
       tools: MCP_TOOLS,
       installConfig: {
         mcpServers: {
           agentbreakwatch: {
-            url: "https://agentbreakwatch.vercel.app/api/mcp"
+            url: "https://agentbreakwatch.com/api/mcp"
           }
         }
       }

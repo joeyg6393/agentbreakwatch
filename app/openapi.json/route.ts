@@ -11,7 +11,7 @@ export async function GET() {
     },
     servers: [
       {
-        url: "https://agentbreakwatch.vercel.app",
+        url: "https://agentbreakwatch.com",
         description: "Production AgentBreakWatch Server"
       }
     ],

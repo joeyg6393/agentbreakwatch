@@ -52,7 +52,7 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
   const planKey = (url.searchParams.get("plan") || "indie") as keyof typeof STRIPE_CATALOG;
   const plan = STRIPE_CATALOG[planKey] || STRIPE_CATALOG.indie;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agentbreakwatch.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agentbreakwatch.com";
 
   // 1. If a pre-generated Stripe Payment Link env var is configured, redirect immediately
   const directPaymentLink = process.env[plan.envLinkKey];

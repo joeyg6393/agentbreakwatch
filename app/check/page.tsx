@@ -4,6 +4,9 @@ import { SubscribeBox } from "@/components/SubscribeBox";
 import { catalog } from "@/lib/catalog";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://agentbreakwatch.com/check"
+  },
   title: "Audit Your .mcp.json, package.json, or requirements.txt",
   description: `Drop your agent dependency manifest or .mcp.json config to detect breaking version deltas, unpinned @latest MCP servers, and tool schema drift across ${catalog.totalTracked} live packages.`
 };

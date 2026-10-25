@@ -12,7 +12,7 @@ export async function GET() {
 
   for (const item of catalog.items) {
     sections.push(`## ${item.displayName} (${item.packageName})`);
-    sections.push(`- Page: /p/${item.slug}`);
+    sections.push(`- Page: https://agentbreakwatch.com/p/${item.slug}`);
     sections.push(`- Category: ${item.kind.toUpperCase()} / ${item.subcategory}`);
     sections.push(`- Registry: ${item.registry.toUpperCase()} (${item.registryUrl})`);
     sections.push(`- Latest Version: v${item.latestVersion} (Published ${item.latestPublishedAt.slice(0, 10)})`);

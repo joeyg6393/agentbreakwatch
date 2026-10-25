@@ -3,7 +3,7 @@
   "name": "io.github.joeyg6393/agentbreakwatch-mcp",
   "description": "Audit .mcp.json and package.json against 256 live AI Agent SDKs and MCP servers for breaking changes and schema drift.",
   "version": "1.1.0",
-  "websiteUrl": "https://agentbreakwatch.vercel.app",
+  "websiteUrl": "https://agentbreakwatch.com",
   "repository": {
     "url": "https://github.com/joeyg6393/agentbreakwatch-mcp",
     "source": "github"
@@ -11,7 +11,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://agentbreakwatch.vercel.app/api/mcp"
+      "url": "https://agentbreakwatch.com/api/mcp"
     }
   ],
   "packages": [

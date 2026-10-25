@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import readline from "node:readline";
 
-const ENDPOINT = process.env.AGENTBREAKWATCH_MCP_URL || "https://agentbreakwatch.vercel.app/api/mcp";
+const ENDPOINT = process.env.AGENTBREAKWATCH_MCP_URL || "https://agentbreakwatch.com/api/mcp";
 
 const rl = readline.createInterface({
   input: process.stdin,
