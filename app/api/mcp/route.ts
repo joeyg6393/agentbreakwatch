@@ -23,13 +23,13 @@ const SERVER_INFO = {
 };
 
 const SERVER_INSTRUCTIONS =
-  "AgentBreakWatch MCP Server audits AI Agent SDKs and MCP servers for breaking changes, release velocity, unpinned @latest configs, and schema drift across 256 npm and PyPI packages. Use check_stack_drift for manifest files, get_package_stability for one package, list_volatile_packages for leaderboards, and get_archived_mcp_replacements for deprecated reference servers.";
+  `AgentBreakWatch MCP Server audits AI Agent SDKs and MCP servers for breaking changes, release velocity, unpinned @latest configs, and schema drift across ${catalog.totalTracked} npm and PyPI packages. Use check_stack_drift for manifest files, get_package_stability for one package, list_volatile_packages for leaderboards, and get_archived_mcp_replacements for deprecated reference servers.`;
 
 const MCP_TOOLS = [
   {
     name: "check_stack_drift",
     description:
-      "Read-only audit of a package.json, requirements.txt, or .mcp.json configuration string against 256 live AI Agent SDKs and MCP servers. Flags breaking major version deltas, unpinned @latest MCP servers, and outdated dependencies with exact pin commands. Requires no authentication and returns a structured JSON report.",
+      `Read-only audit of a package.json, requirements.txt, or .mcp.json configuration string against ${catalog.totalTracked} live AI Agent SDKs and MCP servers. Flags breaking major version deltas, unpinned @latest MCP servers, and outdated dependencies with exact pin commands. Requires no authentication and returns a structured JSON report.`,
     annotations: {
       title: "Audit Stack Configuration for Breaking Drift",
       readOnlyHint: true,

@@ -49,7 +49,7 @@ const TARGETS = [
     "displayName": "Model Context Protocol TypeScript SDK",
     "vendor": "Model Context Protocol",
     "githubRepo": "modelcontextprotocol/typescript-sdk",
-    "breakingSummary": "Streamable HTTP transport replaces legacy SSEClientTransport defaults; McpServer.registerTool inputSchema requires Zod object shape or JSON Schema draft-2020-12.",
+    "breakingSummary": "v1.x is now a backport line while v2 ships as split @modelcontextprotocol/server and @modelcontextprotocol/client packages. Streamable HTTP transport replaces legacy SSEClientTransport defaults; McpServer.registerTool inputSchema requires Zod object shape or JSON Schema draft-2020-12.",
     "schemaDriftRisk": "high",
     "affectedSymbols": [
       "McpServer",
@@ -59,6 +59,48 @@ const TARGETS = [
     ],
     "migrationBefore": "import { SSEServerTransport } from \"@modelcontextprotocol/sdk/server/sse.js\";\nconst transport = new SSEServerTransport(\"/messages\", res);\nawait server.connect(transport);",
     "migrationAfter": "import { StreamableHTTPServerTransport } from \"@modelcontextprotocol/sdk/server/streamableHttp.js\";\nconst transport = new StreamableHTTPServerTransport({ sessionIdGenerator: () => crypto.randomUUID() });\nawait server.connect(transport);"
+  },
+  {
+    "slug": "mcp-server-ts-v2",
+    "packageName": "@modelcontextprotocol/server",
+    "registry": "npm",
+    "kind": "sdk",
+    "subcategory": "MCP Core SDK",
+    "displayName": "MCP TypeScript SDK v2 Server",
+    "vendor": "Model Context Protocol",
+    "githubRepo": "modelcontextprotocol/typescript-sdk",
+    "breakingSummary": "v2 split of @modelcontextprotocol/sdk. 2.4.0 rejects x-mcp-header on number parameters (error -32020, per the 2026-07-28 spec), stops wrapping outputSchema results from z.object().meta({ id }) in { result } on 2025-11-25 connections, and its bundled Ajv rejects $id or $ref values with an invalid URI scheme.",
+    "schemaDriftRisk": "high",
+    "affectedSymbols": [
+      "McpServer",
+      "registerTool",
+      "outputSchema",
+      "structuredContent",
+      "x-mcp-header"
+    ],
+    "migrationBefore": "import { McpServer } from \"@modelcontextprotocol/sdk/server/mcp.js\";\n// client code read structuredContent.result",
+    "migrationAfter": "import { McpServer } from \"@modelcontextprotocol/server\";\n// on 2025-11-25 connections read structuredContent directly\n// use z.int() for any parameter annotated with x-mcp-header"
+  },
+  {
+    "slug": "mcp-client-ts-v2",
+    "packageName": "@modelcontextprotocol/client",
+    "registry": "npm",
+    "kind": "sdk",
+    "subcategory": "MCP Core SDK",
+    "displayName": "MCP TypeScript SDK v2 Client",
+    "vendor": "Model Context Protocol",
+    "githubRepo": "modelcontextprotocol/typescript-sdk",
+    "breakingSummary": "v2 split of @modelcontextprotocol/sdk. Since 2.4.0 the client does not list tools that put x-mcp-header on a number parameter, and outputSchema results built from z.object().meta({ id }) arrive unwrapped in structuredContent on 2025-11-25 connections.",
+    "schemaDriftRisk": "high",
+    "affectedSymbols": [
+      "Client",
+      "listTools",
+      "callTool",
+      "structuredContent",
+      "OAuthClientProvider"
+    ],
+    "migrationBefore": "import { Client } from \"@modelcontextprotocol/sdk/client/index.js\";\nconst value = result.structuredContent.result;",
+    "migrationAfter": "import { Client } from \"@modelcontextprotocol/client\";\nconst value = result.structuredContent;"
   },
   {
     "slug": "vercel-ai-sdk",
