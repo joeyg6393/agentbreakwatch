@@ -8,18 +8,35 @@ import {
   getItemsForCategoryHub
 } from "@/lib/catalog";
 
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+  "Access-Control-Allow-Headers":
+    "Content-Type, Accept, Authorization, Mcp-Session-Id, Mcp-Protocol-Version, Last-Event-Id"
+};
+
 const SERVER_INFO = {
   name: "agentbreakwatch-mcp",
-  version: "1.1.0",
+  version: "1.2.0",
   homepage: "https://agentbreakwatch.com",
   description: `Official AgentBreakWatch MCP server. Query live npm and PyPI versions, 90-day release velocity, MCP tools/list schema drift risk, and copy-paste migration diffs across ${catalog.sdkCount} core AI Agent SDKs and ${catalog.mcpCount} MCP servers (${catalog.totalTracked} total packages).`
 };
+
+const SERVER_INSTRUCTIONS =
+  "AgentBreakWatch MCP Server audits AI Agent SDKs and MCP servers for breaking changes, release velocity, unpinned @latest configs, and schema drift across 256 npm and PyPI packages. Use check_stack_drift for manifest files, get_package_stability for one package, list_volatile_packages for leaderboards, and get_archived_mcp_replacements for deprecated reference servers.";
 
 const MCP_TOOLS = [
   {
     name: "check_stack_drift",
     description:
-      "Audit a package.json, requirements.txt, or .mcp.json configuration string against 256 live AI Agent SDKs and MCP servers. Flags breaking major version deltas, unpinned @latest MCP servers, and outdated dependencies with exact pin commands.",
+      "Read-only audit of a package.json, requirements.txt, or .mcp.json configuration string against 256 live AI Agent SDKs and MCP servers. Flags breaking major version deltas, unpinned @latest MCP servers, and outdated dependencies with exact pin commands. Requires no authentication and returns a structured JSON report.",
+    annotations: {
+      title: "Audit Stack Configuration for Breaking Drift",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false
+    },
     inputSchema: {
       type: "object",
       required: ["manifest"],
@@ -28,13 +45,21 @@ const MCP_TOOLS = [
           type: "string",
           description: "Raw contents of .mcp.json, package.json, requirements.txt, or a newline-separated list of packages"
         }
-      }
+      },
+      additionalProperties: false
     }
   },
   {
     name: "get_package_stability",
     description:
-      "Look up live npm or PyPI version, publish timestamp, 90-day release velocity, stability score (0-100), MCP tools/list schema drift risk, and before/after migration code for a specific AI Agent SDK or MCP server.",
+      "Read-only lookup of live npm or PyPI version, publish timestamp, 90-day release velocity, stability score (0-100), MCP tools/list schema drift risk, and before/after migration code for a single AI Agent SDK or MCP server. Prefer this over check_stack_drift when inspecting one specific package by name or slug.",
+    annotations: {
+      title: "Get Single Package Stability and Migration Diff",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false
+    },
     inputSchema: {
       type: "object",
       required: ["package"],
@@ -43,13 +68,21 @@ const MCP_TOOLS = [
           type: "string",
           description: "Package name or slug (e.g. 'openai', '@modelcontextprotocol/sdk', '@playwright/mcp', 'fastmcp', 'mcp-clickhouse')"
         }
-      }
+      },
+      additionalProperties: false
     }
   },
   {
     name: "list_volatile_packages",
     description:
-      "List the fastest-changing or highest schema-drift-risk AI Agent SDKs and MCP servers from the live AgentBreakWatch telemetry index.",
+      "Read-only query that lists the fastest-changing or highest schema-drift-risk AI Agent SDKs and MCP servers from the live AgentBreakWatch telemetry index, sorted descending by 90-day release velocity. Supports filtering by kind ('sdk', 'mcp', 'all'), category hub slug, and result limit (1-50).",
+    annotations: {
+      title: "List Most Volatile AI Agent SDKs and MCP Servers",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false
+    },
     inputSchema: {
       type: "object",
       properties: {
@@ -66,16 +99,25 @@ const MCP_TOOLS = [
           type: "number",
           description: "Maximum number of packages to return (default 15, max 50)"
         }
-      }
+      },
+      additionalProperties: false
     }
   },
   {
     name: "get_archived_mcp_replacements",
     description:
-      "Get the migration matrix for archived or frozen @modelcontextprotocol/server-* reference packages and their official 2026 vendor-maintained replacements.",
+      "Read-only lookup returning the complete migration matrix for archived or frozen @modelcontextprotocol/server-* reference packages and their official 2026 vendor-maintained replacements. Takes no parameters and requires no authentication.",
+    annotations: {
+      title: "Get Archived Reference MCP Replacement Matrix",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false
+    },
     inputSchema: {
       type: "object",
-      properties: {}
+      properties: {},
+      additionalProperties: false
     }
   }
 ];
@@ -244,6 +286,13 @@ function executeToolCall(name: string, args: Record<string, any> = {}) {
   };
 }
 
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 204,
+    headers: CORS_HEADERS
+  });
+}
+
 export async function GET() {
   return NextResponse.json(
     {
@@ -252,6 +301,7 @@ export async function GET() {
       transport: "streamable-http",
       endpoint: "https://agentbreakwatch.com/api/mcp",
       serverInfo: SERVER_INFO,
+      instructions: SERVER_INSTRUCTIONS,
       tools: MCP_TOOLS,
       installConfig: {
         mcpServers: {
@@ -263,7 +313,7 @@ export async function GET() {
     },
     {
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        ...CORS_HEADERS,
         "Cache-Control": "public, s-maxage=300"
       }
     }
@@ -283,21 +333,27 @@ export async function POST(req: Request) {
           result: {
             protocolVersion: params?.protocolVersion || "2025-06-18",
             capabilities: {
-              tools: { listChanged: false }
+              tools: { listChanged: false },
+              resources: {},
+              prompts: {}
             },
-            serverInfo: SERVER_INFO
+            serverInfo: SERVER_INFO,
+            instructions: SERVER_INSTRUCTIONS
           }
         },
-        { headers: { "Access-Control-Allow-Origin": "*" } }
+        { headers: CORS_HEADERS }
       );
     }
 
     if (method === "notifications/initialized") {
-      return new NextResponse(null, { status: 204 });
+      return new NextResponse(null, { status: 204, headers: CORS_HEADERS });
     }
 
     if (method === "ping") {
-      return NextResponse.json({ jsonrpc: "2.0", id: id ?? 1, result: {} });
+      return NextResponse.json(
+        { jsonrpc: "2.0", id: id ?? 1, result: {} },
+        { headers: CORS_HEADERS }
+      );
     }
 
     if (method === "tools/list") {
@@ -309,7 +365,33 @@ export async function POST(req: Request) {
             tools: MCP_TOOLS
           }
         },
-        { headers: { "Access-Control-Allow-Origin": "*" } }
+        { headers: CORS_HEADERS }
+      );
+    }
+
+    if (method === "resources/list") {
+      return NextResponse.json(
+        {
+          jsonrpc: "2.0",
+          id: id ?? 1,
+          result: {
+            resources: []
+          }
+        },
+        { headers: CORS_HEADERS }
+      );
+    }
+
+    if (method === "prompts/list") {
+      return NextResponse.json(
+        {
+          jsonrpc: "2.0",
+          id: id ?? 1,
+          result: {
+            prompts: []
+          }
+        },
+        { headers: CORS_HEADERS }
       );
     }
 
@@ -323,7 +405,7 @@ export async function POST(req: Request) {
           id: id ?? 1,
           result
         },
-        { headers: { "Access-Control-Allow-Origin": "*" } }
+        { headers: CORS_HEADERS }
       );
     }
 
@@ -333,7 +415,7 @@ export async function POST(req: Request) {
         id: id ?? null,
         error: { code: -32601, message: `Method not found: ${method}` }
       },
-      { status: 400, headers: { "Access-Control-Allow-Origin": "*" } }
+      { status: 400, headers: CORS_HEADERS }
     );
   } catch (err: any) {
     return NextResponse.json(
@@ -342,7 +424,7 @@ export async function POST(req: Request) {
         id: null,
         error: { code: -32700, message: err?.message || "Invalid JSON-RPC payload" }
       },
-      { status: 400, headers: { "Access-Control-Allow-Origin": "*" } }
+      { status: 400, headers: CORS_HEADERS }
     );
   }
 }

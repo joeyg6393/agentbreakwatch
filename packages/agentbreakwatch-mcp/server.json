@@ -3,7 +3,7 @@
   "name": "io.github.joeyg6393/agentbreakwatch-mcp",
   "title": "AgentBreakWatch",
   "description": "Audit AI Agent SDKs and MCP servers for breaking changes, schema drift, and migration fixes.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "websiteUrl": "https://agentbreakwatch.com",
   "repository": {
     "url": "https://github.com/joeyg6393/agentbreakwatch-mcp",
