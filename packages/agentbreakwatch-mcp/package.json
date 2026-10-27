@@ -1,8 +1,8 @@
 {
   "name": "agentbreakwatch-mcp",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "mcpName": "io.github.joeyg6393/agentbreakwatch-mcp",
-  "description": "MCP server for AgentBreakWatch: audit .mcp.json, package.json, and requirements.txt against 256 live AI Agent SDKs and MCP servers for breaking changes and tool schema drift.",
+  "description": "MCP server for AgentBreakWatch: audit .mcp.json, package.json, requirements.txt, and pyproject.toml against 258+ live AI Agent SDKs and MCP servers for breaking changes and tool schema drift.",
   "homepage": "https://agentbreakwatch.com",
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "files": [
     "index.mjs",
+    "index.js",
     "server.json",
     "glama.json",
     "smithery.yaml",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { StickyDigestBar } from "@/components/StickyDigestBar";
 import { catalog } from "@/lib/catalog";
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-[#090a0f] text-zinc-100 antialiased">
         <Navbar />
         <main className="flex-1">{children}</main>
+        <StickyDigestBar />
         <Footer />
       </body>
     </html>

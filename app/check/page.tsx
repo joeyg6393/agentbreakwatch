@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { StackChecker } from "@/components/StackChecker";
 import { SubscribeBox } from "@/components/SubscribeBox";
+import { DigestBanner } from "@/components/DigestBanner";
 import { catalog } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   alternates: {
     canonical: "https://agentbreakwatch.com/check"
   },
-  title: "Audit Your .mcp.json, package.json, or requirements.txt",
+  title: "Audit Your .mcp.json, package.json, requirements.txt, or pyproject.toml",
   description: `Drop your agent dependency manifest or .mcp.json config to detect breaking version deltas, unpinned @latest MCP servers, and tool schema drift across ${catalog.totalTracked} live packages.`
 };
 
@@ -22,12 +23,23 @@ export default function CheckPage() {
           Paste Your Agent Stack to Detect Breaking Releases &amp; Drift
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-zinc-300">
-          Compare your `.mcp.json`, `package.json`, or `requirements.txt` against our live index of{" "}
+          Compare your `.mcp.json`, `package.json`, `requirements.txt`, or `pyproject.toml` against our live index of{" "}
           {catalog.sdkCount} Agent SDKs and {catalog.mcpCount} MCP servers. We flag major version jumps, archived official MCP servers, and unpinned `@latest` servers that can silently break tool calls.
         </p>
       </div>
 
-      <div className="mt-8">
+      {/* Prominent Digest Banner for visitors before or alongside running an audit */}
+      <div className="mt-6">
+        <DigestBanner
+          source="check-top-banner"
+          badge="WEEKLY DIGEST (FREE)"
+          title="Get the Weekly AI Agent SDK & MCP Breaking-Change Digest"
+          subtitle={`Not ready to paste a config yet? Get our free weekly roundup of breaking releases and MCP schema drift across ${catalog.totalTracked} packages.`}
+          buttonLabel="Get Weekly Digest"
+        />
+      </div>
+
+      <div className="mt-6">
         <StackChecker defaultSample="mcp" />
       </div>
 
@@ -53,13 +65,17 @@ export default function CheckPage() {
             3. Automate Schema Drift Alerts
           </div>
           <p className="mt-2 text-xs leading-relaxed text-zinc-300">
-            Save your stack once to get instant email or Slack/webhook alerts with tested before-and-after code snippets whenever a dependency ships a breaking change.
+            Save your stack once to get weekly digest emails or real-time Slack/webhook alerts with tested before-and-after code snippets whenever a dependency ships a breaking change.
           </p>
         </div>
       </div>
 
       <div className="mt-12">
-        <SubscribeBox />
+        <SubscribeBox
+          source="check-bottom-box"
+          heading="Get the Weekly AI Agent SDK & MCP Breaking-Change Digest (Free)"
+          subtext="Subscribe for free weekly breaking-change summaries and copy-paste migration snippets, or add a Slack/Discord webhook URL."
+        />
       </div>
     </div>
   );

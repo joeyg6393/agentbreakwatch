@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.joeyg6393/agentbreakwatch-mcp",
   "title": "AgentBreakWatch",
-  "description": "Audit AI Agent SDKs and MCP servers for breaking changes, schema drift, and migration fixes.",
-  "version": "1.2.0",
+  "description": "Audit AI Agent SDKs and MCP servers across 258+ packages for breaking changes and schema drift.",
+  "version": "1.2.1",
   "websiteUrl": "https://agentbreakwatch.com",
   "repository": {
     "url": "https://github.com/joeyg6393/agentbreakwatch-mcp",

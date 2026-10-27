@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1] - 2026-10-27
+
+### Changed
+- Replaced hardcoded `256` package count with dynamic live catalog count (`258+` tracked packages across 32 AI Agent SDKs and 226 MCP servers) in `index.mjs`, `index.js`, `README.md`, `server.json`, and tool descriptions.
+- Added `pyproject.toml` manifest support notes to `check_stack_drift` tool schema and documentation.
+
 ## [1.2.0] - 2026-10-25
 
 ### Changed

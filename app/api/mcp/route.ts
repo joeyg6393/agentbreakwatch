@@ -17,7 +17,7 @@ const CORS_HEADERS = {
 
 const SERVER_INFO = {
   name: "agentbreakwatch-mcp",
-  version: "1.2.0",
+  version: "1.2.1",
   homepage: "https://agentbreakwatch.com",
   description: `Official AgentBreakWatch MCP server. Query live npm and PyPI versions, 90-day release velocity, MCP tools/list schema drift risk, and copy-paste migration diffs across ${catalog.sdkCount} core AI Agent SDKs and ${catalog.mcpCount} MCP servers (${catalog.totalTracked} total packages).`
 };

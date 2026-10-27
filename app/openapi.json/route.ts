@@ -19,7 +19,7 @@ export async function GET() {
       "/api/catalog.json": {
         get: {
           operationId: "getCatalog",
-          summary: "Get the complete live index of 256 AI Agent SDKs and MCP servers",
+          summary: `Get the complete live index of ${catalog.totalTracked} AI Agent SDKs and MCP servers`,
           responses: {
             "200": {
               description: "Full JSON catalog of tracked SDKs and MCP servers"

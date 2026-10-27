@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { catalog, CATEGORY_HUBS, getItemsForCategoryHub } from "@/lib/catalog";
 import { SubscribeBox } from "@/components/SubscribeBox";
+import { DigestBanner } from "@/components/DigestBanner";
 
 export const metadata: Metadata = {
   title: "October 2026 AI Agent Stack Volatility & MCP Schema Drift Report",
@@ -56,6 +57,8 @@ export default function DriftReportPage() {
       reason: "Vendor-maintained servers add Redis Streams, JSON, and vector index search tools."
     }
   ];
+
+  const topVolatileNames = highVelocity.slice(0, 6).map((i) => i.packageName);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -112,6 +115,18 @@ export default function DriftReportPage() {
             </li>
           </ul>
         </div>
+      </div>
+
+      {/* Inline Email Capture Card Right Below Executive Summary */}
+      <div className="mt-6">
+        <DigestBanner
+          source="drift-report-exec-summary"
+          badge="MONTHLY REPORT + WEEKLY DIGEST"
+          title="Get the November 2026 MCP Drift Report & Weekly Breaking-Change Digest"
+          subtitle={`Receive the November 2026 benchmark plus weekly breaking-change diffs across ${catalog.totalTracked} AI Agent SDKs and MCP servers.`}
+          buttonLabel="Get Report & Digest (Free)"
+          packages={topVolatileNames}
+        />
       </div>
 
       {/* Top 25 Highest-Velocity Packages */}
@@ -223,6 +238,20 @@ export default function DriftReportPage() {
         </div>
       </section>
 
+      {/* Inline Capture Card Right Below the Replacement Matrix */}
+      <div className="mt-8">
+        <SubscribeBox
+          source="drift-report-replacement-matrix"
+          packages={topVolatileNames}
+          badgeText="NOVEMBER 2026 DRIFT REPORT + WEEKLY DIGEST"
+          heading="Get the November 2026 MCP Drift Report & Weekly Breaking-Change Digest"
+          subtext="Join engineering teams receiving our weekly MCP schema drift alerts, deprecated server replacements, and before/after SDK migration snippets."
+          buttonText="Send Me the Digest (Free)"
+          showWebhook={false}
+          compact={true}
+        />
+      </div>
+
       {/* Category Breakdown */}
       <section className="mt-10 rounded-xl border border-zinc-800 bg-zinc-900/40 overflow-hidden">
         <div className="border-b border-zinc-800 px-6 py-4">
@@ -273,8 +302,16 @@ export default function DriftReportPage() {
         </div>
       </section>
 
+      {/* Bottom Conversion Bar */}
       <div className="mt-12">
-        <SubscribeBox />
+        <SubscribeBox
+          source="drift-report-bottom"
+          packages={topVolatileNames}
+          badgeText="AUTOMATED STACK MONITORING"
+          heading="Get the November 2026 MCP Drift Report & Weekly Breaking-Change Digest"
+          subtext="Subscribe free for the weekly digest and monthly volatility report, or include a Slack/Discord webhook URL for automated team alerts."
+          buttonText="Subscribe Free"
+        />
       </div>
     </div>
   );

@@ -317,7 +317,8 @@ export function auditStackInput(rawText: string): {
     for (const rawLine of lines) {
       const line = rawLine.split("#")[0].trim();
       if (!line) continue;
-      const pyMatch = line.match(/^([a-zA-Z0-9._-]+)\s*(?:==|>=|~=|<=|>|<)\s*([a-zA-Z0-9._-]+)/);
+      const cleanedPyLine = line.replace(/^[\s"'\[\],]+|[\s"'\[\],]+$/g, "");
+      const pyMatch = cleanedPyLine.match(/^([a-zA-Z0-9._-]+)\s*(?:==|>=|~=|<=|>|<)\s*([a-zA-Z0-9._-]+)/);
       if (pyMatch) {
         extracted.push({ name: pyMatch[1], version: pyMatch[2], registry: "pypi" });
         continue;

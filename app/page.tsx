@@ -3,6 +3,7 @@ import { catalog, CATEGORY_HUBS, getItemsForCategoryHub } from "@/lib/catalog";
 import { StackChecker } from "@/components/StackChecker";
 import { CatalogExplorer } from "@/components/CatalogExplorer";
 import { SubscribeBox } from "@/components/SubscribeBox";
+import { DigestBanner } from "@/components/DigestBanner";
 
 export default function HomePage() {
   const highRiskItems = catalog.items.filter((i) => i.schemaDriftRisk === "high");
@@ -72,7 +73,7 @@ export default function HomePage() {
         </h1>
 
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-300">
-          Production agents silently break when an MCP server renames a `tools/list` parameter or an SDK ships a breaking release. Paste your `.mcp.json`, `package.json`, or `requirements.txt` below for an instant live audit and copy-paste migration snippets.
+          Production agents silently break when an MCP server renames a `tools/list` parameter or an SDK ships a breaking release. Paste your `.mcp.json`, `package.json`, `requirements.txt`, or `pyproject.toml` below for an instant live audit and copy-paste migration snippets.
         </p>
 
         {/* Quick Metric Bar */}
@@ -96,8 +97,19 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Hero Email Capture Form */}
+      <div className="mt-7">
+        <DigestBanner
+          source="homepage-hero"
+          badge="WEEKLY BREAKING-CHANGE & MCP DRIFT DIGEST (FREE)"
+          title="Weekly Breaking-Change & MCP Drift Digest (Free)"
+          subtitle={`Join developers tracking ${catalog.totalTracked} AI Agent SDKs and MCP servers. Get weekly breaking-change diffs, tools/list schema alerts, and exact version pins.`}
+          buttonLabel="Get Free Weekly Digest"
+        />
+      </div>
+
       {/* Hero Interactive Tool */}
-      <div className="mt-8">
+      <div className="mt-7">
         <StackChecker defaultSample="mcp" />
       </div>
 
@@ -164,6 +176,19 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Mid-Page Email Capture Callout */}
+      <div className="mt-10">
+        <SubscribeBox
+          source="homepage-midpage"
+          badgeText="WEEKLY BREAKING-CHANGE & MCP DRIFT DIGEST (FREE)"
+          heading="Weekly Breaking-Change & MCP Drift Digest (Free)"
+          subtext="Do not wait for a silent production tool-call failure. Get our free weekly digest of breaking Agent SDK releases, MCP tools/list diffs, and copy-paste migration snippets."
+          buttonText="Subscribe Free"
+          showWebhook={false}
+          compact={true}
+        />
+      </div>
+
       {/* Programmatic Category Hubs Grid */}
       <section className="mt-12">
         <div className="flex flex-wrap items-end justify-between gap-3">
@@ -226,7 +251,12 @@ export default function HomePage() {
 
       {/* Bottom Email Signup */}
       <div className="mt-14">
-        <SubscribeBox />
+        <SubscribeBox
+          source="homepage-bottom"
+          badgeText="WEEKLY BREAKING-CHANGE & MCP DRIFT DIGEST (FREE)"
+          heading="Weekly Breaking-Change & MCP Drift Digest (Free)"
+          subtext="Receive our weekly breaking-change digest and before/after fix snippets the moment a tracked SDK or MCP server ships a breaking release."
+        />
       </div>
     </div>
   );

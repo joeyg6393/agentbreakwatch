@@ -1,6 +1,6 @@
 # AgentBreakWatch MCP Server (`agentbreakwatch-mcp`)
 
-Official Model Context Protocol (MCP) server for **[AgentBreakWatch](https://agentbreakwatch.com)**, the live breaking-change and `tools/list` JSON Schema drift telemetry index across **30 core AI Agent SDKs** and **226 MCP servers** (**256 total tracked packages**) on npm and PyPI.
+Official Model Context Protocol (MCP) server for **[AgentBreakWatch](https://agentbreakwatch.com)**, the live breaking-change and `tools/list` JSON Schema drift telemetry index across **32 core AI Agent SDKs** and **226 MCP servers** (**258+ total tracked packages**) on npm and PyPI.
 
 - **Live Web App & Stack Auditor:** [https://agentbreakwatch.com](https://agentbreakwatch.com)
 - **Interactive `.mcp.json` & `package.json` Checker:** [https://agentbreakwatch.com/check](https://agentbreakwatch.com/check)
@@ -24,14 +24,14 @@ Add the hosted Streamable HTTP endpoint directly to your `.mcp.json`, Cursor, Cl
 }
 ```
 
-Or run locally via `npx` (stdio transport):
+Or run locally via `npx` directly from GitHub (`github:joeyg6393/agentbreakwatch-mcp`) or npm (`agentbreakwatch-mcp`) over stdio transport:
 
 ```json
 {
   "mcpServers": {
     "agentbreakwatch": {
       "command": "npx",
-      "args": ["-y", "agentbreakwatch-mcp"]
+      "args": ["-y", "github:joeyg6393/agentbreakwatch-mcp"]
     }
   }
 }
@@ -39,8 +39,8 @@ Or run locally via `npx` (stdio transport):
 
 ## Available MCP Tools
 
-1. **`check_stack_drift`**: Pass the raw contents of a `.mcp.json`, `package.json`, or `requirements.txt` file to detect breaking major version jumps, unpinned `@latest` MCP servers, and archived packages, with exact version pin commands.
-2. **`get_package_stability`**: Retrieve live npm/PyPI version, publish date, 90-day release velocity, 0-100 stability score, `tools/list` schema drift risk, and copy-paste before/after migration code for any of the 256 tracked packages.
+1. **`check_stack_drift`**: Pass the raw contents of a `.mcp.json`, `package.json`, `requirements.txt`, or `pyproject.toml` file to detect breaking major version jumps, unpinned `@latest` MCP servers, and archived packages, with exact version pin commands across 258+ tracked packages.
+2. **`get_package_stability`**: Retrieve live npm/PyPI version, publish date, 90-day release velocity, 0-100 stability score, `tools/list` schema drift risk, and copy-paste before/after migration code for any of the 258+ tracked packages.
 3. **`list_volatile_packages`**: Query the fastest-changing Agent SDKs and MCP servers over the last 90 days, optionally filtered by `kind` (`sdk` or `mcp`) or ecosystem category.
 4. **`get_archived_mcp_replacements`**: Retrieve the migration matrix for archived `@modelcontextprotocol/server-*` packages (`server-github`, `server-postgres`, `server-puppeteer`, `server-brave-search`, `server-redis`) and their official 2026 vendor-maintained replacements.
 
