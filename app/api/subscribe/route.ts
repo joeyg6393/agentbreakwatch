@@ -102,7 +102,7 @@ function buildWelcomeEmail(params: {
           Audit any <code style="color:#34d399;">.mcp.json</code>, <code style="color:#34d399;">package.json</code>, or <code style="color:#34d399;">requirements.txt</code> directly from your IDE agent via <code style="color:#34d399;">npx</code> or our zero-install Streamable HTTP MCP server:
         </p>
         <pre style="margin:0 0 8px 0;padding:10px;background:#18181b;border-radius:6px;color:#6ee7b7;font-family:monospace;font-size:12px;overflow-x:auto;">npx -y github:joeyg6393/agentbreakwatch-mcp</pre>
-        <pre style="margin:0;padding:10px;background:#18181b;border-radius:6px;color:#a1a1aa;font-family:monospace;font-size:12px;overflow-x:auto;">npx -y agentbreakwatch-mcp</pre>
+        
       </div>
 
       <div style="margin-bottom:22px;">
@@ -154,7 +154,6 @@ function buildWelcomeEmail(params: {
     "",
     "Run AgentBreakWatch MCP Server:",
     "  npx -y github:joeyg6393/agentbreakwatch-mcp",
-    "  npx -y agentbreakwatch-mcp",
     "  Remote HTTP MCP: https://agentbreakwatch.com/api/mcp",
     "",
     "Quick Links:",
