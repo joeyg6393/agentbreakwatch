@@ -6,7 +6,7 @@
   "homepage": "https://agentbreakwatch.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/joeyg6393/agentbreakwatch-mcp.git"
+    "url": "git+https://github.com/joeyg6393/agentbreakwatch-mcp.git"
   },
   "bugs": {
     "url": "https://github.com/joeyg6393/agentbreakwatch-mcp/issues"
@@ -16,7 +16,7 @@
   "type": "module",
   "main": "./index.mjs",
   "bin": {
-    "agentbreakwatch-mcp": "./index.mjs"
+    "agentbreakwatch-mcp": "index.mjs"
   },
   "scripts": {
     "start": "node index.mjs"
@@ -48,5 +48,9 @@
     "agentbreakwatch",
     "llm",
     "devtools"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }

@@ -14,5 +14,16 @@
       "type": "streamable-http",
       "url": "https://agentbreakwatch.com/api/mcp"
     }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "agentbreakwatch-mcp",
+      "version": "1.2.1",
+      "transport": {
+        "type": "stdio"
+      }
+    }
   ]
 }
