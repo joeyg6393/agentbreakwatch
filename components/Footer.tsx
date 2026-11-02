@@ -36,6 +36,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/weekly" className="hover:text-white">
+                  What Broke This Week
+                </Link>
+              </li>
+              <li>
                 <Link href="/#directory" className="hover:text-white">
                   SDK &amp; MCP Stability Directory
                 </Link>

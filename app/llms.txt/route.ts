@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { catalog, CATEGORY_HUBS, getItemsForCategoryHub } from "@/lib/catalog";
+import { getAllWeeks, getWeeklyReport, weekRangeLabel, weekSummary } from "@/lib/weekly";
 
 export async function GET() {
   const sdks = catalog.items.filter((i) => i.kind === "sdk");
@@ -21,6 +22,10 @@ export async function GET() {
     `- [Live JSON Catalog (/api/catalog.json)](https://agentbreakwatch.com/api/catalog.json): Machine-readable JSON feed of all ${catalog.totalTracked} tracked Agent SDKs and MCP servers.`,
     "- [OpenAPI 3.1 Specification (/openapi.json)](https://agentbreakwatch.com/openapi.json): OpenAPI spec for querying `/api/catalog.json`, `/api/p/{slug}`, and `POST /api/check`.",
     "- [Pricing & Alert Plans](https://agentbreakwatch.com/pricing): Free (3 watched packages), Indie Pro ($9/mo), and Team ($29/mo) alert plans.",
+    "",
+    "## What Broke This Week (/weekly)",
+    "- [Weekly report index](https://agentbreakwatch.com/weekly): Major version jumps, 0.x minor bumps, deprecations, and notable SDK releases per ISO week.",
+    ...getAllWeeks().map((w) => `- [What Broke This Week: ${weekRangeLabel(w)}](https://agentbreakwatch.com/weekly/${w.id}): ${weekSummary(getWeeklyReport(w))}`),
     "",
     "## Category Stability Hubs (/c/[category])",
     ...CATEGORY_HUBS.map((hub) => {

@@ -4981,6 +4981,9 @@ async function fetchNpmMetadata(target) {
   const releasesLast90d = versionEntries.filter((v) => new Date(v.publishedAt).getTime() >= cutoff90d).length;
 
   const latestManifest = data.versions?.[latest] || {};
+  const npmDeprecated = typeof latestManifest.deprecated === "string" && latestManifest.deprecated.trim()
+    ? sanitizeText(latestManifest.deprecated.trim()).slice(0, 300)
+    : undefined;
   const depsObj = latestManifest.dependencies || {};
   const depsCount = Object.keys(depsObj).length;
   const rawLicense = typeof latestManifest.license === "string"
@@ -5037,7 +5040,8 @@ async function fetchNpmMetadata(target) {
       ? `npx -y ${target.packageName}@${latest}`
       : `npm install ${target.packageName}@${latest}`,
     stabilityScore: score,
-    stabilityGrade: getStabilityGrade(score)
+    stabilityGrade: getStabilityGrade(score),
+    _history: buildHistory(versionEntries, npmDeprecated)
   };
 }
 
@@ -5049,6 +5053,7 @@ async function fetchPypiMetadata(target) {
 
   const latest = data.info?.version;
   const releasesObj = data.releases || {};
+  const pypiYanked = Boolean(data.info?.yanked);
 
   let versionEntries = [];
   for (const [ver, files] of Object.entries(releasesObj)) {
@@ -5107,8 +5112,47 @@ async function fetchPypiMetadata(target) {
       ? `uvx ${target.packageName}@${latest}`
       : `pip install "${target.packageName}==${latest}"`,
     stabilityScore: score,
-    stabilityGrade: getStabilityGrade(score)
+    stabilityGrade: getStabilityGrade(score),
+    _history: buildHistory(versionEntries, pypiYanked ? `Latest release ${latest} is yanked on PyPI${data.info?.yanked_reason ? `: ${sanitizeText(String(data.info.yanked_reason)).slice(0, 200)}` : ""}` : undefined)
   };
+}
+
+// Release history used by the /weekly pages. Keeps every stable release from the
+// last HISTORY_WINDOW_DAYS plus a few older ones as a baseline for major-jump detection.
+const HISTORY_WINDOW_DAYS = 180;
+function buildHistory(versionEntries, deprecated) {
+  const cutoff = Date.now() - HISTORY_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+  const inWindow = versionEntries.filter((v) => new Date(v.publishedAt).getTime() >= cutoff);
+  const older = versionEntries.filter((v) => new Date(v.publishedAt).getTime() < cutoff).slice(0, 5);
+  return { deprecated, versions: [...inWindow, ...older] };
+}
+
+async function writeReleaseHistory(validResults) {
+  const histPath = path.resolve("/workspace/agentbreakwatch/data/release-history.json");
+  let existing = { items: {} };
+  try {
+    existing = JSON.parse(await fs.readFile(histPath, "utf8"));
+  } catch {
+    // first run
+  }
+  const items = {};
+  for (const r of validResults) {
+    const prev = existing.items?.[r.slug]?.versions || [];
+    const merged = new Map();
+    for (const v of [...prev, ...(r._history?.versions || [])]) merged.set(v.version, v);
+    const versions = [...merged.values()].sort(
+      (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    );
+    const entry = { versions };
+    if (r._history?.deprecated) entry.deprecated = r._history.deprecated;
+    items[r.slug] = entry;
+  }
+  await fs.writeFile(
+    histPath,
+    JSON.stringify({ generatedAt: new Date().toISOString(), windowDays: HISTORY_WINDOW_DAYS, items }, null, 1),
+    "utf8"
+  );
+  console.log(`Saved release history for ${Object.keys(items).length} packages to ${histPath}`);
 }
 
 async function main() {
@@ -5134,7 +5178,9 @@ async function main() {
 
   await Promise.all(Array.from({ length: concurrency }, () => worker()));
 
-  const validResults = results.filter(Boolean);
+  const withHistory = results.filter(Boolean);
+  await writeReleaseHistory(withHistory);
+  const validResults = withHistory.map(({ _history, ...rest }) => rest);
   const sdks = validResults.filter((r) => r.kind === "sdk");
   const mcps = validResults.filter((r) => r.kind === "mcp");
 

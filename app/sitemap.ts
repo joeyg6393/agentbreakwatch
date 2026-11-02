@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { catalog, CATEGORY_HUBS } from "@/lib/catalog";
+import { getAllWeeks } from "@/lib/weekly";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agentbreakwatch.com";
@@ -28,5 +29,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...packageRoutes];
+  const weeks = getAllWeeks();
+  const weeklyRoutes: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}/weekly`, lastModified: new Date(catalog.generatedAt), changeFrequency: "daily", priority: 0.9 },
+    ...weeks.map((w, i) => ({
+      url: `${baseUrl}/weekly/${w.id}`,
+      lastModified: i === 0 ? new Date(catalog.generatedAt) : w.end,
+      changeFrequency: (i === 0 ? "daily" : "monthly") as "daily" | "monthly",
+      priority: i === 0 ? 0.9 : 0.7
+    }))
+  ];
+
+  return [...staticRoutes, ...weeklyRoutes, ...categoryRoutes, ...packageRoutes];
 }

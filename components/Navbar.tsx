@@ -43,6 +43,9 @@ export function Navbar() {
             <Link href="/drift-report" className="text-amber-300 hover:text-amber-200 transition">
               Drift Report
             </Link>
+            <Link href="/weekly" className="hover:text-white transition">
+              What Broke This Week
+            </Link>
             <Link href="/check" className="hover:text-white transition">
               Stack Checker
             </Link>
