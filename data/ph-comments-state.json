@@ -1,0 +1,26 @@
+{
+  "last_checked": "2026-11-06T09:05:17-05:00",
+  "source_urls": [
+    "https://www.producthunt.com/products/agentbreakwatch?launch=agentbreakwatch",
+    "https://www.producthunt.com/posts/agentbreakwatch"
+  ],
+  "comments": [
+    {
+      "author": "Joe",
+      "handle": "@joe31",
+      "role": "Maker",
+      "type": "maker_intro",
+      "replied": true
+    },
+    {
+      "author": "JC",
+      "handle": "@jcbuilds",
+      "badge": "Haplo AI",
+      "text_snippet": "The silent MCP drift angle is the one that hits home",
+      "replied": true,
+      "replied_at": "2026-10-28T10:05:00-04:00",
+      "replied_by": "@joe31"
+    }
+  ],
+  "last_result": "no new comments (WebFetch product page Nov 6 ~9:05 AM EST; maker intro, JC @jcbuilds comment, and Joe reply only, no reviews)"
+}
