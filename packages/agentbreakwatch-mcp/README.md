@@ -1,5 +1,7 @@
 # AgentBreakWatch MCP Server (`agentbreakwatch-mcp`)
 
+[![M8ven Verified](https://m8ven.ai/badge/mcp/joeyg6393/agentbreakwatch-mcp?variant=verified)](https://m8ven.ai/mcp/joeyg6393/agentbreakwatch-mcp?s=readme)
+
 Official Model Context Protocol (MCP) server for **[AgentBreakWatch](https://agentbreakwatch.com)**, the live breaking-change and `tools/list` JSON Schema drift telemetry index across **32 core AI Agent SDKs** and **226 MCP servers** (**258+ total tracked packages**) on npm and PyPI.
 
 - **Live Web App & Stack Auditor:** [https://agentbreakwatch.com](https://agentbreakwatch.com)

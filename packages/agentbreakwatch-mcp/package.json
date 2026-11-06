@@ -19,7 +19,8 @@
     "agentbreakwatch-mcp": "index.mjs"
   },
   "scripts": {
-    "start": "node index.mjs"
+    "start": "node index.mjs",
+    "test": "node --test"
   },
   "files": [
     "index.mjs",
