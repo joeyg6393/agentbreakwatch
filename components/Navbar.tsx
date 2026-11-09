@@ -13,7 +13,7 @@ export function Navbar() {
           Reach builders tracking {catalog.sdkCount} Agent SDKs and {catalog.mcpCount} MCP servers.
         </span>{" "}
         <Link href="/sponsor" className="font-medium text-emerald-400 underline underline-offset-2 hover:text-emerald-300">
-          Book featured placement ($150/wk)
+          Book featured placement ($149/wk)
         </Link>
       </div>
 

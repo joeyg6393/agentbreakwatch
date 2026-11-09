@@ -171,12 +171,14 @@ export default function PricingPage() {
         ))}
       </div>
 
-      {/* Instant Activation / Early Access Waitlist Box */}
+      {/* Free weekly digest signup (separate from paid Stripe checkout) */}
       <div id="activate-indie" className="mt-12">
         <SubscribeBox
-          defaultPlan="indie"
-          heading="Activate Your Stack Watch & Stripe Checkout"
-          subtext="Enter your email and optional Slack/Discord webhook URL below to bind your watched .mcp.json / package.json stack to your Indie Pro or Team plan."
+          defaultPlan="free"
+          badgeText="FREE WEEKLY DIGEST"
+          heading="Get the free weekly digest"
+          subtext="Free email signup for the weekly breaking-change digest. Add an optional Slack or Discord webhook if you want it there too. This is separate from the paid Indie Pro and Team plans, which you buy with the Stripe checkout buttons above."
+          buttonText="Get Weekly Digest (Free)"
         />
       </div>
     </div>
