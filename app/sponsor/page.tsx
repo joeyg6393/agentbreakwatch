@@ -68,13 +68,13 @@ export default function SponsorPage() {
 
           <div className="mt-6">
             <a
-              href="mailto:alerts@agentbreakwatch.com?subject=Monthly%20Partner%20Slot%20Inquiry"
+              href="mailto:vikingtradingholding@gmail.com?subject=Monthly%20Partner%20Slot%20Inquiry"
               className="block w-full rounded-md border border-zinc-700 bg-zinc-950 py-2.5 text-center font-mono text-xs font-semibold text-white hover:border-emerald-500/50 transition"
             >
               Ask about a monthly partner slot
             </a>
             <p className="mt-2 text-center text-[11px] text-zinc-500">
-              Opens an email to alerts@agentbreakwatch.com. No payment is taken here.
+              Opens an email to vikingtradingholding@gmail.com. No payment is taken here.
             </p>
           </div>
         </div>
@@ -87,8 +87,8 @@ export default function SponsorPage() {
           <li>Pay for the weekly sponsor slot ($149) with the Stripe checkout button above.</li>
           <li>
             Reply to your Stripe receipt email, or email{" "}
-            <a href="mailto:alerts@agentbreakwatch.com" className="text-emerald-300 underline hover:text-emerald-200">
-              alerts@agentbreakwatch.com
+            <a href="mailto:vikingtradingholding@gmail.com" className="text-emerald-300 underline hover:text-emerald-200">
+              vikingtradingholding@gmail.com
             </a>
             , with your company URL and a 1-sentence banner copy.
           </li>

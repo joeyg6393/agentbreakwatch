@@ -276,7 +276,7 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             from: "AgentBreakWatch Alerts <alerts@agentbreakwatch.com>",
             to: [email],
-            reply_to: "alerts@agentbreakwatch.com",
+            reply_to: "vikingtradingholding@gmail.com",
             subject: welcome.subject,
             html: welcome.html,
             text: welcome.text
