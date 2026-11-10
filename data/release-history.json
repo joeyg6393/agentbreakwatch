@@ -1,9 +1,17 @@
 {
- "generatedAt": "2026-11-09T14:02:09.309Z",
+ "generatedAt": "2026-11-10T13:59:15.366Z",
  "windowDays": 180,
  "items": {
   "openai-node": {
    "versions": [
+    {
+     "version": "7.55.0",
+     "publishedAt": "2026-11-10T06:58:16.806Z"
+    },
+    {
+     "version": "7.54.0",
+     "publishedAt": "2026-11-09T16:15:07.008Z"
+    },
     {
      "version": "7.53.0",
      "publishedAt": "2026-11-06T09:20:27.528Z"
@@ -300,6 +308,10 @@
   },
   "anthropic-sdk-ts": {
    "versions": [
+    {
+     "version": "1.7.0",
+     "publishedAt": "2026-11-09T18:56:57.201Z"
+    },
     {
      "version": "1.6.0",
      "publishedAt": "2026-11-05T19:05:25.552Z"
@@ -680,6 +692,10 @@
   },
   "vercel-ai-sdk": {
    "versions": [
+    {
+     "version": "5.0.287",
+     "publishedAt": "2026-11-09T19:47:30.383Z"
+    },
     {
      "version": "6.0.326",
      "publishedAt": "2026-11-09T03:02:24.734Z"
@@ -3225,6 +3241,10 @@
   "ai-sdk-anthropic": {
    "versions": [
     {
+     "version": "2.0.114",
+     "publishedAt": "2026-11-09T19:48:23.105Z"
+    },
+    {
      "version": "4.0.99",
      "publishedAt": "2026-11-07T19:28:06.851Z"
     },
@@ -4037,6 +4057,10 @@
   "langchain-core-js": {
    "versions": [
     {
+     "version": "1.3.6",
+     "publishedAt": "2026-11-09T23:57:01.528Z"
+    },
+    {
      "version": "1.3.5",
      "publishedAt": "2026-11-05T20:24:14.918Z"
     },
@@ -4184,6 +4208,10 @@
   },
   "langgraph-js": {
    "versions": [
+    {
+     "version": "1.7.3",
+     "publishedAt": "2026-11-10T00:00:50.710Z"
+    },
     {
      "version": "1.7.2",
      "publishedAt": "2026-11-07T00:07:41.311Z"
@@ -5437,6 +5465,14 @@
   "openai-python": {
    "versions": [
     {
+     "version": "3.49.0",
+     "publishedAt": "2026-11-10T06:47:52.422980Z"
+    },
+    {
+     "version": "3.48.0",
+     "publishedAt": "2026-11-09T16:13:48.435480Z"
+    },
+    {
      "version": "3.46.0",
      "publishedAt": "2026-11-05T00:55:53.301146Z"
     },
@@ -5780,6 +5816,10 @@
   },
   "anthropic-python": {
    "versions": [
+    {
+     "version": "2.7.0",
+     "publishedAt": "2026-11-09T18:52:39.769381Z"
+    },
     {
      "version": "2.6.0",
      "publishedAt": "2026-11-05T18:59:11.474835Z"
@@ -6125,6 +6165,10 @@
   "fastmcp-python": {
    "versions": [
     {
+     "version": "4.1.7",
+     "publishedAt": "2026-11-10T02:01:50.247819Z"
+    },
+    {
      "version": "4.1.6",
      "publishedAt": "2026-11-03T02:53:39.186471Z"
     },
@@ -6388,6 +6432,10 @@
   },
   "crewai-python": {
    "versions": [
+    {
+     "version": "1.15.39.dev20261110",
+     "publishedAt": "2026-11-10T06:10:26.035369Z"
+    },
     {
      "version": "1.15.39.dev20261109",
      "publishedAt": "2026-11-09T06:15:04.426857Z"
@@ -7480,6 +7528,10 @@
   },
   "litellm-python": {
    "versions": [
+    {
+     "version": "1.108.4",
+     "publishedAt": "2026-11-09T22:56:38.121606Z"
+    },
     {
      "version": "1.110.0.dev2",
      "publishedAt": "2026-11-08T02:21:46.018614Z"
@@ -8955,6 +9007,10 @@
   "playwright-mcp": {
    "versions": [
     {
+     "version": "0.0.85",
+     "publishedAt": "2026-11-09T18:31:27.422Z"
+    },
+    {
      "version": "0.0.84",
      "publishedAt": "2026-10-31T15:22:22.918Z"
     },
@@ -9238,6 +9294,10 @@
   },
   "apify-mcp": {
    "versions": [
+    {
+     "version": "0.21.5",
+     "publishedAt": "2026-11-10T11:51:40.298Z"
+    },
     {
      "version": "0.21.4",
      "publishedAt": "2026-11-06T12:21:19.512Z"
@@ -10750,6 +10810,10 @@
   "supergateway": {
    "versions": [
     {
+     "version": "4.2.2",
+     "publishedAt": "2026-11-10T09:22:54.490Z"
+    },
+    {
      "version": "4.2.1",
      "publishedAt": "2026-10-24T16:55:29.113Z"
     },
@@ -11026,6 +11090,14 @@
   },
   "claude-code-cli": {
    "versions": [
+    {
+     "version": "2.1.322",
+     "publishedAt": "2026-11-10T01:58:41.811Z"
+    },
+    {
+     "version": "2.1.321",
+     "publishedAt": "2026-11-09T19:02:47.641Z"
+    },
     {
      "version": "2.1.319",
      "publishedAt": "2026-11-06T00:58:56.366Z"
@@ -12515,6 +12587,14 @@
   "anthropic-claude-agent-sdk": {
    "versions": [
     {
+     "version": "0.3.322",
+     "publishedAt": "2026-11-10T01:57:38.316Z"
+    },
+    {
+     "version": "0.3.321",
+     "publishedAt": "2026-11-09T19:03:36.409Z"
+    },
+    {
      "version": "0.3.319",
      "publishedAt": "2026-11-06T00:59:53.715Z"
     },
@@ -13939,6 +14019,10 @@
   "browser-use-python": {
    "versions": [
     {
+     "version": "1.0.0",
+     "publishedAt": "2026-11-10T02:34:13.522007Z"
+    },
+    {
      "version": "0.13.14",
      "publishedAt": "2026-10-26T23:00:51.596203Z"
     },
@@ -14079,6 +14163,10 @@
   "awslabs-aws-docs-mcp": {
    "versions": [
     {
+     "version": "1.2.5",
+     "publishedAt": "2026-11-09T21:57:17.587823Z"
+    },
+    {
      "version": "1.2.4",
      "publishedAt": "2026-10-30T20:56:11.879578Z"
     },
@@ -14205,6 +14293,10 @@
   "awslabs-eks-mcp": {
    "versions": [
     {
+     "version": "0.2.2",
+     "publishedAt": "2026-11-09T22:31:20.015166Z"
+    },
+    {
      "version": "0.2.1",
      "publishedAt": "2026-09-08T15:16:30.180546Z"
     },
@@ -14268,6 +14360,10 @@
   },
   "awslabs-lambda-mcp": {
    "versions": [
+    {
+     "version": "2.1.2",
+     "publishedAt": "2026-11-09T22:31:26.202287Z"
+    },
     {
      "version": "2.1.1",
      "publishedAt": "2026-09-08T15:20:42.332257Z"
@@ -14410,6 +14506,10 @@
   "awslabs-dynamodb-mcp": {
    "versions": [
     {
+     "version": "2.1.10",
+     "publishedAt": "2026-11-09T21:57:20.820508Z"
+    },
+    {
      "version": "2.1.9",
      "publishedAt": "2026-10-27T11:05:47.552656Z"
     },
@@ -14461,6 +14561,10 @@
   },
   "awslabs-postgres-mcp": {
    "versions": [
+    {
+     "version": "1.2.4",
+     "publishedAt": "2026-11-09T23:26:28.815398Z"
+    },
     {
      "version": "1.2.3",
      "publishedAt": "2026-10-30T20:56:07.555870Z"
@@ -14660,6 +14764,10 @@
   },
   "awslabs-openapi-mcp": {
    "versions": [
+    {
+     "version": "1.1.7",
+     "publishedAt": "2026-11-09T22:51:05.617828Z"
+    },
     {
      "version": "1.1.6",
      "publishedAt": "2026-09-08T15:21:20.035438Z"
@@ -15397,6 +15505,10 @@
   "storybook-mcp": {
    "versions": [
     {
+     "version": "10.6.7",
+     "publishedAt": "2026-11-10T11:32:08.990Z"
+    },
+    {
      "version": "10.6.6",
      "publishedAt": "2026-11-05T16:17:11.261Z"
     },
@@ -15592,6 +15704,10 @@
   },
   "better-auth-mcp": {
    "versions": [
+    {
+     "version": "1.7.19",
+     "publishedAt": "2026-11-10T00:24:08.437Z"
+    },
     {
      "version": "1.7.18",
      "publishedAt": "2026-11-05T14:58:02.672Z"
@@ -16348,6 +16464,14 @@
   },
   "posthog-mcp": {
    "versions": [
+    {
+     "version": "1.1.0",
+     "publishedAt": "2026-11-10T04:48:37.336Z"
+    },
+    {
+     "version": "1.0.1",
+     "publishedAt": "2026-11-09T17:06:01.736Z"
+    },
     {
      "version": "1.0.0",
      "publishedAt": "2026-11-06T21:42:49.061Z"
@@ -17532,6 +17656,10 @@
   },
   "azure-devops-mcp": {
    "versions": [
+    {
+     "version": "2.11.0-nightly.20261109",
+     "publishedAt": "2026-11-09T22:09:34.838Z"
+    },
     {
      "version": "2.11.0-nightly.20261108",
      "publishedAt": "2026-11-08T22:10:19.445Z"
@@ -18956,6 +19084,10 @@
   },
   "tanstack-ai-mcp": {
    "versions": [
+    {
+     "version": "1.2.0",
+     "publishedAt": "2026-11-09T18:04:08.072Z"
+    },
     {
      "version": "1.1.1",
      "publishedAt": "2026-11-09T13:25:09.663Z"
@@ -20677,6 +20809,18 @@
   "kubb-mcp": {
    "versions": [
     {
+     "version": "5.18.0",
+     "publishedAt": "2026-11-10T13:37:45.394Z"
+    },
+    {
+     "version": "5.17.1",
+     "publishedAt": "2026-11-10T13:32:15.028Z"
+    },
+    {
+     "version": "5.17.0",
+     "publishedAt": "2026-11-09T19:20:31.839Z"
+    },
+    {
      "version": "5.16.1",
      "publishedAt": "2026-11-07T20:41:00.012Z"
     },
@@ -21184,6 +21328,58 @@
   },
   "hostinger-mcp": {
    "versions": [
+    {
+     "version": "3.37.1",
+     "publishedAt": "2026-11-10T13:22:15.104Z"
+    },
+    {
+     "version": "3.37.0",
+     "publishedAt": "2026-11-10T13:11:22.569Z"
+    },
+    {
+     "version": "3.36.0",
+     "publishedAt": "2026-11-10T12:10:44.657Z"
+    },
+    {
+     "version": "3.35.4",
+     "publishedAt": "2026-11-10T10:54:32.845Z"
+    },
+    {
+     "version": "3.35.3",
+     "publishedAt": "2026-11-10T08:53:06.725Z"
+    },
+    {
+     "version": "3.35.2",
+     "publishedAt": "2026-11-10T08:44:56.125Z"
+    },
+    {
+     "version": "3.35.1",
+     "publishedAt": "2026-11-10T08:40:31.358Z"
+    },
+    {
+     "version": "3.35.0",
+     "publishedAt": "2026-11-10T08:36:27.001Z"
+    },
+    {
+     "version": "3.34.1",
+     "publishedAt": "2026-11-10T08:26:43.927Z"
+    },
+    {
+     "version": "3.34.0",
+     "publishedAt": "2026-11-10T08:20:55.153Z"
+    },
+    {
+     "version": "3.33.0",
+     "publishedAt": "2026-11-10T08:15:42.987Z"
+    },
+    {
+     "version": "3.32.1",
+     "publishedAt": "2026-11-09T15:01:04.220Z"
+    },
+    {
+     "version": "3.32.0",
+     "publishedAt": "2026-11-09T14:12:24.926Z"
+    },
     {
      "version": "3.31.4",
      "publishedAt": "2026-11-09T13:58:15.953Z"
@@ -22565,6 +22761,14 @@
   "n8n-mcp-apps": {
    "versions": [
     {
+     "version": "1.2.0",
+     "publishedAt": "2026-11-10T09:26:26.605Z"
+    },
+    {
+     "version": "0.25.0",
+     "publishedAt": "2026-11-10T08:38:25.192Z"
+    },
+    {
      "version": "0.24.2",
      "publishedAt": "2026-11-09T08:19:04.831Z"
     },
@@ -23433,6 +23637,70 @@
   },
   "productbrain-mcp": {
    "versions": [
+    {
+     "version": "0.0.1-beta.14613",
+     "publishedAt": "2026-11-10T13:31:42.435Z"
+    },
+    {
+     "version": "0.0.1-beta.14604",
+     "publishedAt": "2026-11-10T13:11:20.657Z"
+    },
+    {
+     "version": "0.0.1-beta.14602",
+     "publishedAt": "2026-11-10T12:58:47.416Z"
+    },
+    {
+     "version": "0.0.1-beta.14590",
+     "publishedAt": "2026-11-10T12:29:29.144Z"
+    },
+    {
+     "version": "0.0.1-beta.14582",
+     "publishedAt": "2026-11-10T12:13:26.785Z"
+    },
+    {
+     "version": "0.0.1-beta.14566",
+     "publishedAt": "2026-11-10T11:30:04.329Z"
+    },
+    {
+     "version": "0.0.1-beta.14565",
+     "publishedAt": "2026-11-10T01:02:31.627Z"
+    },
+    {
+     "version": "0.0.1-beta.14560",
+     "publishedAt": "2026-11-10T00:19:20.986Z"
+    },
+    {
+     "version": "0.0.1-beta.14555",
+     "publishedAt": "2026-11-09T23:45:01.815Z"
+    },
+    {
+     "version": "0.0.1-beta.14548",
+     "publishedAt": "2026-11-09T22:35:09.467Z"
+    },
+    {
+     "version": "0.0.1-beta.14543",
+     "publishedAt": "2026-11-09T22:18:01.244Z"
+    },
+    {
+     "version": "0.0.1-beta.14536",
+     "publishedAt": "2026-11-09T21:55:29.009Z"
+    },
+    {
+     "version": "0.0.1-beta.14531",
+     "publishedAt": "2026-11-09T21:44:10.318Z"
+    },
+    {
+     "version": "0.0.1-beta.14530",
+     "publishedAt": "2026-11-09T21:33:46.364Z"
+    },
+    {
+     "version": "0.0.1-beta.14512",
+     "publishedAt": "2026-11-09T16:40:55.735Z"
+    },
+    {
+     "version": "0.0.1-beta.14509",
+     "publishedAt": "2026-11-09T16:01:33.744Z"
+    },
     {
      "version": "0.0.1-beta.14500",
      "publishedAt": "2026-11-09T11:50:20.649Z"
@@ -30930,6 +31198,10 @@
   "mcpjam-sdk": {
    "versions": [
     {
+     "version": "10.4.0",
+     "publishedAt": "2026-11-10T08:17:58.999Z"
+    },
+    {
      "version": "10.3.0",
      "publishedAt": "2026-11-05T22:21:14.500Z"
     },
@@ -33970,6 +34242,10 @@
   "drawio-mcp": {
    "versions": [
     {
+     "version": "1.12.0",
+     "publishedAt": "2026-11-10T13:48:01.669Z"
+    },
+    {
      "version": "1.11.0",
      "publishedAt": "2026-11-06T15:12:05.959Z"
     },
@@ -34093,6 +34369,10 @@
   },
   "xeroapi-xero-mcp-server": {
    "versions": [
+    {
+     "version": "0.0.18",
+     "publishedAt": "2026-11-10T01:29:58.913Z"
+    },
     {
      "version": "0.0.17",
      "publishedAt": "2026-05-26T05:07:15.624Z"
@@ -36802,6 +37082,10 @@
   "pptx-viewer-mcp": {
    "versions": [
     {
+     "version": "2.10.2",
+     "publishedAt": "2026-11-09T19:41:51.885Z"
+    },
+    {
      "version": "2.10.1",
      "publishedAt": "2026-11-06T21:11:06.649Z"
     },
@@ -37966,6 +38250,10 @@
   "freee-mcp": {
    "versions": [
     {
+     "version": "0.37.12",
+     "publishedAt": "2026-11-10T04:06:10.442Z"
+    },
+    {
      "version": "0.37.11",
      "publishedAt": "2026-11-05T03:43:40.823Z"
     },
@@ -38189,6 +38477,70 @@
   },
   "togglhq-mcp": {
    "versions": [
+    {
+     "version": "1.13.212",
+     "publishedAt": "2026-11-10T12:24:42.720Z"
+    },
+    {
+     "version": "1.13.211",
+     "publishedAt": "2026-11-10T11:28:49.032Z"
+    },
+    {
+     "version": "1.13.210",
+     "publishedAt": "2026-11-10T11:21:51.887Z"
+    },
+    {
+     "version": "1.13.209",
+     "publishedAt": "2026-11-10T10:54:13.924Z"
+    },
+    {
+     "version": "1.13.208",
+     "publishedAt": "2026-11-10T10:40:36.544Z"
+    },
+    {
+     "version": "1.13.207",
+     "publishedAt": "2026-11-10T10:25:23.213Z"
+    },
+    {
+     "version": "1.13.206",
+     "publishedAt": "2026-11-10T03:50:10.449Z"
+    },
+    {
+     "version": "1.13.205",
+     "publishedAt": "2026-11-10T02:55:34.873Z"
+    },
+    {
+     "version": "1.13.204",
+     "publishedAt": "2026-11-10T01:15:05.612Z"
+    },
+    {
+     "version": "1.13.203",
+     "publishedAt": "2026-11-10T01:03:31.363Z"
+    },
+    {
+     "version": "1.13.202",
+     "publishedAt": "2026-11-09T23:55:12.167Z"
+    },
+    {
+     "version": "1.13.201",
+     "publishedAt": "2026-11-09T20:23:38.712Z"
+    },
+    {
+     "version": "1.13.200",
+     "publishedAt": "2026-11-09T20:14:39.843Z"
+    },
+    {
+     "version": "1.13.199",
+     "publishedAt": "2026-11-09T19:29:51.224Z"
+    },
+    {
+     "version": "1.13.198",
+     "publishedAt": "2026-11-09T17:50:03.748Z"
+    },
+    {
+     "version": "1.13.197",
+     "publishedAt": "2026-11-09T17:43:32.431Z"
+    },
     {
      "version": "1.13.196",
      "publishedAt": "2026-11-09T12:18:41.036Z"
@@ -40262,6 +40614,10 @@
   "brightdata-mcp": {
    "versions": [
     {
+     "version": "4.8.0",
+     "publishedAt": "2026-11-10T13:01:24.790Z"
+    },
+    {
      "version": "4.7.0",
      "publishedAt": "2026-11-09T13:06:02.442Z"
     },
@@ -40798,6 +41154,10 @@
   "alisaitteke-photoshop-mcp": {
    "versions": [
     {
+     "version": "1.7.38",
+     "publishedAt": "2026-11-10T13:36:13.669Z"
+    },
+    {
      "version": "1.7.37",
      "publishedAt": "2026-10-15T20:05:55.883Z"
     },
@@ -41013,6 +41373,10 @@
   },
   "frontmcp-sdk": {
    "versions": [
+    {
+     "version": "1.11.3",
+     "publishedAt": "2026-11-09T19:59:58.917Z"
+    },
     {
      "version": "1.11.2",
      "publishedAt": "2026-11-09T00:57:55.397Z"
@@ -41905,6 +42269,14 @@
   },
   "ssh-mcp": {
    "versions": [
+    {
+     "version": "2.25.0",
+     "publishedAt": "2026-11-10T11:55:37.141Z"
+    },
+    {
+     "version": "2.24.0",
+     "publishedAt": "2026-11-09T22:47:04.454Z"
+    },
     {
      "version": "2.23.1",
      "publishedAt": "2026-11-06T14:37:06.150Z"
@@ -42902,6 +43274,10 @@
   "heroku-mcp-server": {
    "versions": [
     {
+     "version": "1.2.14",
+     "publishedAt": "2026-11-09T23:18:30.723Z"
+    },
+    {
      "version": "1.2.13",
      "publishedAt": "2026-10-29T19:41:15.728Z"
     },
@@ -43513,6 +43889,14 @@
   },
   "davinci-resolve-mcp": {
    "versions": [
+    {
+     "version": "5.0.3",
+     "publishedAt": "2026-11-09T18:46:17.009Z"
+    },
+    {
+     "version": "5.0.2",
+     "publishedAt": "2026-11-09T18:01:18.953Z"
+    },
     {
      "version": "5.0.1",
      "publishedAt": "2026-11-09T13:01:36.710Z"
@@ -45718,6 +46102,22 @@
   "agentistics-mcp": {
    "versions": [
     {
+     "version": "2.204.5",
+     "publishedAt": "2026-11-10T13:36:10.885Z"
+    },
+    {
+     "version": "2.204.4",
+     "publishedAt": "2026-11-10T03:54:56.014Z"
+    },
+    {
+     "version": "2.204.3",
+     "publishedAt": "2026-11-10T00:30:38.096Z"
+    },
+    {
+     "version": "2.204.1",
+     "publishedAt": "2026-11-09T15:47:27.718Z"
+    },
+    {
      "version": "2.204.0",
      "publishedAt": "2026-11-09T09:34:29.912Z"
     },
@@ -47710,6 +48110,14 @@
   "apple-notes-mcp": {
    "versions": [
     {
+     "version": "2.16.1",
+     "publishedAt": "2026-11-09T16:29:58.517Z"
+    },
+    {
+     "version": "2.16.0",
+     "publishedAt": "2026-11-09T16:17:37.608Z"
+    },
+    {
      "version": "2.15.18",
      "publishedAt": "2026-11-06T18:31:38.213Z"
     },
@@ -49282,6 +49690,34 @@
   "aventurevc-mcp-server": {
    "versions": [
     {
+     "version": "0.8.415",
+     "publishedAt": "2026-11-10T11:42:54.841Z"
+    },
+    {
+     "version": "0.8.414",
+     "publishedAt": "2026-11-10T09:26:39.330Z"
+    },
+    {
+     "version": "0.8.413",
+     "publishedAt": "2026-11-10T06:07:51.283Z"
+    },
+    {
+     "version": "0.8.412",
+     "publishedAt": "2026-11-10T03:48:40.037Z"
+    },
+    {
+     "version": "0.8.411",
+     "publishedAt": "2026-11-10T00:38:15.353Z"
+    },
+    {
+     "version": "0.8.410",
+     "publishedAt": "2026-11-09T23:32:13.155Z"
+    },
+    {
+     "version": "0.8.409",
+     "publishedAt": "2026-11-09T16:14:59.273Z"
+    },
+    {
      "version": "0.8.408",
      "publishedAt": "2026-11-09T12:16:02.281Z"
     },
@@ -50818,6 +51254,10 @@
   "hypequery-mcp": {
    "versions": [
     {
+     "version": "0.12.0",
+     "publishedAt": "2026-11-09T21:05:53.294Z"
+    },
+    {
      "version": "0.11.3",
      "publishedAt": "2026-11-01T14:13:45.424Z"
     },
@@ -51301,6 +51741,22 @@
   },
   "brightspace-mcp-server": {
    "versions": [
+    {
+     "version": "5.2.0",
+     "publishedAt": "2026-11-10T04:30:01.926Z"
+    },
+    {
+     "version": "5.1.44",
+     "publishedAt": "2026-11-10T03:07:30.302Z"
+    },
+    {
+     "version": "5.1.42",
+     "publishedAt": "2026-11-10T00:11:05.869Z"
+    },
+    {
+     "version": "5.1.43",
+     "publishedAt": "2026-11-10T00:10:37.634Z"
+    },
     {
      "version": "5.1.41",
      "publishedAt": "2026-11-06T14:46:40.026Z"
