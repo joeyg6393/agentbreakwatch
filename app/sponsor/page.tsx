@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { catalog } from "@/lib/catalog";
+import { CheckoutLink } from "@/components/CheckoutLink";
 
 export const metadata: Metadata = {
   alternates: {
@@ -29,12 +29,7 @@ export default function SponsorPage() {
       <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="flex flex-col justify-between rounded-xl border border-emerald-500/40 bg-zinc-900/70 p-6">
           <div>
-            <div className="flex items-center justify-between">
-              <div className="font-mono text-xs uppercase text-emerald-400">Weekly Featured Slot</div>
-              <span className="rounded bg-emerald-500/15 px-2 py-0.5 font-mono text-[10px] text-emerald-300">
-                prod_VV4cg2xIW2rcpL
-              </span>
-            </div>
+            <div className="font-mono text-xs uppercase text-emerald-400">Weekly Featured Slot</div>
             <div className="mt-2 font-mono text-3xl font-bold text-white">$149 / week</div>
             <ul className="mt-4 space-y-2 text-xs text-zinc-300">
               <li>+ Top banner badge across all {catalog.totalTracked + 18} pages on AgentBreakWatch</li>
@@ -45,12 +40,14 @@ export default function SponsorPage() {
           </div>
 
           <div className="mt-6">
-            <Link
-              href="/api/checkout?plan=sponsor"
+            <CheckoutLink
+              plan="sponsor"
+              location="sponsor"
               className="block w-full rounded-md bg-emerald-500 py-2.5 text-center font-mono text-xs font-semibold text-zinc-950 hover:bg-emerald-400 transition"
             >
               Checkout Weekly Sponsor Slot ($149)
-            </Link>
+            </CheckoutLink>
+            <p className="mt-2 text-center text-[11px] text-zinc-500">One time payment of $149. No trial.</p>
           </div>
         </div>
 

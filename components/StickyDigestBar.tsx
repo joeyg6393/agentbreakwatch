@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import { CheckoutLink } from "@/components/CheckoutLink";
 
 export function StickyDigestBar() {
   const [dismissed, setDismissed] = useState(false);
@@ -90,12 +90,13 @@ export function StickyDigestBar() {
               &#10003; {state.message}
             </span>
             <div className="flex items-center gap-3">
-              <Link
-                href="/api/checkout?plan=indie"
+              <CheckoutLink
+                plan="indie"
+                location="sticky_digest_bar"
                 className="text-amber-300 underline underline-offset-2 hover:text-amber-200"
               >
-                Upgrade to Indie ($9/mo) for Slack/Webhook Alerts -&gt;
-              </Link>
+                Start 7 day free trial of Indie for Slack/webhook alerts, then $9/mo -&gt;
+              </CheckoutLink>
               <button
                 type="button"
                 onClick={handleDismiss}

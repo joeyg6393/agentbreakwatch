@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import { CheckoutLink } from "@/components/CheckoutLink";
 import { auditStackInput, type StackAuditFinding } from "@/lib/catalog";
 
 const SAMPLE_MCP_JSON = `{
@@ -282,12 +283,13 @@ export function StackChecker({
                         MONITORING {subStatus.watchedPackages.length} PACKAGES FOR BREAKING RELEASES
                       </span>
                     </div>
-                    <Link
-                      href="/api/checkout?plan=indie"
+                    <CheckoutLink
+                      plan="indie"
+                      location="stack_checker"
                       className="rounded bg-emerald-500 px-2.5 py-1 text-[11px] font-bold text-zinc-950 hover:bg-emerald-400"
                     >
-                      Add Slack/Webhook Alerts ($9/mo) -&gt;
-                    </Link>
+                      Start 7 day free trial (Slack/webhook alerts, then $9/mo) -&gt;
+                    </CheckoutLink>
                   </div>
                   <p className="text-[11px] text-zinc-200">{subStatus.message}</p>
                 </div>

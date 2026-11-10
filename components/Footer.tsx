@@ -47,7 +47,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/pricing" className="hover:text-white">
-                  Alert Plans (Free / $9 Indie / $29 Team)
+                  Alert Plans (Free / $9 Indie / $29 Team, 7 day free trial)
                 </Link>
               </li>
               <li>

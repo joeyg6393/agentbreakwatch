@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
+import { CheckoutLink } from "@/components/CheckoutLink";
 
 export function SubscribeBox({
   packageName,
@@ -133,12 +133,13 @@ export function SubscribeBox({
                 <span className="text-zinc-400">
                   Need real-time 30-min Slack/webhook alerts?
                 </span>
-                <Link
-                  href="/api/checkout?plan=indie"
+                <CheckoutLink
+                  plan="indie"
+                  location="subscribe_box"
                   className="font-semibold text-emerald-400 underline underline-offset-2 hover:text-emerald-300"
                 >
-                  Upgrade to Indie ($9/mo) -&gt;
-                </Link>
+                  Start 7 day free trial of Indie, then $9/mo -&gt;
+                </CheckoutLink>
               </div>
             </div>
           ) : (

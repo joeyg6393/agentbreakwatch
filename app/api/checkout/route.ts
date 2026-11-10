@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
+// Live prices on Stripe account acct_1Q4lEdL1baJc3okB.
 const STRIPE_CATALOG = {
   indie: {
     name: "AgentBreakWatch Indie Pro ($9/mo)",
-    productId: "prod_VV4bSiULE6mE4k",
-    priceId: "price_1UU4UcASeFIJpe4wBRpvOghT",
-    lookupKey: "agentbreakwatch_indie_9",
+    priceId: "price_1UUGVUL1baJc3okBbyTWCF8N",
     amountUsd: 9,
     interval: "month",
     envLinkKey: "STRIPE_LINK_INDIE_MONTHLY",
@@ -13,9 +14,7 @@ const STRIPE_CATALOG = {
   },
   indie_annual: {
     name: "AgentBreakWatch Indie Pro Annual ($90/yr)",
-    productId: "prod_VV4bSiULE6mE4k",
-    priceId: "price_1UU4UfASeFIJpe4w2LWX258n",
-    lookupKey: "agentbreakwatch_indie_90_annual",
+    priceId: "price_1UUGVUL1baJc3okBUs7T7VjC",
     amountUsd: 90,
     interval: "year",
     envLinkKey: "STRIPE_LINK_INDIE_ANNUAL",
@@ -23,9 +22,7 @@ const STRIPE_CATALOG = {
   },
   team: {
     name: "AgentBreakWatch Team ($29/mo)",
-    productId: "prod_VV4cVz3CiefdUA",
-    priceId: "price_1UU4UgASeFIJpe4wAf6EkBcY",
-    lookupKey: "agentbreakwatch_team_29",
+    priceId: "price_1UUGVVL1baJc3okBbWMiQWQm",
     amountUsd: 29,
     interval: "month",
     envLinkKey: "STRIPE_LINK_TEAM_MONTHLY",
@@ -33,9 +30,7 @@ const STRIPE_CATALOG = {
   },
   team_annual: {
     name: "AgentBreakWatch Team Annual ($290/yr)",
-    productId: "prod_VV4cVz3CiefdUA",
-    priceId: "price_1UU4V0ASeFIJpe4wdT9ARyYe",
-    lookupKey: "agentbreakwatch_team_290_annual",
+    priceId: "price_1UUGVVL1baJc3okBPEW5QC30",
     amountUsd: 290,
     interval: "year",
     envLinkKey: "STRIPE_LINK_TEAM_ANNUAL",
@@ -43,9 +38,7 @@ const STRIPE_CATALOG = {
   },
   sponsor: {
     name: "AgentBreakWatch Weekly Digest & Directory Sponsor ($149)",
-    productId: "prod_VV4cg2xIW2rcpL",
-    priceId: "price_1UU4T9ASeFIJpe4wDmMj13TE",
-    lookupKey: "agentbreakwatch_sponsor_weekly",
+    priceId: "price_1UUGVVL1baJc3okBBF64kU8C",
     amountUsd: 149,
     interval: "one_time",
     envLinkKey: "STRIPE_LINK_SPONSOR",
@@ -53,24 +46,39 @@ const STRIPE_CATALOG = {
   }
 } as const;
 
+type PlanKey = keyof typeof STRIPE_CATALOG;
+
+const TRIAL_DAYS = 7;
+
+function isPlanKey(value: string | null): value is PlanKey {
+  return value !== null && Object.prototype.hasOwnProperty.call(STRIPE_CATALOG, value);
+}
+
 export async function GET(req: Request) {
   const url = new URL(req.url);
-  const planKey = (url.searchParams.get("plan") || "indie") as keyof typeof STRIPE_CATALOG;
-  const plan = STRIPE_CATALOG[planKey] || STRIPE_CATALOG.indie;
+  const requested = url.searchParams.get("plan");
+  const planKey: PlanKey = isPlanKey(requested) ? requested : "indie";
+  const plan = STRIPE_CATALOG[planKey];
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agentbreakwatch.com";
 
-  // 1. If STRIPE_SECRET_KEY is configured with a live/test key, create a Stripe Checkout Session
+  // 1. With a Stripe secret key, create a Checkout Session for the live price.
   const stripeKey = process.env.STRIPE_SECRET_KEY;
-  if (stripeKey && stripeKey.startsWith("sk_")) {
+  if (stripeKey) {
     try {
-      const mode = plan.interval === "one_time" ? "payment" : "subscription";
+      const isSubscription = plan.interval !== "one_time";
       const params = new URLSearchParams();
-      params.append("mode", mode);
+      params.append("mode", isSubscription ? "subscription" : "payment");
       params.append("line_items[0][price]", plan.priceId);
       params.append("line_items[0][quantity]", "1");
+      if (isSubscription) {
+        params.append("subscription_data[trial_period_days]", String(TRIAL_DAYS));
+        params.append("subscription_data[metadata][plan]", planKey);
+      }
+      params.append("metadata[plan]", planKey);
       params.append("allow_promotion_codes", "true");
+      params.append("adaptive_pricing[enabled]", "false");
       params.append("success_url", `${baseUrl}/pricing?checkout=success&plan=${planKey}`);
-      params.append("cancel_url", `${baseUrl}/pricing?checkout=cancelled&plan=${planKey}`);
+      params.append("cancel_url", `${baseUrl}/pricing`);
 
       const res = await fetch("https://api.stripe.com/v1/checkout/sessions", {
         method: "POST",
@@ -78,53 +86,26 @@ export async function GET(req: Request) {
           Authorization: `Bearer ${stripeKey}`,
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: params.toString()
+        body: params.toString(),
+        cache: "no-store"
       });
       const session = await res.json();
       if (session?.url) {
         return NextResponse.redirect(session.url, { status: 303 });
       }
-
-      // Fallback to inline price_data if the key belongs to another connected Stripe account
-      const inlineParams = new URLSearchParams();
-      inlineParams.append("mode", mode);
-      inlineParams.append("line_items[0][price_data][currency]", "usd");
-      inlineParams.append("line_items[0][price_data][unit_amount]", String(plan.amountUsd * 100));
-      inlineParams.append("line_items[0][price_data][product_data][name]", plan.name);
-      if (plan.interval !== "one_time") {
-        inlineParams.append("line_items[0][price_data][recurring][interval]", plan.interval);
-      }
-      inlineParams.append("line_items[0][quantity]", "1");
-      inlineParams.append("allow_promotion_codes", "true");
-      inlineParams.append("success_url", `${baseUrl}/pricing?checkout=success&plan=${planKey}`);
-      inlineParams.append("cancel_url", `${baseUrl}/pricing?checkout=cancelled&plan=${planKey}`);
-
-      const inlineRes = await fetch("https://api.stripe.com/v1/checkout/sessions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${stripeKey}`,
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: inlineParams.toString()
-      });
-      const inlineSession = await inlineRes.json();
-      if (inlineSession?.url) {
-        return NextResponse.redirect(inlineSession.url, { status: 303 });
-      }
-    } catch {
-      // Fall through to pre-generated Stripe Payment Link
+      console.error(
+        `[checkout] Stripe session creation failed for plan ${planKey} (HTTP ${res.status}): ${
+          session?.error?.message || "no url in response"
+        }`
+      );
+    } catch (err) {
+      console.error(
+        `[checkout] Stripe request error for plan ${planKey}: ${err instanceof Error ? err.message : String(err)}`
+      );
     }
   }
 
-  // 2. Redirect to the live Stripe Payment Link for this plan
-  const directPaymentLink = process.env[plan.envLinkKey] || plan.defaultPaymentLink;
-  if (directPaymentLink && directPaymentLink.startsWith("https://")) {
-    return NextResponse.redirect(directPaymentLink, { status: 303 });
-  }
-
-  const dest =
-    planKey === "sponsor"
-      ? `${baseUrl}/sponsor?plan=${planKey}&priceId=${plan.priceId}#activate-sponsor`
-      : `${baseUrl}/pricing?plan=${planKey}&priceId=${plan.priceId}#activate-indie`;
-  return NextResponse.redirect(dest, { status: 303 });
+  // 2. Fall back to the Stripe Payment Link for this plan.
+  const paymentLink = process.env[plan.envLinkKey] || plan.defaultPaymentLink;
+  return NextResponse.redirect(paymentLink, { status: 303 });
 }

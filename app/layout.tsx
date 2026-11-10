@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { StickyDigestBar } from "@/components/StickyDigestBar";
 import { catalog } from "@/lib/catalog";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://agentbreakwatch.com"),
@@ -40,6 +41,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <StickyDigestBar />
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

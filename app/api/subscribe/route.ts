@@ -125,10 +125,10 @@ function buildWelcomeEmail(params: {
           Need Real-Time 30-Minute Alerts &amp; Slack/Discord Webhooks?
         </div>
         <p style="margin:0 0 12px 0;font-size:13px;line-height:1.5;color:#d4d4d8;">
-          Upgrade to <strong>Indie Pro ($9/mo)</strong> to monitor up to 25 packages with real-time 30-minute registry polling, instant <code style="color:#34d399;">tools/list</code> schema diff alerts, and Slack/Discord/HTTP webhook delivery.
+          Try <strong>Indie Pro</strong> free for 7 days, then $9/mo. It lets you monitor up to 25 packages with real-time 30-minute registry polling, instant <code style="color:#34d399;">tools/list</code> schema diff alerts, and Slack/Discord/HTTP webhook delivery.
         </p>
         <a href="https://agentbreakwatch.com/api/checkout?plan=indie" style="display:inline-block;background-color:#10b981;color:#090a0f;font-family:monospace;font-size:12px;font-weight:bold;text-decoration:none;padding:9px 16px;border-radius:6px;">
-          Upgrade to Indie Pro ($9/mo) &rarr;
+          Start 7 day free trial &rarr;
         </a>
       </div>
 
@@ -159,7 +159,7 @@ function buildWelcomeEmail(params: {
     "Quick Links:",
     "- Audit your .mcp.json / package.json: https://agentbreakwatch.com/check",
     "- October 2026 MCP Schema Drift Report: https://agentbreakwatch.com/drift-report",
-    "- Upgrade to Indie Pro ($9/mo) for real-time webhook/Slack alerts: https://agentbreakwatch.com/api/checkout?plan=indie"
+    "- Start a 7 day free trial of Indie Pro (then $9/mo) for real-time webhook/Slack alerts: https://agentbreakwatch.com/api/checkout?plan=indie"
   ];
 
   return {

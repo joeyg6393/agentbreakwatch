@@ -21,7 +21,7 @@ export async function GET() {
     `- [Full LLM Context Dump (/llms-full.txt)](https://agentbreakwatch.com/llms-full.txt): Single-file markdown reference with before/after migration code snippets for all ${catalog.totalTracked} packages.`,
     `- [Live JSON Catalog (/api/catalog.json)](https://agentbreakwatch.com/api/catalog.json): Machine-readable JSON feed of all ${catalog.totalTracked} tracked Agent SDKs and MCP servers.`,
     "- [OpenAPI 3.1 Specification (/openapi.json)](https://agentbreakwatch.com/openapi.json): OpenAPI spec for querying `/api/catalog.json`, `/api/p/{slug}`, and `POST /api/check`.",
-    "- [Pricing & Alert Plans](https://agentbreakwatch.com/pricing): Free (3 watched packages), Indie Pro ($9/mo), and Team ($29/mo) alert plans.",
+    "- [Pricing & Alert Plans](https://agentbreakwatch.com/pricing): Free (3 watched packages), Indie Pro ($9/mo), and Team ($29/mo) alert plans. Paid plans start with a 7 day free trial.",
     "",
     "## What Broke This Week (/weekly)",
     "- [Weekly report index](https://agentbreakwatch.com/weekly): Major version jumps, 0.x minor bumps, deprecations, and notable SDK releases per ISO week.",

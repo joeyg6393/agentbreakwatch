@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
+import { CheckoutLink } from "@/components/CheckoutLink";
 
 export function DigestBanner({
   source = "digest-banner",
@@ -91,12 +91,13 @@ export function DigestBanner({
             </span>
             <span>{state.message}</span>
           </div>
-          <Link
-            href="/api/checkout?plan=indie"
+          <CheckoutLink
+            plan="indie"
+            location="digest_banner"
             className="shrink-0 rounded bg-emerald-500/20 border border-emerald-500/40 px-3 py-1 text-emerald-300 hover:bg-emerald-500/30 transition"
           >
-            Want real-time Slack/webhook alerts? Indie ($9/mo) -&gt;
-          </Link>
+            Want Slack/webhook alerts? Start 7 day free trial of Indie, then $9/mo -&gt;
+          </CheckoutLink>
         </div>
       ) : (
         <form
