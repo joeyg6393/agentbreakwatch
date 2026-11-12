@@ -21,7 +21,8 @@ export default function robots(): MetadataRoute.Robots {
           "Applebot-Extended",
           "CCBot"
         ],
-        allow: ["/", "/llms.txt", "/llms-full.txt", "/openapi.json", "/api/catalog.json", "/api/p/", "/p/", "/c/", "/drift-report"]
+        allow: ["/", "/llms.txt", "/llms-full.txt", "/openapi.json", "/api/catalog.json", "/api/p/", "/p/", "/c/", "/drift-report"],
+        disallow: ["/api/checkout"]
       }
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
