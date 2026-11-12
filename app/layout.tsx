@@ -41,7 +41,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <StickyDigestBar />
         <Footer />
-        <Analytics />
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );
