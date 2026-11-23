@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T13:39:40.238Z",
+  "generatedAt": "2026-11-23T13:44:38.574Z",
   "totalTracked": 258,
   "sdkCount": 32,
   "mcpCount": 226,
@@ -79,9 +79,13 @@
       "migrationBefore": "const msg = await anthropic.beta.messages.create({\n  model: \"claude-3-7-sonnet-20250219\",\n  betas: [\"token-efficient-tools-2025-02-19\"],\n  messages\n});",
       "migrationAfter": "const msg = await anthropic.messages.create({\n  model: \"claude-sonnet-4-5\",\n  thinking: { type: \"enabled\", budget_tokens: 4096 },\n  messages\n});",
       "description": "The official TypeScript library for the Anthropic API",
-      "latestVersion": "1.11.0",
-      "latestPublishedAt": "2026-11-19T19:29:02.891Z",
+      "latestVersion": "1.12.0",
+      "latestPublishedAt": "2026-11-20T16:18:54.117Z",
       "recentVersions": [
+        {
+          "version": "1.12.0",
+          "publishedAt": "2026-11-20T16:18:54.117Z"
+        },
         {
           "version": "1.11.0",
           "publishedAt": "2026-11-19T19:29:02.891Z"
@@ -101,18 +105,14 @@
         {
           "version": "1.7.0",
           "publishedAt": "2026-11-09T18:56:57.201Z"
-        },
-        {
-          "version": "1.6.0",
-          "publishedAt": "2026-11-05T19:05:25.552Z"
         }
       ],
-      "releasesLast90d": 30,
+      "releasesLast90d": 31,
       "dependenciesCount": 3,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@anthropic-ai/sdk",
       "githubUrl": "https://github.com/anthropics/anthropic-sdk-typescript",
-      "installCommand": "npm install @anthropic-ai/sdk@1.11.0",
+      "installCommand": "npm install @anthropic-ai/sdk@1.12.0",
       "stabilityScore": 70,
       "stabilityGrade": "C+"
     },
@@ -310,9 +310,25 @@
       "migrationBefore": "const result = await generateText({\n  model: openai(\"gpt-4o\"),\n  maxSteps: 5,\n  tools: { weather: tool({ parameters: z.object({ city: z.string() }), execute }) }\n});",
       "migrationAfter": "const result = await generateText({\n  model: openai(\"gpt-5\"),\n  stopWhen: stepCountIs(5),\n  tools: { weather: tool({ inputSchema: z.object({ city: z.string() }), execute }) }\n});",
       "description": "AI SDK by Vercel - build apps like ChatGPT, Claude, Gemini, and more with a single interface for any model using the Vercel AI Gateway or go direct to OpenAI, Anthropic, Google, or any other model provider.",
-      "latestVersion": "7.0.177",
-      "latestPublishedAt": "2026-11-18T19:03:24.841Z",
+      "latestVersion": "7.0.179",
+      "latestPublishedAt": "2026-11-20T23:21:52.074Z",
       "recentVersions": [
+        {
+          "version": "6.0.336",
+          "publishedAt": "2026-11-22T22:27:57.611Z"
+        },
+        {
+          "version": "7.0.179",
+          "publishedAt": "2026-11-20T23:21:52.074Z"
+        },
+        {
+          "version": "5.0.292",
+          "publishedAt": "2026-11-20T16:52:45.615Z"
+        },
+        {
+          "version": "7.0.178",
+          "publishedAt": "2026-11-20T16:52:25.723Z"
+        },
         {
           "version": "7.0.177",
           "publishedAt": "2026-11-18T19:03:24.841Z"
@@ -320,30 +336,14 @@
         {
           "version": "7.0.176",
           "publishedAt": "2026-11-17T20:57:53.148Z"
-        },
-        {
-          "version": "7.0.175",
-          "publishedAt": "2026-11-17T19:55:30.489Z"
-        },
-        {
-          "version": "5.0.291",
-          "publishedAt": "2026-11-17T19:55:04.171Z"
-        },
-        {
-          "version": "7.0.174",
-          "publishedAt": "2026-11-17T18:41:41.856Z"
-        },
-        {
-          "version": "6.0.333",
-          "publishedAt": "2026-11-17T18:39:27.898Z"
         }
       ],
-      "releasesLast90d": 205,
+      "releasesLast90d": 204,
       "dependenciesCount": 3,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/ai",
       "githubUrl": "https://github.com/vercel/ai",
-      "installCommand": "npm install ai@7.0.177",
+      "installCommand": "npm install ai@7.0.179",
       "stabilityScore": 70,
       "stabilityGrade": "C+"
     },
@@ -366,9 +366,17 @@
       "migrationBefore": "const model = openai(\"gpt-4o\", { structuredOutputs: true });",
       "migrationAfter": "const model = openai.responses(\"gpt-5\");",
       "description": "Vercel AI SDK OpenAI Provider package.",
-      "latestVersion": "4.0.121",
-      "latestPublishedAt": "2026-11-17T20:55:57.692Z",
+      "latestVersion": "4.0.122",
+      "latestPublishedAt": "2026-11-20T16:51:44.264Z",
       "recentVersions": [
+        {
+          "version": "3.0.145",
+          "publishedAt": "2026-11-22T22:27:30.721Z"
+        },
+        {
+          "version": "4.0.122",
+          "publishedAt": "2026-11-20T16:51:44.264Z"
+        },
         {
           "version": "4.0.121",
           "publishedAt": "2026-11-17T20:55:57.692Z"
@@ -384,22 +392,14 @@
         {
           "version": "3.0.144",
           "publishedAt": "2026-11-17T18:39:34.377Z"
-        },
-        {
-          "version": "3.0.143",
-          "publishedAt": "2026-11-13T23:45:52.848Z"
-        },
-        {
-          "version": "4.0.118",
-          "publishedAt": "2026-11-13T22:34:56.794Z"
         }
       ],
-      "releasesLast90d": 139,
+      "releasesLast90d": 137,
       "dependenciesCount": 2,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@ai-sdk/openai",
       "githubUrl": "https://github.com/vercel/ai",
-      "installCommand": "npm install @ai-sdk/openai@4.0.121",
+      "installCommand": "npm install @ai-sdk/openai@4.0.122",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -421,9 +421,13 @@
       "migrationBefore": "const model = anthropic(\"claude-3-7-sonnet-20250219\", { sendReasoning: true });",
       "migrationAfter": "const result = await generateText({\n  model: anthropic(\"claude-sonnet-4-5\"),\n  providerOptions: { anthropic: { thinking: { type: \"enabled\", budgetTokens: 4000 } } }\n});",
       "description": "Vercel AI SDK Anthropic Provider package.",
-      "latestVersion": "4.0.106",
-      "latestPublishedAt": "2026-11-17T18:39:39.976Z",
+      "latestVersion": "4.0.107",
+      "latestPublishedAt": "2026-11-20T16:50:52.791Z",
       "recentVersions": [
+        {
+          "version": "4.0.107",
+          "publishedAt": "2026-11-20T16:50:52.791Z"
+        },
         {
           "version": "4.0.106",
           "publishedAt": "2026-11-17T18:39:39.976Z"
@@ -443,18 +447,14 @@
         {
           "version": "4.0.103",
           "publishedAt": "2026-11-12T20:19:57.190Z"
-        },
-        {
-          "version": "4.0.102",
-          "publishedAt": "2026-11-10T20:17:03.767Z"
         }
       ],
-      "releasesLast90d": 112,
+      "releasesLast90d": 109,
       "dependenciesCount": 2,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@ai-sdk/anthropic",
       "githubUrl": "https://github.com/vercel/ai",
-      "installCommand": "npm install @ai-sdk/anthropic@4.0.106",
+      "installCommand": "npm install @ai-sdk/anthropic@4.0.107",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -478,9 +478,13 @@
       "migrationBefore": "const res = await model.call(messages, { functions: toolDefs });",
       "migrationAfter": "const modelWithTools = model.bindTools(toolDefs);\nconst res = await modelWithTools.invoke(messages);",
       "description": "Core LangChain.js abstractions and schemas",
-      "latestVersion": "1.4.2",
-      "latestPublishedAt": "2026-11-18T22:28:39.774Z",
+      "latestVersion": "1.5.0",
+      "latestPublishedAt": "2026-11-20T18:55:04.326Z",
       "recentVersions": [
+        {
+          "version": "1.5.0",
+          "publishedAt": "2026-11-20T18:55:04.326Z"
+        },
         {
           "version": "1.4.2",
           "publishedAt": "2026-11-18T22:28:39.774Z"
@@ -500,18 +504,14 @@
         {
           "version": "1.3.6",
           "publishedAt": "2026-11-09T23:57:01.528Z"
-        },
-        {
-          "version": "1.3.5",
-          "publishedAt": "2026-11-05T20:24:14.918Z"
         }
       ],
-      "releasesLast90d": 21,
+      "releasesLast90d": 22,
       "dependenciesCount": 7,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@langchain/core",
       "githubUrl": "https://github.com/langchain-ai/langchainjs",
-      "installCommand": "npm install @langchain/core@1.4.2",
+      "installCommand": "npm install @langchain/core@1.5.0",
       "stabilityScore": 82,
       "stabilityGrade": "B+"
     },
@@ -1041,9 +1041,13 @@
       "migrationBefore": "client.beta.prompt_caching.messages.create(model=\"claude-3-5-sonnet-20241022\", messages=msgs)",
       "migrationAfter": "client.messages.create(model=\"claude-sonnet-4-5\", max_tokens=4096, messages=msgs)",
       "description": "The official Python library for the anthropic API",
-      "latestVersion": "2.11.0",
-      "latestPublishedAt": "2026-11-19T19:14:57.190731Z",
+      "latestVersion": "2.12.0",
+      "latestPublishedAt": "2026-11-20T15:57:01.546133Z",
       "recentVersions": [
+        {
+          "version": "2.12.0",
+          "publishedAt": "2026-11-20T15:57:01.546133Z"
+        },
         {
           "version": "2.11.0",
           "publishedAt": "2026-11-19T19:14:57.190731Z"
@@ -1063,18 +1067,14 @@
         {
           "version": "2.7.0",
           "publishedAt": "2026-11-09T18:52:39.769381Z"
-        },
-        {
-          "version": "2.6.0",
-          "publishedAt": "2026-11-05T18:59:11.474835Z"
         }
       ],
-      "releasesLast90d": 30,
+      "releasesLast90d": 31,
       "dependenciesCount": 17,
       "license": "Apache-2.0",
       "registryUrl": "https://pypi.org/project/anthropic/",
       "githubUrl": "https://github.com/anthropics/anthropic-sdk-python",
-      "installCommand": "pip install \"anthropic==2.11.0\"",
+      "installCommand": "pip install \"anthropic==2.12.0\"",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -1126,7 +1126,7 @@
           "publishedAt": "2026-08-24T19:04:29.909929Z"
         }
       ],
-      "releasesLast90d": 7,
+      "releasesLast90d": 5,
       "dependenciesCount": 19,
       "license": "MIT",
       "registryUrl": "https://pypi.org/project/mcp/",
@@ -1155,9 +1155,17 @@
       "migrationBefore": "mcp.mount(\"sub\", sub_server)",
       "migrationAfter": "mcp.mount(sub_server, prefix=\"sub\")",
       "description": "The fast, Pythonic way to build MCP servers and clients.",
-      "latestVersion": "4.2.3",
-      "latestPublishedAt": "2026-11-20T04:17:11.876600Z",
+      "latestVersion": "4.2.5",
+      "latestPublishedAt": "2026-11-23T07:42:40.085003Z",
       "recentVersions": [
+        {
+          "version": "4.2.5",
+          "publishedAt": "2026-11-23T07:42:40.085003Z"
+        },
+        {
+          "version": "4.2.4",
+          "publishedAt": "2026-11-21T05:29:54.960849Z"
+        },
         {
           "version": "4.2.3",
           "publishedAt": "2026-11-20T04:17:11.876600Z"
@@ -1173,22 +1181,14 @@
         {
           "version": "4.2.0",
           "publishedAt": "2026-11-13T17:08:59.309285Z"
-        },
-        {
-          "version": "4.1.8",
-          "publishedAt": "2026-11-10T20:44:54.439816Z"
-        },
-        {
-          "version": "4.1.7",
-          "publishedAt": "2026-11-10T02:01:50.247819Z"
         }
       ],
-      "releasesLast90d": 29,
+      "releasesLast90d": 31,
       "dependenciesCount": 9,
       "license": "Apache-2.0",
       "registryUrl": "https://pypi.org/project/fastmcp/",
       "githubUrl": "https://github.com/jlowin/fastmcp",
-      "installCommand": "pip install \"fastmcp==4.2.3\"",
+      "installCommand": "pip install \"fastmcp==4.2.5\"",
       "stabilityScore": 70,
       "stabilityGrade": "C+"
     },
@@ -1271,8 +1271,16 @@
       "migrationAfter": "from crewai.tools import tool\n@tool(\"search\")\ndef search(q: str) -> str:\n    \"\"\"Search query\"\"\"\n    return q",
       "description": "Cutting-edge framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks.",
       "latestVersion": "1.15.44",
-      "latestPublishedAt": "2026-11-20T06:10:55.093000Z",
+      "latestPublishedAt": "2026-11-23T06:15:08.186951Z",
       "recentVersions": [
+        {
+          "version": "1.15.44.dev20261123",
+          "publishedAt": "2026-11-23T06:15:08.186951Z"
+        },
+        {
+          "version": "1.15.44.dev20261121",
+          "publishedAt": "2026-11-21T06:10:09.588346Z"
+        },
         {
           "version": "1.15.44.dev20261120",
           "publishedAt": "2026-11-20T06:10:55.093000Z"
@@ -1288,14 +1296,6 @@
         {
           "version": "1.15.43",
           "publishedAt": "2026-11-19T04:13:36.786010Z"
-        },
-        {
-          "version": "1.15.42",
-          "publishedAt": "2026-11-18T16:39:12.653206Z"
-        },
-        {
-          "version": "1.15.41.dev20261118",
-          "publishedAt": "2026-11-18T06:10:53.271329Z"
         }
       ],
       "releasesLast90d": 101,
@@ -1355,7 +1355,7 @@
           "publishedAt": "2026-11-04T10:29:03.751646Z"
         }
       ],
-      "releasesLast90d": 45,
+      "releasesLast90d": 44,
       "dependenciesCount": 31,
       "license": "MIT",
       "registryUrl": "https://pypi.org/project/pydantic-ai/",
@@ -1385,8 +1385,20 @@
       "migrationAfter": "res = litellm.completion(model=\"anthropic/claude-sonnet-4-5\", messages=msgs, tools=tools)",
       "description": "Library to easily interface with LLM API providers",
       "latestVersion": "1.110.2",
-      "latestPublishedAt": "2026-11-20T05:51:21.442187Z",
+      "latestPublishedAt": "2026-11-21T21:34:14.679538Z",
       "recentVersions": [
+        {
+          "version": "1.108.15",
+          "publishedAt": "2026-11-21T21:34:14.679538Z"
+        },
+        {
+          "version": "1.112.0.dev2",
+          "publishedAt": "2026-11-21T20:12:40.830775Z"
+        },
+        {
+          "version": "1.108.14",
+          "publishedAt": "2026-11-20T23:42:30.352963Z"
+        },
         {
           "version": "1.106.12",
           "publishedAt": "2026-11-20T05:51:21.442187Z"
@@ -1398,21 +1410,9 @@
         {
           "version": "1.108.13",
           "publishedAt": "2026-11-20T03:59:55.652817Z"
-        },
-        {
-          "version": "1.109.3",
-          "publishedAt": "2026-11-20T03:58:13.032989Z"
-        },
-        {
-          "version": "1.112.0.dev1",
-          "publishedAt": "2026-11-20T00:02:23.621519Z"
-        },
-        {
-          "version": "1.108.12",
-          "publishedAt": "2026-11-19T06:46:46.921031Z"
         }
       ],
-      "releasesLast90d": 100,
+      "releasesLast90d": 102,
       "dependenciesCount": 119,
       "license": "MIT",
       "registryUrl": "https://pypi.org/project/litellm/",
@@ -2269,7 +2269,7 @@
           "publishedAt": "2026-11-04T23:34:10.431Z"
         }
       ],
-      "releasesLast90d": 19,
+      "releasesLast90d": 18,
       "dependenciesCount": 22,
       "license": "SEE LICENSE IN LICENSE",
       "registryUrl": "https://www.npmjs.com/package/@modelcontextprotocol/inspector",
@@ -2665,7 +2665,7 @@
           "publishedAt": "2026-11-13T05:48:08.291Z"
         }
       ],
-      "releasesLast90d": 40,
+      "releasesLast90d": 39,
       "dependenciesCount": 17,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@apify/actors-mcp-server",
@@ -3004,7 +3004,7 @@
           "publishedAt": "2026-07-31T12:08:59.950Z"
         }
       ],
-      "releasesLast90d": 3,
+      "releasesLast90d": 2,
       "dependenciesCount": 7,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@upstash/mcp-server",
@@ -3370,7 +3370,7 @@
           "publishedAt": "2026-09-08T09:53:29.850Z"
         }
       ],
-      "releasesLast90d": 7,
+      "releasesLast90d": 6,
       "dependenciesCount": 0,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/chrome-devtools-mcp",
@@ -3424,7 +3424,7 @@
           "publishedAt": "2026-11-06T22:31:21.094Z"
         }
       ],
-      "releasesLast90d": 59,
+      "releasesLast90d": 51,
       "dependenciesCount": 4,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/mcp-remote",
@@ -3839,9 +3839,13 @@
       "migrationBefore": "claude mcp add my-server -e KEY=val -- npx server",
       "migrationAfter": "claude mcp add --transport stdio my-server -e KEY=val -- npx server",
       "description": "Use Claude, Anthropic's AI assistant, right from your terminal. Claude can understand your codebase, edit files, run terminal commands, and handle entire workflows for you.",
-      "latestVersion": "2.1.329",
-      "latestPublishedAt": "2026-11-19T18:40:25.219Z",
+      "latestVersion": "2.1.330",
+      "latestPublishedAt": "2026-11-20T19:16:01.070Z",
       "recentVersions": [
+        {
+          "version": "2.1.330",
+          "publishedAt": "2026-11-20T19:16:01.070Z"
+        },
         {
           "version": "2.1.329",
           "publishedAt": "2026-11-19T18:40:25.219Z"
@@ -3861,18 +3865,14 @@
         {
           "version": "2.1.325",
           "publishedAt": "2026-11-13T20:07:25.823Z"
-        },
-        {
-          "version": "2.1.324",
-          "publishedAt": "2026-11-13T18:42:36.300Z"
         }
       ],
-      "releasesLast90d": 76,
+      "releasesLast90d": 73,
       "dependenciesCount": 0,
       "license": "SEE LICENSE IN README.md",
       "registryUrl": "https://www.npmjs.com/package/@anthropic-ai/claude-code",
       "githubUrl": "https://github.com/anthropics/claude-code",
-      "installCommand": "npx -y @anthropic-ai/claude-code@2.1.329",
+      "installCommand": "npx -y @anthropic-ai/claude-code@2.1.330",
       "stabilityScore": 70,
       "stabilityGrade": "C+"
     },
@@ -3922,7 +3922,7 @@
           "publishedAt": "2026-11-18T03:45:45.798Z"
         }
       ],
-      "releasesLast90d": 120,
+      "releasesLast90d": 117,
       "dependenciesCount": 0,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@openai/codex",
@@ -3951,9 +3951,13 @@
       "migrationBefore": "for await (const msg of query({ prompt: \"fix bug\", options: { allowedTools: [\"Bash\"] } })) {\n  console.log(msg);\n}",
       "migrationAfter": "for await (const msg of query({\n  prompt: \"fix bug\",\n  options: { permissionMode: \"acceptEdits\", allowedTools: [\"Bash\", \"Edit\"] }\n})) {\n  console.log(msg);\n}",
       "description": "SDK for building AI agents with Claude Code's capabilities. Programmatically interact with Claude to build autonomous agents that can understand codebases, edit files, and execute workflows.",
-      "latestVersion": "0.3.329",
-      "latestPublishedAt": "2026-11-19T18:42:14.426Z",
+      "latestVersion": "0.3.330",
+      "latestPublishedAt": "2026-11-20T19:18:50.922Z",
       "recentVersions": [
+        {
+          "version": "0.3.330",
+          "publishedAt": "2026-11-20T19:18:50.922Z"
+        },
         {
           "version": "0.3.329",
           "publishedAt": "2026-11-19T18:42:14.426Z"
@@ -3973,18 +3977,14 @@
         {
           "version": "0.3.325",
           "publishedAt": "2026-11-13T20:05:51.004Z"
-        },
-        {
-          "version": "0.3.324",
-          "publishedAt": "2026-11-13T18:47:06.217Z"
         }
       ],
-      "releasesLast90d": 76,
+      "releasesLast90d": 73,
       "dependenciesCount": 0,
       "license": "SEE LICENSE IN README.md",
       "registryUrl": "https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk",
       "githubUrl": "https://github.com/anthropics/claude-agent-sdk-typescript",
-      "installCommand": "npm install @anthropic-ai/claude-agent-sdk@0.3.329",
+      "installCommand": "npm install @anthropic-ai/claude-agent-sdk@0.3.330",
       "stabilityScore": 65,
       "stabilityGrade": "C+"
     },
@@ -4007,9 +4007,21 @@
       "migrationBefore": "const client = await experimental_createMCPClient({ transport: { type: \"sse\", url } });",
       "migrationAfter": "const client = await createMCPClient({ transport: new StreamableHTTPClientTransport(new URL(url)) });",
       "description": "Vercel AI SDK MCP Client package.",
-      "latestVersion": "2.0.101",
-      "latestPublishedAt": "2026-11-17T20:56:29.006Z",
+      "latestVersion": "2.0.103",
+      "latestPublishedAt": "2026-11-22T22:26:12.837Z",
       "recentVersions": [
+        {
+          "version": "2.0.103",
+          "publishedAt": "2026-11-22T22:26:12.837Z"
+        },
+        {
+          "version": "2.0.102",
+          "publishedAt": "2026-11-20T16:51:44.840Z"
+        },
+        {
+          "version": "0.0.46",
+          "publishedAt": "2026-11-20T16:51:41.553Z"
+        },
         {
           "version": "2.0.101",
           "publishedAt": "2026-11-17T20:56:29.006Z"
@@ -4021,26 +4033,14 @@
         {
           "version": "2.0.100",
           "publishedAt": "2026-11-17T18:39:29.290Z"
-        },
-        {
-          "version": "2.0.99",
-          "publishedAt": "2026-11-13T05:57:25.038Z"
-        },
-        {
-          "version": "2.0.98",
-          "publishedAt": "2026-11-12T20:20:19.951Z"
-        },
-        {
-          "version": "2.0.97",
-          "publishedAt": "2026-11-11T18:37:38.954Z"
         }
       ],
-      "releasesLast90d": 110,
+      "releasesLast90d": 109,
       "dependenciesCount": 4,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@ai-sdk/mcp",
       "githubUrl": "https://github.com/vercel/ai",
-      "installCommand": "npm install @ai-sdk/mcp@2.0.101",
+      "installCommand": "npm install @ai-sdk/mcp@2.0.103",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -4064,9 +4064,17 @@
       "migrationBefore": "browser = Browser(config=BrowserConfig(headless=True))\nagent = Agent(task=\"Search\", llm=llm, browser=browser)",
       "migrationAfter": "session = BrowserSession(browser_profile=BrowserProfile(headless=True))\nagent = Agent(task=\"Search\", llm=llm, browser_session=session)",
       "description": "Browser agent on Pydantic AI: one persistent Python REPL on raw CDP, cloud or local Chrome",
-      "latestVersion": "1.0.6",
-      "latestPublishedAt": "2026-11-16T19:26:41.755233Z",
+      "latestVersion": "1.0.8",
+      "latestPublishedAt": "2026-11-22T03:44:53.401216Z",
       "recentVersions": [
+        {
+          "version": "1.0.8",
+          "publishedAt": "2026-11-22T03:44:53.401216Z"
+        },
+        {
+          "version": "1.0.7",
+          "publishedAt": "2026-11-21T01:55:19.747197Z"
+        },
         {
           "version": "1.0.6",
           "publishedAt": "2026-11-16T19:26:41.755233Z"
@@ -4082,22 +4090,14 @@
         {
           "version": "1.0.3",
           "publishedAt": "2026-11-12T17:20:36.251284Z"
-        },
-        {
-          "version": "1.0.2",
-          "publishedAt": "2026-11-11T04:07:32.296898Z"
-        },
-        {
-          "version": "1.0.1",
-          "publishedAt": "2026-11-10T16:50:49.174319Z"
         }
       ],
-      "releasesLast90d": 11,
+      "releasesLast90d": 13,
       "dependenciesCount": 10,
       "license": "MIT",
       "registryUrl": "https://pypi.org/project/browser-use/",
       "githubUrl": "https://github.com/browser-use/browser-use",
-      "installCommand": "pip install \"browser-use==1.0.6\"",
+      "installCommand": "pip install \"browser-use==1.0.8\"",
       "stabilityScore": 74,
       "stabilityGrade": "C+"
     },
@@ -5010,11 +5010,15 @@
         "confluence_get_page"
       ],
       "migrationBefore": "\"mcp-atlassian-pypi\": {\n  \"command\": \"uvx\",\n  \"args\": [\"mcp-atlassian\"]\n}",
-      "migrationAfter": "\"mcp-atlassian-pypi\": {\n  \"command\": \"uvx\",\n  \"args\": [\"mcp-atlassian@0.24.7\"],\n  \"env\": { \"FASTMCP_LOG_LEVEL\": \"ERROR\" }\n}",
+      "migrationAfter": "\"mcp-atlassian-pypi\": {\n  \"command\": \"uvx\",\n  \"args\": [\"mcp-atlassian@0.24.8\"],\n  \"env\": { \"FASTMCP_LOG_LEVEL\": \"ERROR\" }\n}",
       "description": "The Model Context Protocol (MCP) Atlassian integration is an open-source implementation that bridges Atlassian products (Jira and Confluence) with AI language models following Anthropic's MCP specification. This project enables secure, contextual AI interactions with Atlassian tools while maintaining data privacy and security. Key features include:",
-      "latestVersion": "0.24.7",
-      "latestPublishedAt": "2026-11-20T00:11:39.992266Z",
+      "latestVersion": "0.24.8",
+      "latestPublishedAt": "2026-11-23T01:41:28.176902Z",
       "recentVersions": [
+        {
+          "version": "0.24.8",
+          "publishedAt": "2026-11-23T01:41:28.176902Z"
+        },
         {
           "version": "0.24.7",
           "publishedAt": "2026-11-20T00:11:39.992266Z"
@@ -5034,18 +5038,14 @@
         {
           "version": "0.24.3",
           "publishedAt": "2026-11-12T10:43:43.081633Z"
-        },
-        {
-          "version": "0.24.2",
-          "publishedAt": "2026-11-12T05:14:41.678578Z"
         }
       ],
-      "releasesLast90d": 8,
+      "releasesLast90d": 9,
       "dependenciesCount": 30,
       "license": "MIT",
       "registryUrl": "https://pypi.org/project/mcp-atlassian/",
       "githubUrl": "https://github.com/sooperset/mcp-atlassian",
-      "installCommand": "uvx mcp-atlassian@0.24.7",
+      "installCommand": "uvx mcp-atlassian@0.24.8",
       "stabilityScore": 81,
       "stabilityGrade": "B"
     },
@@ -5379,7 +5379,7 @@
           "publishedAt": "2026-08-23T15:48:35.825158Z"
         }
       ],
-      "releasesLast90d": 7,
+      "releasesLast90d": 4,
       "dependenciesCount": 25,
       "license": "Apache-2.0",
       "registryUrl": "https://pypi.org/project/arxiv-mcp-server/",
@@ -6332,7 +6332,7 @@
       "displayName": "Lovable.dev MCP Js",
       "vendor": "Lovable.dev",
       "githubRepo": "lovablelabs/lovable",
-      "breakingSummary": "Built on MCP SDK (^1.32.2); recent release v3.6.0 (up from v3.5.0) updates Database & Backend MCP tool schemas and transport handling (30 releases in last 90d). Pin exact version v3.6.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.32.2); recent release v3.6.0 (up from v3.5.0) updates Database & Backend MCP tool schemas and transport handling (27 releases in last 90d). Pin exact version v3.6.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "lovable-mcp-check",
@@ -6371,7 +6371,7 @@
           "publishedAt": "2026-10-22T14:16:18.747Z"
         }
       ],
-      "releasesLast90d": 30,
+      "releasesLast90d": 27,
       "dependenciesCount": 7,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@lovable.dev/mcp-js",
@@ -6389,7 +6389,7 @@
       "displayName": "Posthog MCP",
       "vendor": "Posthog",
       "githubRepo": "PostHog/posthog-js",
-      "breakingSummary": "recent release v1.6.0 (up from v1.5.0) updates Observability MCP tool schemas and transport handling (43 releases in last 90d). Pin exact version v1.6.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v1.6.1 (up from v1.6.0) updates Observability MCP tool schemas and transport handling (44 releases in last 90d). Pin exact version v1.6.1 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "tools/list",
@@ -6397,11 +6397,15 @@
         "mcp"
       ],
       "migrationBefore": "\"posthog-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@posthog/mcp@latest\"]\n}",
-      "migrationAfter": "\"posthog-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@posthog/mcp@1.6.0\"]\n}",
+      "migrationAfter": "\"posthog-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@posthog/mcp@1.6.1\"]\n}",
       "description": "PostHog SDK for Model Context Protocol (MCP) servers - tracks tool usage, intent, and identity",
-      "latestVersion": "1.6.0",
-      "latestPublishedAt": "2026-11-18T23:28:42.199Z",
+      "latestVersion": "1.6.1",
+      "latestPublishedAt": "2026-11-21T04:31:49.898Z",
       "recentVersions": [
+        {
+          "version": "1.6.1",
+          "publishedAt": "2026-11-21T04:31:49.898Z"
+        },
         {
           "version": "1.6.0",
           "publishedAt": "2026-11-18T23:28:42.199Z"
@@ -6421,18 +6425,14 @@
         {
           "version": "1.2.3",
           "publishedAt": "2026-11-16T19:10:45.485Z"
-        },
-        {
-          "version": "1.2.2",
-          "publishedAt": "2026-11-13T23:18:26.491Z"
         }
       ],
-      "releasesLast90d": 43,
+      "releasesLast90d": 44,
       "dependenciesCount": 1,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@posthog/mcp",
       "githubUrl": "https://github.com/PostHog/posthog-js",
-      "installCommand": "npx -y @posthog/mcp@1.6.0",
+      "installCommand": "npx -y @posthog/mcp@1.6.1",
       "stabilityScore": 70,
       "stabilityGrade": "C+"
     },
@@ -6501,7 +6501,7 @@
       "displayName": "Clerk MCP Tools",
       "vendor": "Clerk",
       "githubRepo": "clerk/mcp-tools",
-      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v0.9.0 (up from v0.8.0) updates Developer Tools MCP tool schemas and transport handling (3 releases in last 90d). Pin exact version v0.9.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v1.0.0 (up from v0.9.0) updates Developer Tools MCP tool schemas and transport handling (4 releases in last 90d). Pin exact version v1.0.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "tools/list",
@@ -6509,11 +6509,15 @@
         "mcp-tools"
       ],
       "migrationBefore": "\"clerk-mcp-tools\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@clerk/mcp-tools@latest\"]\n}",
-      "migrationAfter": "\"clerk-mcp-tools\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@clerk/mcp-tools@0.9.0\"]\n}",
+      "migrationAfter": "\"clerk-mcp-tools\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@clerk/mcp-tools@1.0.0\"]\n}",
       "description": "Tools for writing MCP clients and servers without pain",
-      "latestVersion": "0.9.0",
-      "latestPublishedAt": "2026-11-06T21:56:23.920Z",
+      "latestVersion": "1.0.0",
+      "latestPublishedAt": "2026-11-20T22:49:40.559Z",
       "recentVersions": [
+        {
+          "version": "1.0.0",
+          "publishedAt": "2026-11-20T22:49:40.559Z"
+        },
         {
           "version": "0.9.0",
           "publishedAt": "2026-11-06T21:56:23.920Z"
@@ -6533,20 +6537,16 @@
         {
           "version": "0.5.0",
           "publishedAt": "2026-04-22T17:16:48.247Z"
-        },
-        {
-          "version": "0.3.1",
-          "publishedAt": "2025-08-08T21:40:58.237Z"
         }
       ],
-      "releasesLast90d": 3,
-      "dependenciesCount": 1,
+      "releasesLast90d": 4,
+      "dependenciesCount": 0,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@clerk/mcp-tools",
       "githubUrl": "https://github.com/clerk/mcp-tools",
-      "installCommand": "npx -y @clerk/mcp-tools@0.9.0",
-      "stabilityScore": 73,
-      "stabilityGrade": "C+"
+      "installCommand": "npx -y @clerk/mcp-tools@1.0.0",
+      "stabilityScore": 78,
+      "stabilityGrade": "B"
     },
     {
       "slug": "add-mcp",
@@ -6557,7 +6557,7 @@
       "displayName": "Add MCP",
       "vendor": "neon-solutions",
       "githubRepo": "neon-solutions/add-mcp",
-      "breakingSummary": "recent release v2.6.1 (up from v2.6.0) updates Developer Tools MCP tool schemas and transport handling (7 releases in last 90d). Pin exact version v2.6.1 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v2.6.1 (up from v2.6.0) updates Developer Tools MCP tool schemas and transport handling (4 releases in last 90d). Pin exact version v2.6.1 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "add-mcp",
@@ -6595,7 +6595,7 @@
           "publishedAt": "2026-08-23T13:31:53.244Z"
         }
       ],
-      "releasesLast90d": 7,
+      "releasesLast90d": 4,
       "dependenciesCount": 6,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/add-mcp",
@@ -6613,7 +6613,7 @@
       "displayName": "Payloadcms Plugin MCP",
       "vendor": "Payloadcms",
       "githubRepo": "payloadcms/payload",
-      "breakingSummary": "Built on MCP SDK (1.32.0); recent release v3.94.0 (up from v3.93.0) updates Developer Tools MCP tool schemas and transport handling (9 releases in last 90d). Pin exact version v3.94.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (1.32.0); recent release v3.94.1 (up from v3.94.0) updates Developer Tools MCP tool schemas and transport handling (10 releases in last 90d). Pin exact version v3.94.1 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "tools/list",
@@ -6621,11 +6621,15 @@
         "plugin-mcp"
       ],
       "migrationBefore": "\"payloadcms-plugin-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@payloadcms/plugin-mcp@latest\"]\n}",
-      "migrationAfter": "\"payloadcms-plugin-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@payloadcms/plugin-mcp@3.94.0\"]\n}",
+      "migrationAfter": "\"payloadcms-plugin-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@payloadcms/plugin-mcp@3.94.1\"]\n}",
       "description": "MCP (Model Context Protocol) capabilities with Payload",
-      "latestVersion": "3.94.0",
-      "latestPublishedAt": "2026-11-17T18:06:53.588Z",
+      "latestVersion": "3.94.1",
+      "latestPublishedAt": "2026-11-20T14:46:37.886Z",
       "recentVersions": [
+        {
+          "version": "3.94.1",
+          "publishedAt": "2026-11-20T14:46:37.886Z"
+        },
         {
           "version": "3.94.0",
           "publishedAt": "2026-11-17T18:06:53.588Z"
@@ -6645,18 +6649,14 @@
         {
           "version": "3.91.0",
           "publishedAt": "2026-10-15T20:21:15.412Z"
-        },
-        {
-          "version": "3.90.2",
-          "publishedAt": "2026-09-23T13:55:27.929Z"
         }
       ],
-      "releasesLast90d": 9,
+      "releasesLast90d": 10,
       "dependenciesCount": 5,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@payloadcms/plugin-mcp",
       "githubUrl": "https://github.com/payloadcms/payload",
-      "installCommand": "npx -y @payloadcms/plugin-mcp@3.94.0",
+      "installCommand": "npx -y @payloadcms/plugin-mcp@3.94.1",
       "stabilityScore": 86,
       "stabilityGrade": "B+"
     },
@@ -6669,7 +6669,7 @@
       "displayName": "Azure MCP",
       "vendor": "Azure",
       "githubRepo": "microsoft/mcp",
-      "breakingSummary": "recent release v4.0.0-beta.9 (up from v2.0.5) updates Cloud & Infra MCP tool schemas and transport handling (1 releases in last 90d). Pin exact version v4.0.0-beta.9 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v4.0.0-beta.10 (up from v2.0.5) updates Cloud & Infra MCP tool schemas and transport handling (1 releases in last 90d). Pin exact version v4.0.0-beta.10 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "azmcp",
@@ -6677,10 +6677,10 @@
         "tools/call"
       ],
       "migrationBefore": "\"azure-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@azure/mcp@latest\"]\n}",
-      "migrationAfter": "\"azure-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@azure/mcp@4.0.0-beta.9\"]\n}",
+      "migrationAfter": "\"azure-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@azure/mcp@4.0.0-beta.10\"]\n}",
       "description": "Azure MCP Server - Model Context Protocol implementation for Azure",
-      "latestVersion": "4.0.0-beta.9",
-      "latestPublishedAt": "2026-11-18T01:41:54.316Z",
+      "latestVersion": "4.0.0-beta.10",
+      "latestPublishedAt": "2026-11-23T02:31:55.820Z",
       "recentVersions": [
         {
           "version": "3.0.0",
@@ -6712,7 +6712,7 @@
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@azure/mcp",
       "githubUrl": "https://github.com/microsoft/mcp",
-      "installCommand": "npx -y @azure/mcp@4.0.0-beta.9",
+      "installCommand": "npx -y @azure/mcp@4.0.0-beta.10",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -6725,7 +6725,7 @@
       "displayName": "Zereight MCP Gitlab",
       "vendor": "Zereight",
       "githubRepo": "zereight/gitlab-mcp",
-      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v2.3.30 (up from v2.3.29) updates Developer Tools MCP tool schemas and transport handling (59 releases in last 90d). Pin exact version v2.3.30 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v2.3.31 (up from v2.3.30) updates Developer Tools MCP tool schemas and transport handling (57 releases in last 90d). Pin exact version v2.3.31 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "mcp-gitlab",
@@ -6734,11 +6734,15 @@
         "tools/call"
       ],
       "migrationBefore": "\"zereight-mcp-gitlab\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@zereight/mcp-gitlab@latest\"]\n}",
-      "migrationAfter": "\"zereight-mcp-gitlab\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@zereight/mcp-gitlab@2.3.30\"]\n}",
+      "migrationAfter": "\"zereight-mcp-gitlab\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@zereight/mcp-gitlab@2.3.31\"]\n}",
       "description": "GitLab MCP server for projects, merge requests, issues, pipelines, wiki, releases, and more",
-      "latestVersion": "2.3.30",
-      "latestPublishedAt": "2026-11-20T05:19:41.557Z",
+      "latestVersion": "2.3.31",
+      "latestPublishedAt": "2026-11-21T14:02:33.665Z",
       "recentVersions": [
+        {
+          "version": "2.3.31",
+          "publishedAt": "2026-11-21T14:02:33.665Z"
+        },
         {
           "version": "2.3.30",
           "publishedAt": "2026-11-20T05:19:41.557Z"
@@ -6758,18 +6762,14 @@
         {
           "version": "2.3.26",
           "publishedAt": "2026-11-12T06:42:09.608Z"
-        },
-        {
-          "version": "2.3.25",
-          "publishedAt": "2026-11-11T18:43:37.889Z"
         }
       ],
-      "releasesLast90d": 59,
+      "releasesLast90d": 57,
       "dependenciesCount": 16,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@zereight/mcp-gitlab",
       "githubUrl": "https://github.com/zereight/gitlab-mcp",
-      "installCommand": "npx -y @zereight/mcp-gitlab@2.3.30",
+      "installCommand": "npx -y @zereight/mcp-gitlab@2.3.31",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -6782,7 +6782,7 @@
       "displayName": "Copilotkit MCP Apps Renderer",
       "vendor": "Copilotkit",
       "githubRepo": "CopilotKit/CopilotKit",
-      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v1.89.0 (up from v1.88.0) updates MCP Bridge & Transport tool schemas and transport handling (29 releases in last 90d). Pin exact version v1.89.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v1.90.0 (up from v1.89.0) updates MCP Bridge & Transport tool schemas and transport handling (30 releases in last 90d). Pin exact version v1.90.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "tools/list",
@@ -6790,11 +6790,15 @@
         "mcp-apps-renderer"
       ],
       "migrationBefore": "\"copilotkit-mcp-apps-renderer\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@copilotkit/mcp-apps-renderer@latest\"]\n}",
-      "migrationAfter": "\"copilotkit-mcp-apps-renderer\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@copilotkit/mcp-apps-renderer@1.89.0\"]\n}",
+      "migrationAfter": "\"copilotkit-mcp-apps-renderer\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@copilotkit/mcp-apps-renderer@1.90.0\"]\n}",
       "description": "Framework-agnostic MCP Apps host for CopilotKit - the app<->host protocol (ext-apps AppBridge), sandbox proxy, and shared renderer consumed by the React, Vue, and Angular frontends",
-      "latestVersion": "1.89.0",
-      "latestPublishedAt": "2026-11-17T21:01:46.665Z",
+      "latestVersion": "1.90.0",
+      "latestPublishedAt": "2026-11-20T15:05:29.319Z",
       "recentVersions": [
+        {
+          "version": "1.90.0",
+          "publishedAt": "2026-11-20T15:05:29.319Z"
+        },
         {
           "version": "1.89.0",
           "publishedAt": "2026-11-17T21:01:46.665Z"
@@ -6814,18 +6818,14 @@
         {
           "version": "1.86.0",
           "publishedAt": "2026-11-11T06:09:50.015Z"
-        },
-        {
-          "version": "1.85.0",
-          "publishedAt": "2026-11-06T15:47:59.993Z"
         }
       ],
-      "releasesLast90d": 29,
+      "releasesLast90d": 30,
       "dependenciesCount": 3,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@copilotkit/mcp-apps-renderer",
       "githubUrl": "https://github.com/CopilotKit/CopilotKit",
-      "installCommand": "npx -y @copilotkit/mcp-apps-renderer@1.89.0",
+      "installCommand": "npx -y @copilotkit/mcp-apps-renderer@1.90.0",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -6838,7 +6838,7 @@
       "displayName": "Azure-devops MCP",
       "vendor": "Azure Devops",
       "githubRepo": "microsoft/azure-devops-mcp",
-      "breakingSummary": "Built on MCP SDK (1.31.0); recent release v2.11.0 (up from v2.11.0-nightly.20261118) updates Cloud & Infra MCP tool schemas and transport handling (85 releases in last 90d). Pin exact version v2.11.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (1.31.0); recent release v2.11.0 (up from v2.11.0-nightly.20261121) updates Cloud & Infra MCP tool schemas and transport handling (86 releases in last 90d). Pin exact version v2.11.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "mcp-server-azuredevops",
@@ -6852,6 +6852,18 @@
       "latestPublishedAt": "2026-10-22T15:57:35.131Z",
       "recentVersions": [
         {
+          "version": "2.11.0-nightly.20261122",
+          "publishedAt": "2026-11-22T22:10:13.171Z"
+        },
+        {
+          "version": "2.11.0-nightly.20261121",
+          "publishedAt": "2026-11-21T22:10:01.404Z"
+        },
+        {
+          "version": "2.11.0-nightly.20261120",
+          "publishedAt": "2026-11-20T22:10:33.051Z"
+        },
+        {
           "version": "2.11.0-nightly.20261119",
           "publishedAt": "2026-11-19T22:11:24.945Z"
         },
@@ -6862,21 +6874,9 @@
         {
           "version": "2.11.0-nightly.20261117",
           "publishedAt": "2026-11-17T22:11:51.375Z"
-        },
-        {
-          "version": "2.11.0-nightly.20261116",
-          "publishedAt": "2026-11-16T22:10:04.987Z"
-        },
-        {
-          "version": "2.11.0-nightly.20261115",
-          "publishedAt": "2026-11-15T22:10:11.614Z"
-        },
-        {
-          "version": "2.11.0-nightly.20261114",
-          "publishedAt": "2026-11-14T22:10:12.380Z"
         }
       ],
-      "releasesLast90d": 85,
+      "releasesLast90d": 86,
       "dependenciesCount": 12,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@azure-devops/mcp",
@@ -7050,7 +7050,7 @@
       "displayName": "Pi MCP Extension",
       "vendor": "irahardianto",
       "githubRepo": "irahardianto/pi-mcp-extension",
-      "breakingSummary": "Built on MCP SDK (^1.32.2); recent release v1.15.3 (up from v1.15.2) updates Developer Tools MCP tool schemas and transport handling (52 releases in last 90d). Pin exact version v1.15.3 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.32.2); recent release v1.16.2 (up from v1.16.1) updates Developer Tools MCP tool schemas and transport handling (55 releases in last 90d). Pin exact version v1.16.2 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "tools/list",
@@ -7058,11 +7058,23 @@
         "pi-mcp-extension"
       ],
       "migrationBefore": "\"pi-mcp-extension\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"pi-mcp-extension@latest\"]\n}",
-      "migrationAfter": "\"pi-mcp-extension\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"pi-mcp-extension@1.15.3\"]\n}",
+      "migrationAfter": "\"pi-mcp-extension\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"pi-mcp-extension@1.16.2\"]\n}",
       "description": "Full-featured, lightweight MCP extension for the Pi coding agent: stdio, SSE & Streamable HTTP transports, OAuth 2.1 (PKCE + DCR), lazy/eager lifecycles - minimal dependencies, zero bloat.",
-      "latestVersion": "1.15.3",
-      "latestPublishedAt": "2026-11-13T10:44:51.215Z",
+      "latestVersion": "1.16.2",
+      "latestPublishedAt": "2026-11-23T09:27:27.843Z",
       "recentVersions": [
+        {
+          "version": "1.16.2",
+          "publishedAt": "2026-11-23T09:27:27.843Z"
+        },
+        {
+          "version": "1.16.1",
+          "publishedAt": "2026-11-23T08:18:25.706Z"
+        },
+        {
+          "version": "1.16.0",
+          "publishedAt": "2026-11-22T02:52:38.914Z"
+        },
         {
           "version": "1.15.3",
           "publishedAt": "2026-11-13T10:44:51.215Z"
@@ -7074,26 +7086,14 @@
         {
           "version": "1.15.1",
           "publishedAt": "2026-11-12T01:36:01.448Z"
-        },
-        {
-          "version": "1.15.0",
-          "publishedAt": "2026-11-11T09:37:36.561Z"
-        },
-        {
-          "version": "1.14.6",
-          "publishedAt": "2026-11-11T06:55:13.266Z"
-        },
-        {
-          "version": "1.14.5",
-          "publishedAt": "2026-11-08T23:44:57.864Z"
         }
       ],
-      "releasesLast90d": 52,
+      "releasesLast90d": 55,
       "dependenciesCount": 2,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/pi-mcp-extension",
       "githubUrl": "https://github.com/irahardianto/pi-mcp-extension",
-      "installCommand": "npx -y pi-mcp-extension@1.15.3",
+      "installCommand": "npx -y pi-mcp-extension@1.16.2",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -7106,7 +7106,7 @@
       "displayName": "Sap-ux Fiori MCP Server",
       "vendor": "Sap Ux",
       "githubRepo": "SAP/open-ux-tools",
-      "breakingSummary": "recent release v1.17.0 (up from v1.16.3) updates Design & UI MCP tool schemas and transport handling (46 releases in last 90d). Pin exact version v1.17.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v1.17.0 (up from v1.16.3) updates Design & UI MCP tool schemas and transport handling (45 releases in last 90d). Pin exact version v1.17.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "fiori-mcp",
@@ -7144,7 +7144,7 @@
           "publishedAt": "2026-11-04T15:34:08.935Z"
         }
       ],
-      "releasesLast90d": 46,
+      "releasesLast90d": 45,
       "dependenciesCount": 0,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@sap-ux/fiori-mcp-server",
@@ -7162,7 +7162,7 @@
       "displayName": "Tanstack Ai MCP",
       "vendor": "Tanstack",
       "githubRepo": "TanStack/ai",
-      "breakingSummary": "recent release v1.3.1 (up from v1.3.0) updates MCP Bridge & Transport tool schemas and transport handling (27 releases in last 90d). Pin exact version v1.3.1 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v1.3.1 (up from v1.3.0) updates MCP Bridge & Transport tool schemas and transport handling (26 releases in last 90d). Pin exact version v1.3.1 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "tanstack-ai-mcp",
@@ -7200,7 +7200,7 @@
           "publishedAt": "2026-10-22T15:20:16.523Z"
         }
       ],
-      "releasesLast90d": 27,
+      "releasesLast90d": 26,
       "dependenciesCount": 4,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@tanstack/ai-mcp",
@@ -7374,7 +7374,7 @@
       "displayName": "Currents MCP",
       "vendor": "Currents",
       "githubRepo": "currents-dev/currents-mcp",
-      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v2.7.0 (up from v2.6.1) updates Observability MCP tool schemas and transport handling (4 releases in last 90d). Pin exact version v2.7.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v2.8.0 (up from v2.7.0) updates Observability MCP tool schemas and transport handling (5 releases in last 90d). Pin exact version v2.8.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "mcp",
@@ -7383,11 +7383,15 @@
         "tools/call"
       ],
       "migrationBefore": "\"currents-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@currents/mcp@latest\"]\n}",
-      "migrationAfter": "\"currents-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@currents/mcp@2.7.0\"]\n}",
+      "migrationAfter": "\"currents-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@currents/mcp@2.8.0\"]\n}",
       "description": "Currents MCP server",
-      "latestVersion": "2.7.0",
-      "latestPublishedAt": "2026-10-14T18:31:14.957Z",
+      "latestVersion": "2.8.0",
+      "latestPublishedAt": "2026-11-20T16:59:49.936Z",
       "recentVersions": [
+        {
+          "version": "2.8.0",
+          "publishedAt": "2026-11-20T16:59:49.936Z"
+        },
         {
           "version": "2.7.0",
           "publishedAt": "2026-10-14T18:31:14.957Z"
@@ -7407,18 +7411,14 @@
         {
           "version": "2.4.2",
           "publishedAt": "2026-08-16T09:54:54.234Z"
-        },
-        {
-          "version": "2.4.1",
-          "publishedAt": "2026-08-16T09:26:53.743Z"
         }
       ],
-      "releasesLast90d": 4,
+      "releasesLast90d": 5,
       "dependenciesCount": 5,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@currents/mcp",
       "githubUrl": "https://github.com/currents-dev/currents-mcp",
-      "installCommand": "npx -y @currents/mcp@2.7.0",
+      "installCommand": "npx -y @currents/mcp@2.8.0",
       "stabilityScore": 86,
       "stabilityGrade": "B+"
     },
@@ -7869,7 +7869,7 @@
       "displayName": "Softeria Ms 365 MCP Server",
       "vendor": "Softeria",
       "githubRepo": "Softeria/ms-365-mcp-server",
-      "breakingSummary": "Built on MCP SDK (^1.32.0); recent release v0.189.0 (up from v0.188.1) updates Productivity & Docs MCP tool schemas and transport handling (94 releases in last 90d). Pin exact version v0.189.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.32.0); recent release v0.190.5 (up from v0.190.4) updates Productivity & Docs MCP tool schemas and transport handling (98 releases in last 90d). Pin exact version v0.190.5 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "ms-365-mcp-server",
@@ -7877,42 +7877,42 @@
         "tools/call"
       ],
       "migrationBefore": "\"softeria-ms-365-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@softeria/ms-365-mcp-server@latest\"]\n}",
-      "migrationAfter": "\"softeria-ms-365-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@softeria/ms-365-mcp-server@0.189.0\"]\n}",
+      "migrationAfter": "\"softeria-ms-365-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@softeria/ms-365-mcp-server@0.190.5\"]\n}",
       "description": "A Model Context Protocol (MCP) server for interacting with Microsoft 365 and Office services through the Graph API",
-      "latestVersion": "0.189.0",
-      "latestPublishedAt": "2026-11-20T10:04:36.461Z",
+      "latestVersion": "0.190.5",
+      "latestPublishedAt": "2026-11-23T11:00:51.041Z",
       "recentVersions": [
         {
-          "version": "0.189.0",
-          "publishedAt": "2026-11-20T10:04:36.461Z"
+          "version": "0.190.5",
+          "publishedAt": "2026-11-23T11:00:51.041Z"
         },
         {
-          "version": "0.188.1",
-          "publishedAt": "2026-11-20T10:02:31.834Z"
+          "version": "0.190.4",
+          "publishedAt": "2026-11-22T22:22:36.040Z"
         },
         {
-          "version": "0.188.0",
-          "publishedAt": "2026-11-20T09:02:54.145Z"
+          "version": "0.190.3",
+          "publishedAt": "2026-11-22T20:39:48.024Z"
         },
         {
-          "version": "0.187.1",
-          "publishedAt": "2026-11-20T08:49:56.687Z"
+          "version": "0.190.2",
+          "publishedAt": "2026-11-20T18:32:22.548Z"
         },
         {
-          "version": "0.187.0",
-          "publishedAt": "2026-11-18T22:07:22.906Z"
+          "version": "0.190.1",
+          "publishedAt": "2026-11-20T15:25:50.726Z"
         },
         {
-          "version": "0.186.0",
-          "publishedAt": "2026-11-17T20:57:26.802Z"
+          "version": "0.190.0",
+          "publishedAt": "2026-11-20T13:59:50.558Z"
         }
       ],
-      "releasesLast90d": 94,
+      "releasesLast90d": 98,
       "dependenciesCount": 13,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@softeria/ms-365-mcp-server",
       "githubUrl": "https://github.com/Softeria/ms-365-mcp-server",
-      "installCommand": "npx -y @softeria/ms-365-mcp-server@0.189.0",
+      "installCommand": "npx -y @softeria/ms-365-mcp-server@0.190.5",
       "stabilityScore": 65,
       "stabilityGrade": "C+"
     },
@@ -7925,7 +7925,7 @@
       "displayName": "Kubb MCP",
       "vendor": "Kubb",
       "githubRepo": "kubb-labs/kubb",
-      "breakingSummary": "recent release v5.23.1 (up from v5.23.0) updates Developer Tools MCP tool schemas and transport handling (125 releases in last 90d). Pin exact version v5.23.1 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v5.23.5 (up from v5.23.4) updates Developer Tools MCP tool schemas and transport handling (128 releases in last 90d). Pin exact version v5.23.5 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "kubb-mcp",
@@ -7933,11 +7933,27 @@
         "tools/call"
       ],
       "migrationBefore": "\"kubb-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@kubb/mcp@latest\"]\n}",
-      "migrationAfter": "\"kubb-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@kubb/mcp@5.23.1\"]\n}",
+      "migrationAfter": "\"kubb-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@kubb/mcp@5.23.5\"]\n}",
       "description": "MCP server for Kubb. Exposes code generation as a tool over the Model Context Protocol so AI assistants like Claude, Cursor, and other MCP-compatible clients can generate TypeScript types, clients, and more.",
-      "latestVersion": "5.23.1",
-      "latestPublishedAt": "2026-11-19T20:48:50.733Z",
+      "latestVersion": "5.23.5",
+      "latestPublishedAt": "2026-11-23T11:55:13.870Z",
       "recentVersions": [
+        {
+          "version": "5.23.5",
+          "publishedAt": "2026-11-23T11:55:13.870Z"
+        },
+        {
+          "version": "5.23.4",
+          "publishedAt": "2026-11-22T23:09:13.050Z"
+        },
+        {
+          "version": "5.23.3",
+          "publishedAt": "2026-11-22T21:24:07.645Z"
+        },
+        {
+          "version": "5.23.2",
+          "publishedAt": "2026-11-22T18:41:55.491Z"
+        },
         {
           "version": "5.23.1",
           "publishedAt": "2026-11-19T20:48:50.733Z"
@@ -7945,30 +7961,14 @@
         {
           "version": "5.23.0",
           "publishedAt": "2026-11-19T20:02:41.427Z"
-        },
-        {
-          "version": "5.22.0",
-          "publishedAt": "2026-11-19T12:18:56.708Z"
-        },
-        {
-          "version": "5.21.2",
-          "publishedAt": "2026-11-18T13:24:43.671Z"
-        },
-        {
-          "version": "5.21.1",
-          "publishedAt": "2026-11-17T09:10:27.687Z"
-        },
-        {
-          "version": "5.21.0",
-          "publishedAt": "2026-11-16T20:43:48.165Z"
         }
       ],
-      "releasesLast90d": 125,
+      "releasesLast90d": 128,
       "dependenciesCount": 7,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@kubb/mcp",
       "githubUrl": "https://github.com/kubb-labs/kubb",
-      "installCommand": "npx -y @kubb/mcp@5.23.1",
+      "installCommand": "npx -y @kubb/mcp@5.23.5",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -8037,7 +8037,7 @@
       "displayName": "Hostinger MCP",
       "vendor": "Hostinger",
       "githubRepo": "hostinger/api-mcp-server",
-      "breakingSummary": "Built on MCP SDK (^1.30.0); recent release v4.15.0 (up from v4.14.2) updates Developer Tools MCP tool schemas and transport handling (199 releases in last 90d). Pin exact version v4.15.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.30.0); recent release v4.20.0 (up from v4.19.0) updates Developer Tools MCP tool schemas and transport handling (206 releases in last 90d). Pin exact version v4.20.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "mcp",
@@ -8046,42 +8046,42 @@
         "tools/call"
       ],
       "migrationBefore": "\"hostinger-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@hostinger/mcp@latest\"]\n}",
-      "migrationAfter": "\"hostinger-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@hostinger/mcp@4.15.0\"]\n}",
+      "migrationAfter": "\"hostinger-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@hostinger/mcp@4.20.0\"]\n}",
       "description": "MCP server for Hostinger API",
-      "latestVersion": "4.15.0",
-      "latestPublishedAt": "2026-11-20T12:18:38.912Z",
+      "latestVersion": "4.20.0",
+      "latestPublishedAt": "2026-11-23T12:40:27.878Z",
       "recentVersions": [
         {
-          "version": "4.15.0",
-          "publishedAt": "2026-11-20T12:18:38.912Z"
+          "version": "4.20.0",
+          "publishedAt": "2026-11-23T12:40:27.878Z"
         },
         {
-          "version": "4.14.2",
-          "publishedAt": "2026-11-20T11:49:24.094Z"
+          "version": "4.19.0",
+          "publishedAt": "2026-11-23T12:35:52.832Z"
         },
         {
-          "version": "4.14.1",
-          "publishedAt": "2026-11-20T09:57:17.390Z"
+          "version": "4.18.0",
+          "publishedAt": "2026-11-23T12:08:50.301Z"
         },
         {
-          "version": "4.14.0",
-          "publishedAt": "2026-11-20T07:57:42.806Z"
+          "version": "4.17.0",
+          "publishedAt": "2026-11-23T11:51:00.220Z"
         },
         {
-          "version": "4.13.0",
-          "publishedAt": "2026-11-19T15:05:44.900Z"
+          "version": "4.16.0",
+          "publishedAt": "2026-11-23T10:41:03.126Z"
         },
         {
-          "version": "4.12.1",
-          "publishedAt": "2026-11-19T14:37:21.096Z"
+          "version": "4.15.2",
+          "publishedAt": "2026-11-23T06:14:18.145Z"
         }
       ],
-      "releasesLast90d": 199,
+      "releasesLast90d": 206,
       "dependenciesCount": 8,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@hostinger/mcp",
       "githubUrl": "https://github.com/hostinger/api-mcp-server",
-      "installCommand": "npx -y @hostinger/mcp@4.15.0",
+      "installCommand": "npx -y @hostinger/mcp@4.20.0",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -8150,7 +8150,7 @@
       "displayName": "Mcp-use Inspector",
       "vendor": "Mcp Use",
       "githubRepo": "mcp-use/mcp-use",
-      "breakingSummary": "recent release v20.3.33 (up from v20.3.32) updates MCP DevTool / Inspector tool schemas and transport handling (36 releases in last 90d). Pin exact version v20.3.33 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v20.3.33 (up from v20.3.32) updates MCP DevTool / Inspector tool schemas and transport handling (34 releases in last 90d). Pin exact version v20.3.33 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "mcp-inspect",
@@ -8188,7 +8188,7 @@
           "publishedAt": "2026-11-06T01:07:24.337Z"
         }
       ],
-      "releasesLast90d": 36,
+      "releasesLast90d": 34,
       "dependenciesCount": 0,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@mcp-use/inspector",
@@ -8374,7 +8374,7 @@
       "displayName": "N8n MCP Apps",
       "vendor": "N8n",
       "githubRepo": "n8n-io/n8n",
-      "breakingSummary": "recent release v0.25.4 (up from v0.25.4) updates Developer Tools MCP tool schemas and transport handling (77 releases in last 90d). Pin exact version v0.25.4 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v0.25.5 (up from v0.26.3) updates Developer Tools MCP tool schemas and transport handling (77 releases in last 90d). Pin exact version v0.25.5 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "tools/list",
@@ -8382,11 +8382,19 @@
         "mcp-apps"
       ],
       "migrationBefore": "\"n8n-mcp-apps\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@n8n/mcp-apps@latest\"]\n}",
-      "migrationAfter": "\"n8n-mcp-apps\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@n8n/mcp-apps@0.25.4\"]\n}",
+      "migrationAfter": "\"n8n-mcp-apps\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@n8n/mcp-apps@0.25.5\"]\n}",
       "description": "MCP Apps UI resources and server helpers for n8n",
-      "latestVersion": "0.25.4",
-      "latestPublishedAt": "2026-11-18T08:41:42.833Z",
+      "latestVersion": "0.25.5",
+      "latestPublishedAt": "2026-11-23T08:31:23.220Z",
       "recentVersions": [
+        {
+          "version": "0.25.5",
+          "publishedAt": "2026-11-23T08:31:23.220Z"
+        },
+        {
+          "version": "0.26.3",
+          "publishedAt": "2026-11-23T08:14:24.032Z"
+        },
         {
           "version": "0.26.2",
           "publishedAt": "2026-11-19T08:18:56.519Z"
@@ -8402,14 +8410,6 @@
         {
           "version": "0.26.0",
           "publishedAt": "2026-11-17T09:38:25.280Z"
-        },
-        {
-          "version": "1.3.0",
-          "publishedAt": "2026-11-17T09:14:33.753Z"
-        },
-        {
-          "version": "0.24.5",
-          "publishedAt": "2026-11-13T08:26:57.268Z"
         }
       ],
       "releasesLast90d": 77,
@@ -8417,7 +8417,7 @@
       "license": "SEE LICENSE IN LICENSE.m",
       "registryUrl": "https://www.npmjs.com/package/@n8n/mcp-apps",
       "githubUrl": "https://github.com/n8n-io/n8n",
-      "installCommand": "npx -y @n8n/mcp-apps@0.25.4",
+      "installCommand": "npx -y @n8n/mcp-apps@0.25.5",
       "stabilityScore": 65,
       "stabilityGrade": "C+"
     },
@@ -8526,7 +8526,7 @@
       "displayName": "MCP Use",
       "vendor": "mcp-use",
       "githubRepo": "mcp-use/mcp-use",
-      "breakingSummary": "recent release v2.12.9 (up from v2.12.8) updates MCP Bridge & Transport tool schemas and transport handling (37 releases in last 90d). Pin exact version v2.12.9 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v2.12.9 (up from v2.12.8) updates MCP Bridge & Transport tool schemas and transport handling (35 releases in last 90d). Pin exact version v2.12.9 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "mcp-use",
@@ -8564,7 +8564,7 @@
           "publishedAt": "2026-11-11T00:27:14.817Z"
         }
       ],
-      "releasesLast90d": 37,
+      "releasesLast90d": 35,
       "dependenciesCount": 9,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/mcp-use",
@@ -8750,7 +8750,7 @@
       "displayName": "Tacticlaunch MCP Linear",
       "vendor": "Tacticlaunch",
       "githubRepo": "tacticlaunch/mcp-linear",
-      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v1.4.6 (up from v1.4.5) updates Search & Research MCP tool schemas and transport handling (5 releases in last 90d). Pin exact version v1.4.6 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v1.4.6 (up from v1.4.5) updates Search & Research MCP tool schemas and transport handling (4 releases in last 90d). Pin exact version v1.4.6 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "mcp-linear",
@@ -8788,7 +8788,7 @@
           "publishedAt": "2026-07-28T19:04:53.593Z"
         }
       ],
-      "releasesLast90d": 5,
+      "releasesLast90d": 4,
       "dependenciesCount": 13,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@tacticlaunch/mcp-linear",
@@ -8806,7 +8806,7 @@
       "displayName": "Productbrain MCP",
       "vendor": "Productbrain",
       "githubRepo": "synergyai-os/productbrain",
-      "breakingSummary": "recent release v0.0.1-beta.16151 (up from v0.0.1-beta.16147) updates Developer Tools MCP tool schemas and transport handling (1598 releases in last 90d). Pin exact version v0.0.1-beta.16151 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v0.0.1-beta.16437 (up from v0.0.1-beta.16422) updates Developer Tools MCP tool schemas and transport handling (1611 releases in last 90d). Pin exact version v0.0.1-beta.16437 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "mcp",
@@ -8815,42 +8815,42 @@
         "tools/call"
       ],
       "migrationBefore": "\"productbrain-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@productbrain/mcp@latest\"]\n}",
-      "migrationAfter": "\"productbrain-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@productbrain/mcp@0.0.1-beta.16151\"]\n}",
+      "migrationAfter": "\"productbrain-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@productbrain/mcp@0.0.1-beta.16437\"]\n}",
       "description": "Product Brain - MCP server for AI-assisted product knowledge management",
-      "latestVersion": "0.0.1-beta.16151",
-      "latestPublishedAt": "2026-11-20T12:54:27.934Z",
+      "latestVersion": "0.0.1-beta.16437",
+      "latestPublishedAt": "2026-11-23T09:43:03.281Z",
       "recentVersions": [
         {
-          "version": "0.0.1-beta.16151",
-          "publishedAt": "2026-11-20T12:54:27.934Z"
+          "version": "0.0.1-beta.16437",
+          "publishedAt": "2026-11-23T09:43:03.281Z"
         },
         {
-          "version": "0.0.1-beta.16147",
-          "publishedAt": "2026-11-20T12:11:24.541Z"
+          "version": "0.0.1-beta.16422",
+          "publishedAt": "2026-11-22T22:31:48.057Z"
         },
         {
-          "version": "0.0.1-beta.16133",
-          "publishedAt": "2026-11-20T10:29:03.492Z"
+          "version": "0.0.1-beta.16412",
+          "publishedAt": "2026-11-22T20:13:14.693Z"
         },
         {
-          "version": "0.0.1-beta.16127",
-          "publishedAt": "2026-11-20T09:32:40.468Z"
+          "version": "0.0.1-beta.16406",
+          "publishedAt": "2026-11-22T19:41:23.053Z"
         },
         {
-          "version": "0.0.1-beta.16119",
-          "publishedAt": "2026-11-20T08:43:41.281Z"
+          "version": "0.0.1-beta.16389",
+          "publishedAt": "2026-11-22T06:15:44.558Z"
         },
         {
-          "version": "0.0.1-beta.16111",
-          "publishedAt": "2026-11-20T07:09:39.284Z"
+          "version": "0.0.1-beta.16383",
+          "publishedAt": "2026-11-22T05:49:36.976Z"
         }
       ],
-      "releasesLast90d": 1598,
+      "releasesLast90d": 1611,
       "dependenciesCount": 7,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@productbrain/mcp",
       "githubUrl": "https://github.com/synergyai-os/productbrain",
-      "installCommand": "npx -y @productbrain/mcp@0.0.1-beta.16151",
+      "installCommand": "npx -y @productbrain/mcp@0.0.1-beta.16437",
       "stabilityScore": 65,
       "stabilityGrade": "C+"
     },
@@ -8863,7 +8863,7 @@
       "displayName": "Mcpjam SDK",
       "vendor": "Mcpjam",
       "githubRepo": "MCPJam/inspector",
-      "breakingSummary": "recent release v10.11.0 (up from v10.10.0) updates MCP DevTool / Inspector tool schemas and transport handling (51 releases in last 90d). Pin exact version v10.11.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v10.12.0 (up from v10.11.0) updates MCP DevTool / Inspector tool schemas and transport handling (49 releases in last 90d). Pin exact version v10.12.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "tools/list",
@@ -8871,11 +8871,15 @@
         "sdk"
       ],
       "migrationBefore": "\"mcpjam-sdk\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@mcpjam/sdk@latest\"]\n}",
-      "migrationAfter": "\"mcpjam-sdk\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@mcpjam/sdk@10.11.0\"]\n}",
+      "migrationAfter": "\"mcpjam-sdk\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@mcpjam/sdk@10.12.0\"]\n}",
       "description": "MCP server unit testing, end to end (e2e) testing, and server evals",
-      "latestVersion": "10.11.0",
-      "latestPublishedAt": "2026-11-18T08:06:28.396Z",
+      "latestVersion": "10.12.0",
+      "latestPublishedAt": "2026-11-20T19:23:39.446Z",
       "recentVersions": [
+        {
+          "version": "10.12.0",
+          "publishedAt": "2026-11-20T19:23:39.446Z"
+        },
         {
           "version": "10.11.0",
           "publishedAt": "2026-11-18T08:06:28.396Z"
@@ -8895,18 +8899,14 @@
         {
           "version": "10.7.0",
           "publishedAt": "2026-11-13T16:30:22.820Z"
-        },
-        {
-          "version": "10.6.0",
-          "publishedAt": "2026-11-12T20:35:54.080Z"
         }
       ],
-      "releasesLast90d": 51,
+      "releasesLast90d": 49,
       "dependenciesCount": 24,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@mcpjam/sdk",
       "githubUrl": "https://github.com/MCPJam/inspector",
-      "installCommand": "npx -y @mcpjam/sdk@10.11.0",
+      "installCommand": "npx -y @mcpjam/sdk@10.12.0",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -9075,7 +9075,7 @@
       "displayName": "Comfyui MCP",
       "vendor": "artokun",
       "githubRepo": "artokun/comfyui-mcp",
-      "breakingSummary": "Built on MCP SDK (~1.32.1); recent release v0.52.206 (up from v0.52.205) updates Developer Tools MCP tool schemas and transport handling (144 releases in last 90d). Pin exact version v0.52.206 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (~1.32.1); recent release v0.52.206 (up from v0.52.205) updates Developer Tools MCP tool schemas and transport handling (95 releases in last 90d). Pin exact version v0.52.206 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "comfyui-mcp",
@@ -9113,7 +9113,7 @@
           "publishedAt": "2026-09-07T22:07:37.335Z"
         }
       ],
-      "releasesLast90d": 144,
+      "releasesLast90d": 95,
       "dependenciesCount": 10,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/comfyui-mcp",
@@ -9187,7 +9187,7 @@
       "displayName": "Hevy MCP",
       "vendor": "chrisdoc",
       "githubRepo": "chrisdoc/hevy-mcp",
-      "breakingSummary": "recent release v6.2.5 (up from v6.2.4) updates Developer Tools MCP tool schemas and transport handling (21 releases in last 90d). Pin exact version v6.2.5 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v6.2.5 (up from v6.2.4) updates Developer Tools MCP tool schemas and transport handling (20 releases in last 90d). Pin exact version v6.2.5 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "hevy-mcp",
@@ -9225,7 +9225,7 @@
           "publishedAt": "2026-10-07T10:20:21.234Z"
         }
       ],
-      "releasesLast90d": 21,
+      "releasesLast90d": 20,
       "dependenciesCount": 14,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/hevy-mcp",
@@ -9519,7 +9519,7 @@
       "displayName": "Cloudbase MCP",
       "vendor": "Cloudbase",
       "githubRepo": "TencentCloudBase/CloudBase-AI-Toolkit",
-      "breakingSummary": "recent release v2.37.9 (up from v2.37.8) updates Database & Backend MCP tool schemas and transport handling (33 releases in last 90d). Pin exact version v2.37.9 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v2.37.9 (up from v2.37.8) updates Database & Backend MCP tool schemas and transport handling (30 releases in last 90d). Pin exact version v2.37.9 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "cloudbase-mcp",
@@ -9557,7 +9557,7 @@
           "publishedAt": "2026-11-04T09:39:32.803Z"
         }
       ],
-      "releasesLast90d": 33,
+      "releasesLast90d": 30,
       "dependenciesCount": 0,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@cloudbase/cloudbase-mcp",
@@ -9799,7 +9799,7 @@
       "displayName": "Transcend-io MCP",
       "vendor": "Transcend Io",
       "githubRepo": "transcend-io/tools",
-      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v2.0.0 (up from v1.10.0) updates Developer Tools MCP tool schemas and transport handling (46 releases in last 90d). Pin exact version v2.0.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v2.0.0 (up from v1.10.0) updates Developer Tools MCP tool schemas and transport handling (44 releases in last 90d). Pin exact version v2.0.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "transcend-mcp",
@@ -9837,7 +9837,7 @@
           "publishedAt": "2026-11-19T19:08:54.180Z"
         }
       ],
-      "releasesLast90d": 46,
+      "releasesLast90d": 44,
       "dependenciesCount": 16,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@transcend-io/mcp",
@@ -9967,7 +9967,7 @@
       "displayName": "Xmcp",
       "vendor": "basementstudio",
       "githubRepo": "basementstudio/xmcp",
-      "breakingSummary": "recent release v1.12.1 (up from v1.12.0) updates MCP Bridge & Transport tool schemas and transport handling (24 releases in last 90d). Pin exact version v1.12.1 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v1.13.2 (up from v1.13.1) updates MCP Bridge & Transport tool schemas and transport handling (24 releases in last 90d). Pin exact version v1.13.2 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "xmcp",
@@ -9975,11 +9975,23 @@
         "tools/call"
       ],
       "migrationBefore": "\"xmcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"xmcp@latest\"]\n}",
-      "migrationAfter": "\"xmcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"xmcp@1.12.1\"]\n}",
+      "migrationAfter": "\"xmcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"xmcp@1.13.2\"]\n}",
       "description": "The TypeScript MCP framework",
-      "latestVersion": "1.12.1",
-      "latestPublishedAt": "2026-11-16T15:05:58.148Z",
+      "latestVersion": "1.13.2",
+      "latestPublishedAt": "2026-11-22T21:06:52.527Z",
       "recentVersions": [
+        {
+          "version": "1.13.2",
+          "publishedAt": "2026-11-22T21:06:52.527Z"
+        },
+        {
+          "version": "1.13.1",
+          "publishedAt": "2026-11-22T20:36:02.790Z"
+        },
+        {
+          "version": "1.13.0",
+          "publishedAt": "2026-11-20T14:13:07.317Z"
+        },
         {
           "version": "1.12.1",
           "publishedAt": "2026-11-16T15:05:58.148Z"
@@ -9991,18 +10003,6 @@
         {
           "version": "1.11.0",
           "publishedAt": "2026-11-16T13:33:40.823Z"
-        },
-        {
-          "version": "1.10.4",
-          "publishedAt": "2026-11-16T13:08:25.281Z"
-        },
-        {
-          "version": "1.10.3",
-          "publishedAt": "2026-11-15T14:00:16.450Z"
-        },
-        {
-          "version": "1.10.2",
-          "publishedAt": "2026-11-13T17:55:08.535Z"
         }
       ],
       "releasesLast90d": 24,
@@ -10010,7 +10010,7 @@
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/xmcp",
       "githubUrl": "https://github.com/basementstudio/xmcp",
-      "installCommand": "npx -y xmcp@1.12.1",
+      "installCommand": "npx -y xmcp@1.13.2",
       "stabilityScore": 82,
       "stabilityGrade": "B+"
     },
@@ -10515,7 +10515,7 @@
       "displayName": "Elgato MCP Server",
       "vendor": "Elgato",
       "githubRepo": "elgatosf/elgato-mcp-server",
-      "breakingSummary": "Built on MCP SDK (^1.30.0); recent release v0.1.8 (up from v0.1.7) updates MCP Bridge & Transport tool schemas and transport handling (5 releases in last 90d). Pin exact version v0.1.8 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.30.0); recent release v0.1.8 (up from v0.1.7) updates MCP Bridge & Transport tool schemas and transport handling (3 releases in last 90d). Pin exact version v0.1.8 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "elgato-mcp-server",
@@ -10553,7 +10553,7 @@
           "publishedAt": "2026-08-05T13:31:17.338Z"
         }
       ],
-      "releasesLast90d": 5,
+      "releasesLast90d": 3,
       "dependenciesCount": 4,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@elgato/mcp-server",
@@ -10627,7 +10627,7 @@
       "displayName": "Primer MCP",
       "vendor": "Primer",
       "githubRepo": "primer/react",
-      "breakingSummary": "recent release v1.1.2 (up from v1.1.2) updates Design & UI MCP tool schemas and transport handling (5 releases in last 90d). Pin exact version v1.1.2 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v1.1.2 (up from v0.0.0-20261119191924) updates Design & UI MCP tool schemas and transport handling (6 releases in last 90d). Pin exact version v1.1.2 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "mcp",
@@ -10640,6 +10640,10 @@
       "latestVersion": "1.1.2",
       "latestPublishedAt": "2026-10-23T15:50:14.824Z",
       "recentVersions": [
+        {
+          "version": "1.1.3",
+          "publishedAt": "2026-11-20T21:32:42.891Z"
+        },
         {
           "version": "0.0.0-20261119191924",
           "publishedAt": "2026-11-19T19:22:47.168Z"
@@ -10659,13 +10663,9 @@
         {
           "version": "0.0.0-20260831205533",
           "publishedAt": "2026-08-31T20:55:48.854Z"
-        },
-        {
-          "version": "0.0.0-20260814130501",
-          "publishedAt": "2026-08-14T13:05:09.160Z"
         }
       ],
-      "releasesLast90d": 5,
+      "releasesLast90d": 6,
       "dependenciesCount": 8,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@primer/mcp",
@@ -10779,7 +10779,7 @@
       "displayName": "Pptx Viewer MCP",
       "vendor": "ChristopherVR",
       "githubRepo": "ChristopherVR/ooxml",
-      "breakingSummary": "Built on MCP SDK (^1.32.2); recent release v2.10.3 (up from v2.10.2) updates Developer Tools MCP tool schemas and transport handling (34 releases in last 90d). Pin exact version v2.10.3 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.32.2); recent release v3.0.0 (up from v2.10.3) updates Developer Tools MCP tool schemas and transport handling (35 releases in last 90d). Pin exact version v3.0.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "pptx-tools",
@@ -10787,11 +10787,15 @@
         "tools/call"
       ],
       "migrationBefore": "\"pptx-viewer-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"pptx-viewer-mcp@latest\"]\n}",
-      "migrationAfter": "\"pptx-viewer-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"pptx-viewer-mcp@2.10.3\"]\n}",
+      "migrationAfter": "\"pptx-viewer-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"pptx-viewer-mcp@3.0.0\"]\n}",
       "description": "pptx-viewer MCP server and tools: manipulate, convert, and collaborate on PowerPoint .pptx files from AI agents.",
-      "latestVersion": "2.10.3",
-      "latestPublishedAt": "2026-11-13T06:20:50.953Z",
+      "latestVersion": "3.0.0",
+      "latestPublishedAt": "2026-11-21T02:14:01.638Z",
       "recentVersions": [
+        {
+          "version": "3.0.0",
+          "publishedAt": "2026-11-21T02:14:01.638Z"
+        },
         {
           "version": "2.10.3",
           "publishedAt": "2026-11-13T06:20:50.953Z"
@@ -10811,18 +10815,14 @@
         {
           "version": "2.9.1",
           "publishedAt": "2026-11-03T18:46:36.617Z"
-        },
-        {
-          "version": "2.9.0",
-          "publishedAt": "2026-10-30T12:57:31.934Z"
         }
       ],
-      "releasesLast90d": 34,
+      "releasesLast90d": 35,
       "dependenciesCount": 5,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/pptx-viewer-mcp",
       "githubUrl": "https://github.com/ChristopherVR/ooxml",
-      "installCommand": "npx -y pptx-viewer-mcp@2.10.3",
+      "installCommand": "npx -y pptx-viewer-mcp@3.0.0",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -10835,7 +10835,7 @@
       "displayName": "Dataforseo MCP Server",
       "vendor": "dataforseo",
       "githubRepo": "dataforseo/mcp-server-typescript",
-      "breakingSummary": "Built on MCP SDK (^1.30.0); recent release v3.1.3 (up from v3.1.2) updates Search & Research MCP tool schemas and transport handling (4 releases in last 90d). Pin exact version v3.1.3 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.30.0); recent release v3.1.3 (up from v3.1.2) updates Search & Research MCP tool schemas and transport handling (2 releases in last 90d). Pin exact version v3.1.3 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "dataforseo-mcp-server",
@@ -10873,7 +10873,7 @@
           "publishedAt": "2026-08-11T16:13:51.055Z"
         }
       ],
-      "releasesLast90d": 4,
+      "releasesLast90d": 2,
       "dependenciesCount": 6,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/dataforseo-mcp-server",
@@ -10935,7 +10935,7 @@
       "displayName": "Tpsdev-ai Flair MCP",
       "vendor": "Tpsdev Ai",
       "githubRepo": "tpsdev-ai/flair",
-      "breakingSummary": "Built on MCP SDK (1.31.0); recent release v0.62.0 (up from v0.59.0) updates Developer Tools MCP tool schemas and transport handling (19 releases in last 90d). Pin exact version v0.62.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (1.31.0); recent release v0.62.0 (up from v0.59.0) updates Developer Tools MCP tool schemas and transport handling (16 releases in last 90d). Pin exact version v0.62.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "flair-mcp",
@@ -10974,7 +10974,7 @@
           "publishedAt": "2026-09-23T19:31:47.107Z"
         }
       ],
-      "releasesLast90d": 19,
+      "releasesLast90d": 16,
       "dependenciesCount": 3,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@tpsdev-ai/flair-mcp",
@@ -11364,7 +11364,7 @@
       "displayName": "Freee MCP",
       "vendor": "freee",
       "githubRepo": "freee/freee-mcp",
-      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v0.38.3 (up from v0.38.2) updates Payments & FinTech MCP tool schemas and transport handling (34 releases in last 90d). Pin exact version v0.38.3 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v0.38.3 (up from v0.38.2) updates Payments & FinTech MCP tool schemas and transport handling (32 releases in last 90d). Pin exact version v0.38.3 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "freee-mcp",
@@ -11403,7 +11403,7 @@
           "publishedAt": "2026-11-05T03:43:40.823Z"
         }
       ],
-      "releasesLast90d": 34,
+      "releasesLast90d": 32,
       "dependenciesCount": 21,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/freee-mcp",
@@ -11421,7 +11421,7 @@
       "displayName": "Togglhq MCP",
       "vendor": "Togglhq",
       "githubRepo": "toggl/toggl-mcp",
-      "breakingSummary": "recent release v1.13.345 (up from v1.13.344) updates Developer Tools MCP tool schemas and transport handling (606 releases in last 90d). Pin exact version v1.13.345 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v1.13.359 (up from v1.13.358) updates Developer Tools MCP tool schemas and transport handling (620 releases in last 90d). Pin exact version v1.13.359 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "mcp",
@@ -11430,42 +11430,42 @@
         "tools/call"
       ],
       "migrationBefore": "\"togglhq-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@togglhq/mcp@latest\"]\n}",
-      "migrationAfter": "\"togglhq-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@togglhq/mcp@1.13.345\"]\n}",
+      "migrationAfter": "\"togglhq-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@togglhq/mcp@1.13.359\"]\n}",
       "description": "Toggl 2.0 MCP server for Claude Code, Claude Desktop, and other MCP clients.",
-      "latestVersion": "1.13.345",
-      "latestPublishedAt": "2026-11-20T13:22:13.917Z",
+      "latestVersion": "1.13.359",
+      "latestPublishedAt": "2026-11-23T12:59:29.025Z",
       "recentVersions": [
         {
-          "version": "1.13.345",
-          "publishedAt": "2026-11-20T13:22:13.917Z"
+          "version": "1.13.359",
+          "publishedAt": "2026-11-23T12:59:29.025Z"
         },
         {
-          "version": "1.13.344",
-          "publishedAt": "2026-11-20T13:13:05.545Z"
+          "version": "1.13.358",
+          "publishedAt": "2026-11-23T11:06:09.145Z"
         },
         {
-          "version": "1.13.343",
-          "publishedAt": "2026-11-20T13:06:25.733Z"
+          "version": "1.13.357",
+          "publishedAt": "2026-11-23T10:00:34.080Z"
         },
         {
-          "version": "1.13.342",
-          "publishedAt": "2026-11-20T12:26:11.898Z"
+          "version": "1.13.356",
+          "publishedAt": "2026-11-23T09:33:14.463Z"
         },
         {
-          "version": "1.13.341",
-          "publishedAt": "2026-11-20T12:04:29.673Z"
+          "version": "1.13.355",
+          "publishedAt": "2026-11-22T21:11:26.968Z"
         },
         {
-          "version": "1.13.340",
-          "publishedAt": "2026-11-20T11:22:30.126Z"
+          "version": "1.13.354",
+          "publishedAt": "2026-11-21T08:45:44.530Z"
         }
       ],
-      "releasesLast90d": 606,
+      "releasesLast90d": 620,
       "dependenciesCount": 2,
       "license": "UNLICENSED",
       "registryUrl": "https://www.npmjs.com/package/@togglhq/mcp",
       "githubUrl": "https://github.com/toggl/toggl-mcp",
-      "installCommand": "npx -y @togglhq/mcp@1.13.345",
+      "installCommand": "npx -y @togglhq/mcp@1.13.359",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -11478,7 +11478,7 @@
       "displayName": "Brightdata MCP",
       "vendor": "Brightdata",
       "githubRepo": "brightdata/brightdata-mcp",
-      "breakingSummary": "Built on MCP SDK (1.21.2); recent release v4.8.0 (up from v4.7.0) updates Search & Research MCP tool schemas and transport handling (15 releases in last 90d). Pin exact version v4.8.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (1.21.2); recent release v4.9.0 (up from v4.8.1) updates Search & Research MCP tool schemas and transport handling (17 releases in last 90d). Pin exact version v4.9.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "mcp",
@@ -11486,11 +11486,19 @@
         "tools/call"
       ],
       "migrationBefore": "\"brightdata-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@brightdata/mcp@latest\"]\n}",
-      "migrationAfter": "\"brightdata-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@brightdata/mcp@4.8.0\"]\n}",
+      "migrationAfter": "\"brightdata-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@brightdata/mcp@4.9.0\"]\n}",
       "description": "An MCP interface into the Bright Data toolset",
-      "latestVersion": "4.8.0",
-      "latestPublishedAt": "2026-11-10T13:01:24.790Z",
+      "latestVersion": "4.9.0",
+      "latestPublishedAt": "2026-11-23T12:09:37.862Z",
       "recentVersions": [
+        {
+          "version": "4.9.0",
+          "publishedAt": "2026-11-23T12:09:37.862Z"
+        },
+        {
+          "version": "4.8.1",
+          "publishedAt": "2026-11-22T11:47:47.250Z"
+        },
         {
           "version": "4.8.0",
           "publishedAt": "2026-11-10T13:01:24.790Z"
@@ -11506,22 +11514,14 @@
         {
           "version": "4.5.0",
           "publishedAt": "2026-11-05T10:32:05.284Z"
-        },
-        {
-          "version": "4.4.0",
-          "publishedAt": "2026-11-04T11:32:16.693Z"
-        },
-        {
-          "version": "4.3.0",
-          "publishedAt": "2026-11-02T12:25:20.290Z"
         }
       ],
-      "releasesLast90d": 15,
+      "releasesLast90d": 17,
       "dependenciesCount": 5,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@brightdata/mcp",
       "githubUrl": "https://github.com/brightdata/brightdata-mcp",
-      "installCommand": "npx -y @brightdata/mcp@4.8.0",
+      "installCommand": "npx -y @brightdata/mcp@4.9.0",
       "stabilityScore": 82,
       "stabilityGrade": "B+"
     },
@@ -11534,7 +11534,7 @@
       "displayName": "Typia MCP",
       "vendor": "Typia",
       "githubRepo": "samchon/typia",
-      "breakingSummary": "recent release v15.4.1 (up from v15.4.0) updates Developer Tools MCP tool schemas and transport handling (16 releases in last 90d). Pin exact version v15.4.1 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v15.4.1 (up from v15.4.0) updates Developer Tools MCP tool schemas and transport handling (15 releases in last 90d). Pin exact version v15.4.1 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "tools/list",
@@ -11572,7 +11572,7 @@
           "publishedAt": "2026-10-24T15:32:09.716Z"
         }
       ],
-      "releasesLast90d": 16,
+      "releasesLast90d": 15,
       "dependenciesCount": 2,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@typia/mcp",
@@ -11802,7 +11802,7 @@
       "displayName": "Alisaitteke Photoshop MCP",
       "vendor": "Alisaitteke",
       "githubRepo": "alisaitteke/photoshop-mcp",
-      "breakingSummary": "Built on MCP SDK (^1.0.4); recent release v1.7.38 (up from v1.7.37) updates Design & UI MCP tool schemas and transport handling (34 releases in last 90d). Pin exact version v1.7.38 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.0.4); recent release v1.7.38 (up from v1.7.37) updates Design & UI MCP tool schemas and transport handling (33 releases in last 90d). Pin exact version v1.7.38 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "ui",
@@ -11841,7 +11841,7 @@
           "publishedAt": "2026-10-05T10:16:30.746Z"
         }
       ],
-      "releasesLast90d": 34,
+      "releasesLast90d": 33,
       "dependenciesCount": 15,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@alisaitteke/photoshop-mcp",
@@ -11915,7 +11915,7 @@
       "displayName": "Runpod MCP Server",
       "vendor": "Runpod",
       "githubRepo": "runpod/runpod-mcp",
-      "breakingSummary": "Built on MCP SDK (^1.7.0); recent release v4.14.0 (up from v4.13.0) updates Cloud & Infra MCP tool schemas and transport handling (18 releases in last 90d). Pin exact version v4.14.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.7.0); recent release v5.0.0 (up from v4.15.0) updates Cloud & Infra MCP tool schemas and transport handling (21 releases in last 90d). Pin exact version v5.0.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "runpod-mcp",
@@ -11923,11 +11923,23 @@
         "tools/call"
       ],
       "migrationBefore": "\"runpod-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@runpod/mcp-server@latest\"]\n}",
-      "migrationAfter": "\"runpod-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@runpod/mcp-server@4.14.0\"]\n}",
+      "migrationAfter": "\"runpod-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@runpod/mcp-server@5.0.0\"]\n}",
       "description": "MCP server for interacting with Runpod API",
-      "latestVersion": "4.14.0",
-      "latestPublishedAt": "2026-11-20T00:01:55.334Z",
+      "latestVersion": "5.0.0",
+      "latestPublishedAt": "2026-11-23T02:51:18.026Z",
       "recentVersions": [
+        {
+          "version": "5.0.0",
+          "publishedAt": "2026-11-23T02:51:18.026Z"
+        },
+        {
+          "version": "4.15.0",
+          "publishedAt": "2026-11-22T06:19:44.997Z"
+        },
+        {
+          "version": "4.14.1",
+          "publishedAt": "2026-11-22T05:38:03.306Z"
+        },
         {
           "version": "4.14.0",
           "publishedAt": "2026-11-20T00:01:55.334Z"
@@ -11939,26 +11951,14 @@
         {
           "version": "4.12.0",
           "publishedAt": "2026-11-12T21:32:27.014Z"
-        },
-        {
-          "version": "4.11.0",
-          "publishedAt": "2026-11-12T18:16:58.482Z"
-        },
-        {
-          "version": "4.10.1",
-          "publishedAt": "2026-11-06T19:03:10.602Z"
-        },
-        {
-          "version": "4.10.0",
-          "publishedAt": "2026-11-06T14:55:32.707Z"
         }
       ],
-      "releasesLast90d": 18,
+      "releasesLast90d": 21,
       "dependenciesCount": 6,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@runpod/mcp-server",
       "githubUrl": "https://github.com/runpod/runpod-mcp",
-      "installCommand": "npx -y @runpod/mcp-server@4.14.0",
+      "installCommand": "npx -y @runpod/mcp-server@5.0.0",
       "stabilityScore": 82,
       "stabilityGrade": "B+"
     },
@@ -11971,7 +11971,7 @@
       "displayName": "Foldkit Devtools MCP",
       "vendor": "Foldkit",
       "githubRepo": "foldkit/foldkit",
-      "breakingSummary": "Built on MCP SDK (1.29.0); recent release v0.26.0 (up from v0.25.0) updates Browser Automation MCP tool schemas and transport handling (16 releases in last 90d). Pin exact version v0.26.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (1.29.0); recent release v0.26.0 (up from v0.25.0) updates Browser Automation MCP tool schemas and transport handling (15 releases in last 90d). Pin exact version v0.26.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "foldkit-devtools-mcp",
@@ -12009,7 +12009,7 @@
           "publishedAt": "2026-09-20T00:13:41.981Z"
         }
       ],
-      "releasesLast90d": 16,
+      "releasesLast90d": 15,
       "dependenciesCount": 2,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@foldkit/devtools-mcp",
@@ -12027,7 +12027,7 @@
       "displayName": "Rsbuild Plugin Vue MCP",
       "vendor": "BrightX",
       "githubRepo": "BrightX/rsbuild-plugin-vue-mcp",
-      "breakingSummary": "Built on MCP SDK (^1.24.0); recent release v0.1.3 (up from v0.1.2) updates Browser Automation MCP tool schemas and transport handling (4 releases in last 90d). Pin exact version v0.1.3 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.24.0); recent release v0.1.3 (up from v0.1.2) updates Browser Automation MCP tool schemas and transport handling (2 releases in last 90d). Pin exact version v0.1.3 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "tools/list",
@@ -12057,7 +12057,7 @@
           "publishedAt": "2026-08-23T09:53:41.159Z"
         }
       ],
-      "releasesLast90d": 4,
+      "releasesLast90d": 2,
       "dependenciesCount": 5,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/rsbuild-plugin-vue-mcp",
@@ -12356,7 +12356,7 @@
       "displayName": "SSH MCP",
       "vendor": "tufantunc",
       "githubRepo": "tufantunc/ssh-mcp",
-      "breakingSummary": "Built on MCP SDK (^1.32.1); recent release v2.26.0 (up from v2.25.1) updates Cloud & Infra MCP tool schemas and transport handling (39 releases in last 90d). Pin exact version v2.26.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.32.1); recent release v2.28.0 (up from v2.27.1) updates Cloud & Infra MCP tool schemas and transport handling (38 releases in last 90d). Pin exact version v2.28.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "ssh-mcp",
@@ -12364,11 +12364,23 @@
         "tools/call"
       ],
       "migrationBefore": "\"ssh-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"ssh-mcp@latest\"]\n}",
-      "migrationAfter": "\"ssh-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"ssh-mcp@2.26.0\"]\n}",
+      "migrationAfter": "\"ssh-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"ssh-mcp@2.28.0\"]\n}",
       "description": "MCP server exposing policy-gated, audited SSH access for Linux and Windows hosts via the Model Context Protocol.",
-      "latestVersion": "2.26.0",
-      "latestPublishedAt": "2026-11-12T11:47:26.661Z",
+      "latestVersion": "2.28.0",
+      "latestPublishedAt": "2026-11-23T13:37:44.491Z",
       "recentVersions": [
+        {
+          "version": "2.28.0",
+          "publishedAt": "2026-11-23T13:37:44.491Z"
+        },
+        {
+          "version": "2.27.1",
+          "publishedAt": "2026-11-21T13:39:58.333Z"
+        },
+        {
+          "version": "2.27.0",
+          "publishedAt": "2026-11-21T12:07:01.590Z"
+        },
         {
           "version": "2.26.0",
           "publishedAt": "2026-11-12T11:47:26.661Z"
@@ -12380,26 +12392,14 @@
         {
           "version": "2.25.0",
           "publishedAt": "2026-11-10T11:55:37.141Z"
-        },
-        {
-          "version": "2.24.0",
-          "publishedAt": "2026-11-09T22:47:04.454Z"
-        },
-        {
-          "version": "2.23.1",
-          "publishedAt": "2026-11-06T14:37:06.150Z"
-        },
-        {
-          "version": "2.23.0",
-          "publishedAt": "2026-11-04T06:23:22.585Z"
         }
       ],
-      "releasesLast90d": 39,
+      "releasesLast90d": 38,
       "dependenciesCount": 9,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/ssh-mcp",
       "githubUrl": "https://github.com/tufantunc/ssh-mcp",
-      "installCommand": "npx -y ssh-mcp@2.26.0",
+      "installCommand": "npx -y ssh-mcp@2.28.0",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -12412,7 +12412,7 @@
       "displayName": "Dbx-app MCP Server",
       "vendor": "Dbx App",
       "githubRepo": "t8y2/dbx",
-      "breakingSummary": "recent release v0.4.144 (up from v0.4.143) updates Database & Backend MCP tool schemas and transport handling (74 releases in last 90d). Pin exact version v0.4.144 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v0.4.144 (up from v0.4.143) updates Database & Backend MCP tool schemas and transport handling (71 releases in last 90d). Pin exact version v0.4.144 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "mcp-server",
@@ -12451,7 +12451,7 @@
           "publishedAt": "2026-11-05T04:49:37.272Z"
         }
       ],
-      "releasesLast90d": 74,
+      "releasesLast90d": 71,
       "dependenciesCount": 0,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@dbx-app/mcp-server",
@@ -12525,7 +12525,7 @@
       "displayName": "Sap Mdk MCP Server",
       "vendor": "Sap",
       "githubRepo": "SAP/mdk-mcp-server",
-      "breakingSummary": "Built on MCP SDK (^1.25.3); recent release v0.4.3 (up from v0.4.2) updates Developer Tools MCP tool schemas and transport handling (3 releases in last 90d). Pin exact version v0.4.3 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.25.3); recent release v0.4.4 (up from v0.4.3) updates Developer Tools MCP tool schemas and transport handling (4 releases in last 90d). Pin exact version v0.4.4 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "mdk-mcp",
@@ -12533,11 +12533,15 @@
         "tools/call"
       ],
       "migrationBefore": "\"sap-mdk-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@sap/mdk-mcp-server@latest\"]\n}",
-      "migrationAfter": "\"sap-mdk-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@sap/mdk-mcp-server@0.4.3\"]\n}",
+      "migrationAfter": "\"sap-mdk-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@sap/mdk-mcp-server@0.4.4\"]\n}",
       "description": "Model Context Protocol (MCP) server for AI-assisted development of MDK applications.",
-      "latestVersion": "0.4.3",
-      "latestPublishedAt": "2026-11-15T13:24:36.426Z",
+      "latestVersion": "0.4.4",
+      "latestPublishedAt": "2026-11-22T13:46:34.745Z",
       "recentVersions": [
+        {
+          "version": "0.4.4",
+          "publishedAt": "2026-11-22T13:46:34.745Z"
+        },
         {
           "version": "0.4.3",
           "publishedAt": "2026-11-15T13:24:36.426Z"
@@ -12557,18 +12561,14 @@
         {
           "version": "0.3.7",
           "publishedAt": "2026-04-19T11:42:20.615Z"
-        },
-        {
-          "version": "0.3.6",
-          "publishedAt": "2026-04-19T11:27:06.398Z"
         }
       ],
-      "releasesLast90d": 3,
+      "releasesLast90d": 4,
       "dependenciesCount": 17,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@sap/mdk-mcp-server",
       "githubUrl": "https://github.com/SAP/mdk-mcp-server",
-      "installCommand": "npx -y @sap/mdk-mcp-server@0.4.3",
+      "installCommand": "npx -y @sap/mdk-mcp-server@0.4.4",
       "stabilityScore": 73,
       "stabilityGrade": "C+"
     },
@@ -12637,7 +12637,7 @@
       "displayName": "Appium MCP",
       "vendor": "appium",
       "githubRepo": "appium/appium-mcp",
-      "breakingSummary": "Built on MCP SDK (^1.22.0); recent release v1.99.3 (up from v1.99.2) updates Browser Automation MCP tool schemas and transport handling (32 releases in last 90d). Pin exact version v1.99.3 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.22.0); recent release v2.0.0 (up from v1.99.5) updates Browser Automation MCP tool schemas and transport handling (34 releases in last 90d). Pin exact version v2.0.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "appium-mcp",
@@ -12645,11 +12645,23 @@
         "tools/call"
       ],
       "migrationBefore": "\"appium-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"appium-mcp@latest\"]\n}",
-      "migrationAfter": "\"appium-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"appium-mcp@1.99.3\"]\n}",
+      "migrationAfter": "\"appium-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"appium-mcp@2.0.0\"]\n}",
       "description": "Intelligent MCP server providing AI assistants with powerful tools and resources for Appium mobile automation",
-      "latestVersion": "1.99.3",
-      "latestPublishedAt": "2026-11-04T05:42:49.507Z",
+      "latestVersion": "2.0.0",
+      "latestPublishedAt": "2026-11-22T02:46:59.220Z",
       "recentVersions": [
+        {
+          "version": "2.0.0",
+          "publishedAt": "2026-11-22T02:46:59.220Z"
+        },
+        {
+          "version": "1.99.5",
+          "publishedAt": "2026-11-21T07:23:42.121Z"
+        },
+        {
+          "version": "1.99.4",
+          "publishedAt": "2026-11-21T04:54:33.624Z"
+        },
         {
           "version": "1.99.3",
           "publishedAt": "2026-11-04T05:42:49.507Z"
@@ -12661,26 +12673,14 @@
         {
           "version": "1.99.1",
           "publishedAt": "2026-10-27T06:46:15.200Z"
-        },
-        {
-          "version": "1.99.0",
-          "publishedAt": "2026-10-26T06:30:15.967Z"
-        },
-        {
-          "version": "1.98.0",
-          "publishedAt": "2026-10-25T22:24:28.128Z"
-        },
-        {
-          "version": "1.97.2",
-          "publishedAt": "2026-10-25T20:00:56.219Z"
         }
       ],
-      "releasesLast90d": 32,
-      "dependenciesCount": 17,
+      "releasesLast90d": 34,
+      "dependenciesCount": 16,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/appium-mcp",
       "githubUrl": "https://github.com/appium/appium-mcp",
-      "installCommand": "npx -y appium-mcp@1.99.3",
+      "installCommand": "npx -y appium-mcp@2.0.0",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -12749,7 +12749,7 @@
       "displayName": "Davinci Resolve MCP",
       "vendor": "samuelgursky",
       "githubRepo": "samuelgursky/davinci-resolve-mcp",
-      "breakingSummary": "Built on MCP SDK (^1.30.0); recent release v5.4.0 (up from v5.3.4) updates Developer Tools MCP tool schemas and transport handling (326 releases in last 90d). Pin exact version v5.4.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.30.0); recent release v5.4.0 (up from v5.3.4) updates Developer Tools MCP tool schemas and transport handling (316 releases in last 90d). Pin exact version v5.4.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "davinci-resolve-mcp",
@@ -12788,7 +12788,7 @@
           "publishedAt": "2026-11-16T21:40:08.309Z"
         }
       ],
-      "releasesLast90d": 326,
+      "releasesLast90d": 316,
       "dependenciesCount": 7,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/davinci-resolve-mcp",
@@ -12918,7 +12918,7 @@
       "displayName": "Agentistics MCP",
       "vendor": "Agentistics",
       "githubRepo": "agentistics/agentistics",
-      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v2.219.0 (up from v2.218.4) updates Developer Tools MCP tool schemas and transport handling (439 releases in last 90d). Pin exact version v2.219.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.29.0); recent release v2.226.0 (up from v2.225.0) updates Developer Tools MCP tool schemas and transport handling (448 releases in last 90d). Pin exact version v2.226.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "agentistics-mcp",
@@ -12926,42 +12926,42 @@
         "tools/call"
       ],
       "migrationBefore": "\"agentistics-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@agentistics/mcp@latest\"]\n}",
-      "migrationAfter": "\"agentistics-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@agentistics/mcp@2.219.0\"]\n}",
+      "migrationAfter": "\"agentistics-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@agentistics/mcp@2.226.0\"]\n}",
       "description": "Agentistics MCP server - Claude Code analytics for Claude Desktop and Claude Code",
-      "latestVersion": "2.219.0",
-      "latestPublishedAt": "2026-11-19T22:01:55.218Z",
+      "latestVersion": "2.226.0",
+      "latestPublishedAt": "2026-11-23T07:04:31.557Z",
       "recentVersions": [
         {
-          "version": "2.219.0",
-          "publishedAt": "2026-11-19T22:01:55.218Z"
+          "version": "2.226.0",
+          "publishedAt": "2026-11-23T07:04:31.557Z"
         },
         {
-          "version": "2.218.4",
-          "publishedAt": "2026-11-19T14:07:31.689Z"
+          "version": "2.225.0",
+          "publishedAt": "2026-11-22T17:45:08.382Z"
         },
         {
-          "version": "2.218.3",
-          "publishedAt": "2026-11-19T03:47:24.489Z"
+          "version": "2.224.2",
+          "publishedAt": "2026-11-21T12:11:40.353Z"
         },
         {
-          "version": "2.218.2",
-          "publishedAt": "2026-11-19T03:05:04.696Z"
+          "version": "2.224.1",
+          "publishedAt": "2026-11-21T10:50:51.038Z"
         },
         {
-          "version": "2.218.1",
-          "publishedAt": "2026-11-19T00:58:37.567Z"
+          "version": "2.224.0",
+          "publishedAt": "2026-11-21T09:51:40.479Z"
         },
         {
-          "version": "2.218.0",
-          "publishedAt": "2026-11-18T22:08:49.401Z"
+          "version": "2.223.0",
+          "publishedAt": "2026-11-21T08:17:05.819Z"
         }
       ],
-      "releasesLast90d": 439,
+      "releasesLast90d": 448,
       "dependenciesCount": 1,
       "license": "FSL-1.1-ALv2",
       "registryUrl": "https://www.npmjs.com/package/@agentistics/mcp",
       "githubUrl": "https://github.com/agentistics/agentistics",
-      "installCommand": "npx -y @agentistics/mcp@2.219.0",
+      "installCommand": "npx -y @agentistics/mcp@2.226.0",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -13142,7 +13142,7 @@
       "displayName": "Kenwea MCP",
       "vendor": "Kenwea",
       "githubRepo": "kenwea-protocol/kenwea",
-      "breakingSummary": "recent release v0.8.1 (up from v0.8.0) updates MCP Bridge & Transport tool schemas and transport handling (14 releases in last 90d). Pin exact version v0.8.1 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v0.8.3 (up from v0.8.2) updates MCP Bridge & Transport tool schemas and transport handling (16 releases in last 90d). Pin exact version v0.8.3 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "kenwea",
@@ -13151,11 +13151,19 @@
         "tools/call"
       ],
       "migrationBefore": "\"kenwea-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@kenwea/mcp@latest\"]\n}",
-      "migrationAfter": "\"kenwea-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@kenwea/mcp@0.8.1\"]\n}",
+      "migrationAfter": "\"kenwea-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@kenwea/mcp@0.8.3\"]\n}",
       "description": "Get a third-party sandbox verdict on any artifact in one command, with no account: npx @kenwea/mcp check <url>. Also the stdio<->HTTP MCP bridge to mcp.kenwea.com.",
-      "latestVersion": "0.8.1",
-      "latestPublishedAt": "2026-11-14T09:11:47.586Z",
+      "latestVersion": "0.8.3",
+      "latestPublishedAt": "2026-11-22T23:33:36.238Z",
       "recentVersions": [
+        {
+          "version": "0.8.3",
+          "publishedAt": "2026-11-22T23:33:36.238Z"
+        },
+        {
+          "version": "0.8.2",
+          "publishedAt": "2026-11-22T22:44:07.298Z"
+        },
         {
           "version": "0.8.1",
           "publishedAt": "2026-11-14T09:11:47.586Z"
@@ -13171,22 +13179,14 @@
         {
           "version": "0.7.3",
           "publishedAt": "2026-10-31T10:01:14.685Z"
-        },
-        {
-          "version": "0.7.2",
-          "publishedAt": "2026-10-25T22:23:53.373Z"
-        },
-        {
-          "version": "0.7.1",
-          "publishedAt": "2026-10-21T13:57:33.252Z"
         }
       ],
-      "releasesLast90d": 14,
+      "releasesLast90d": 16,
       "dependenciesCount": 0,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@kenwea/mcp",
       "githubUrl": "https://github.com/kenwea-protocol/kenwea",
-      "installCommand": "npx -y @kenwea/mcp@0.8.1",
+      "installCommand": "npx -y @kenwea/mcp@0.8.3",
       "stabilityScore": 69,
       "stabilityGrade": "C+"
     },
@@ -13199,7 +13199,7 @@
       "displayName": "Phantom MCP Server",
       "vendor": "Phantom",
       "githubRepo": "phantom/phantom-connect-sdk",
-      "breakingSummary": "recent release v1.2.10 (up from v1.2.9) updates Payments & FinTech MCP tool schemas and transport handling (3 releases in last 90d). Pin exact version v1.2.10 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v1.2.12 (up from v1.2.11) updates Payments & FinTech MCP tool schemas and transport handling (5 releases in last 90d). Pin exact version v1.2.12 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "phantom-mcp",
@@ -13207,11 +13207,19 @@
         "tools/call"
       ],
       "migrationBefore": "\"phantom-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@phantom/mcp-server@latest\"]\n}",
-      "migrationAfter": "\"phantom-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@phantom/mcp-server@1.2.10\"]\n}",
+      "migrationAfter": "\"phantom-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@phantom/mcp-server@1.2.12\"]\n}",
       "description": "MCP Server for Phantom Wallet",
-      "latestVersion": "1.2.10",
-      "latestPublishedAt": "2026-11-17T18:43:52.013Z",
+      "latestVersion": "1.2.12",
+      "latestPublishedAt": "2026-11-23T10:02:20.723Z",
       "recentVersions": [
+        {
+          "version": "1.2.12",
+          "publishedAt": "2026-11-23T10:02:20.723Z"
+        },
+        {
+          "version": "1.2.11",
+          "publishedAt": "2026-11-23T09:54:33.100Z"
+        },
         {
           "version": "1.2.10",
           "publishedAt": "2026-11-17T18:43:52.013Z"
@@ -13227,22 +13235,14 @@
         {
           "version": "1.2.7",
           "publishedAt": "2026-04-28T09:22:50.215Z"
-        },
-        {
-          "version": "1.2.6",
-          "publishedAt": "2026-04-27T14:31:21.413Z"
-        },
-        {
-          "version": "1.2.5",
-          "publishedAt": "2026-04-21T13:07:42.679Z"
         }
       ],
-      "releasesLast90d": 3,
+      "releasesLast90d": 5,
       "dependenciesCount": 1,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@phantom/mcp-server",
       "githubUrl": "https://github.com/phantom/phantom-connect-sdk",
-      "installCommand": "npx -y @phantom/mcp-server@1.2.10",
+      "installCommand": "npx -y @phantom/mcp-server@1.2.12",
       "stabilityScore": 86,
       "stabilityGrade": "B+"
     },
@@ -13255,7 +13255,7 @@
       "displayName": "Apple Notes MCP",
       "vendor": "sweetrb",
       "githubRepo": "sweetrb/apple-notes-mcp",
-      "breakingSummary": "Built on MCP SDK (^1.31.0); recent release v2.16.9 (up from v2.16.8) updates Search & Research MCP tool schemas and transport handling (121 releases in last 90d). Pin exact version v2.16.9 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.31.0); recent release v2.16.11 (up from v2.16.10) updates Search & Research MCP tool schemas and transport handling (123 releases in last 90d). Pin exact version v2.16.11 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "apple-notes-mcp",
@@ -13263,11 +13263,19 @@
         "tools/call"
       ],
       "migrationBefore": "\"apple-notes-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"apple-notes-mcp@latest\"]\n}",
-      "migrationAfter": "\"apple-notes-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"apple-notes-mcp@2.16.9\"]\n}",
+      "migrationAfter": "\"apple-notes-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"apple-notes-mcp@2.16.11\"]\n}",
       "description": "MCP server for Apple Notes - read, search, create, edit, organize, and export notes on macOS via Claude and other AI assistants",
-      "latestVersion": "2.16.9",
-      "latestPublishedAt": "2026-11-20T12:52:20.856Z",
+      "latestVersion": "2.16.11",
+      "latestPublishedAt": "2026-11-21T12:42:50.327Z",
       "recentVersions": [
+        {
+          "version": "2.16.11",
+          "publishedAt": "2026-11-21T12:42:50.327Z"
+        },
+        {
+          "version": "2.16.10",
+          "publishedAt": "2026-11-20T16:11:29.929Z"
+        },
         {
           "version": "2.16.9",
           "publishedAt": "2026-11-20T12:52:20.856Z"
@@ -13283,22 +13291,14 @@
         {
           "version": "2.16.6",
           "publishedAt": "2026-11-12T12:45:50.895Z"
-        },
-        {
-          "version": "2.16.5",
-          "publishedAt": "2026-11-11T12:45:32.546Z"
-        },
-        {
-          "version": "2.16.4",
-          "publishedAt": "2026-11-10T22:56:41.696Z"
         }
       ],
-      "releasesLast90d": 121,
+      "releasesLast90d": 123,
       "dependenciesCount": 3,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/apple-notes-mcp",
       "githubUrl": "https://github.com/sweetrb/apple-notes-mcp",
-      "installCommand": "npx -y apple-notes-mcp@2.16.9",
+      "installCommand": "npx -y apple-notes-mcp@2.16.11",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
@@ -13415,7 +13415,7 @@
       "displayName": "Qase MCP Server",
       "vendor": "Qase",
       "githubRepo": "qase-tms/qase-mcp-server",
-      "breakingSummary": "recent release v3.2.0 (up from v3.1.0) updates Developer Tools MCP tool schemas and transport handling (24 releases in last 90d). Pin exact version v3.2.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v3.2.1 (up from v3.2.0) updates Developer Tools MCP tool schemas and transport handling (25 releases in last 90d). Pin exact version v3.2.1 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "qase-mcp-server",
@@ -13423,11 +13423,15 @@
         "tools/call"
       ],
       "migrationBefore": "\"qase-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@qase/mcp-server@latest\"]\n}",
-      "migrationAfter": "\"qase-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@qase/mcp-server@3.2.0\"]\n}",
+      "migrationAfter": "\"qase-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@qase/mcp-server@3.2.1\"]\n}",
       "description": "Official MCP server for Qase Test Management Platform",
-      "latestVersion": "3.2.0",
-      "latestPublishedAt": "2026-11-18T15:01:22.317Z",
+      "latestVersion": "3.2.1",
+      "latestPublishedAt": "2026-11-23T12:35:44.049Z",
       "recentVersions": [
+        {
+          "version": "3.2.1",
+          "publishedAt": "2026-11-23T12:35:44.049Z"
+        },
         {
           "version": "3.2.0",
           "publishedAt": "2026-11-18T15:01:22.317Z"
@@ -13447,18 +13451,14 @@
         {
           "version": "3.0.5",
           "publishedAt": "2026-11-04T08:49:33.577Z"
-        },
-        {
-          "version": "3.0.4",
-          "publishedAt": "2026-10-30T13:22:19.696Z"
         }
       ],
-      "releasesLast90d": 24,
+      "releasesLast90d": 25,
       "dependenciesCount": 13,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/@qase/mcp-server",
       "githubUrl": "https://github.com/qase-tms/qase-mcp-server",
-      "installCommand": "npx -y @qase/mcp-server@3.2.0",
+      "installCommand": "npx -y @qase/mcp-server@3.2.1",
       "stabilityScore": 82,
       "stabilityGrade": "B+"
     },
@@ -13800,7 +13800,7 @@
       "displayName": "Aventurevc MCP Server",
       "vendor": "Aventurevc",
       "githubRepo": "aventurevc/aventure-mcp",
-      "breakingSummary": "recent release v0.8.473 (up from v0.8.472) updates Search & Research MCP tool schemas and transport handling (433 releases in last 90d). Pin exact version v0.8.473 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v0.8.491 (up from v0.8.490) updates Search & Research MCP tool schemas and transport handling (451 releases in last 90d). Pin exact version v0.8.491 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "aventure-mcp",
@@ -13809,42 +13809,42 @@
         "tools/call"
       ],
       "migrationBefore": "\"aventurevc-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@aventurevc/mcp-server@latest\"]\n}",
-      "migrationAfter": "\"aventurevc-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@aventurevc/mcp-server@0.8.473\"]\n}",
+      "migrationAfter": "\"aventurevc-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@aventurevc/mcp-server@0.8.491\"]\n}",
       "description": "MCP server that gives AI assistants access to aVenture research data on companies, people, funding, and news.",
-      "latestVersion": "0.8.473",
-      "latestPublishedAt": "2026-11-20T08:35:30.380Z",
+      "latestVersion": "0.8.491",
+      "latestPublishedAt": "2026-11-23T12:09:40.216Z",
       "recentVersions": [
         {
-          "version": "0.8.473",
-          "publishedAt": "2026-11-20T08:35:30.380Z"
+          "version": "0.8.491",
+          "publishedAt": "2026-11-23T12:09:40.216Z"
         },
         {
-          "version": "0.8.472",
-          "publishedAt": "2026-11-20T00:37:25.754Z"
+          "version": "0.8.490",
+          "publishedAt": "2026-11-23T10:18:40.419Z"
         },
         {
-          "version": "0.8.471",
-          "publishedAt": "2026-11-19T21:11:31.562Z"
+          "version": "0.8.489",
+          "publishedAt": "2026-11-23T07:07:36.699Z"
         },
         {
-          "version": "0.8.470",
-          "publishedAt": "2026-11-19T17:29:58.892Z"
+          "version": "0.8.488",
+          "publishedAt": "2026-11-23T04:36:45.210Z"
         },
         {
-          "version": "0.8.469",
-          "publishedAt": "2026-11-19T09:44:40.403Z"
+          "version": "0.8.487",
+          "publishedAt": "2026-11-23T00:37:32.678Z"
         },
         {
-          "version": "0.8.468",
-          "publishedAt": "2026-11-19T05:04:13.019Z"
+          "version": "0.8.486",
+          "publishedAt": "2026-11-22T23:26:35.705Z"
         }
       ],
-      "releasesLast90d": 433,
+      "releasesLast90d": 451,
       "dependenciesCount": 0,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@aventurevc/mcp-server",
       "githubUrl": "https://github.com/aventurevc/aventure-mcp",
-      "installCommand": "npx -y @aventurevc/mcp-server@0.8.473",
+      "installCommand": "npx -y @aventurevc/mcp-server@0.8.491",
       "stabilityScore": 65,
       "stabilityGrade": "C+"
     },
@@ -13913,7 +13913,7 @@
       "displayName": "Hypequery MCP",
       "vendor": "Hypequery",
       "githubRepo": "hypequery/hypequery",
-      "breakingSummary": "Built on MCP SDK (^1.32.2); recent release v0.15.0 (up from v0.14.0) updates Database & Backend MCP tool schemas and transport handling (21 releases in last 90d). Pin exact version v0.15.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.32.2); recent release v0.15.2 (up from v0.15.0) updates Database & Backend MCP tool schemas and transport handling (22 releases in last 90d). Pin exact version v0.15.2 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "hypequery-mcp",
@@ -13921,11 +13921,15 @@
         "tools/call"
       ],
       "migrationBefore": "\"hypequery-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@hypequery/mcp@latest\"]\n}",
-      "migrationAfter": "\"hypequery-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@hypequery/mcp@0.15.0\"]\n}",
+      "migrationAfter": "\"hypequery-mcp\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"@hypequery/mcp@0.15.2\"]\n}",
       "description": "ClickHouse MCP server for Claude Code, Cursor, Codex and AI agents: governed datasets and metrics as tools, never raw SQL.",
-      "latestVersion": "0.15.0",
-      "latestPublishedAt": "2026-11-17T09:10:47.756Z",
+      "latestVersion": "0.15.2",
+      "latestPublishedAt": "2026-11-22T17:34:22.671Z",
       "recentVersions": [
+        {
+          "version": "0.15.2",
+          "publishedAt": "2026-11-22T17:34:22.671Z"
+        },
         {
           "version": "0.15.0",
           "publishedAt": "2026-11-17T09:10:47.756Z"
@@ -13945,18 +13949,14 @@
         {
           "version": "0.11.3",
           "publishedAt": "2026-11-01T14:13:45.424Z"
-        },
-        {
-          "version": "0.11.2",
-          "publishedAt": "2026-11-01T13:20:13.385Z"
         }
       ],
-      "releasesLast90d": 21,
+      "releasesLast90d": 22,
       "dependenciesCount": 4,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/@hypequery/mcp",
       "githubUrl": "https://github.com/hypequery/hypequery",
-      "installCommand": "npx -y @hypequery/mcp@0.15.0",
+      "installCommand": "npx -y @hypequery/mcp@0.15.2",
       "stabilityScore": 69,
       "stabilityGrade": "C+"
     },
@@ -14017,7 +14017,7 @@
       "displayName": "Obsidian MCP Server",
       "vendor": "cyanheads",
       "githubRepo": "cyanheads/obsidian-mcp-server",
-      "breakingSummary": "recent release v3.9.0 (up from v3.8.0) updates Search & Research MCP tool schemas and transport handling (14 releases in last 90d). Pin exact version v3.9.0 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "recent release v3.9.0 (up from v3.8.0) updates Search & Research MCP tool schemas and transport handling (12 releases in last 90d). Pin exact version v3.9.0 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "obsidian-mcp-server",
@@ -14055,7 +14055,7 @@
           "publishedAt": "2026-10-05T07:32:25.244Z"
         }
       ],
-      "releasesLast90d": 14,
+      "releasesLast90d": 12,
       "dependenciesCount": 9,
       "license": "Apache-2.0",
       "registryUrl": "https://www.npmjs.com/package/obsidian-mcp-server",
@@ -14073,7 +14073,7 @@
       "displayName": "MCP Local Rag",
       "vendor": "shinpr",
       "githubRepo": "shinpr/mcp-local-rag",
-      "breakingSummary": "Built on MCP SDK (^1.32.2); recent release v0.23.3 (up from v0.23.2) updates Search & Research MCP tool schemas and transport handling (21 releases in last 90d). Pin exact version v0.23.3 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.32.2); recent release v0.23.3 (up from v0.23.2) updates Search & Research MCP tool schemas and transport handling (20 releases in last 90d). Pin exact version v0.23.3 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "high",
       "affectedSymbols": [
         "mcp-local-rag",
@@ -14111,7 +14111,7 @@
           "publishedAt": "2026-10-14T07:26:59.380Z"
         }
       ],
-      "releasesLast90d": 21,
+      "releasesLast90d": 20,
       "dependenciesCount": 9,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/mcp-local-rag",
@@ -14129,7 +14129,7 @@
       "displayName": "Brightspace MCP Server",
       "vendor": "RohanMuppa",
       "githubRepo": "RohanMuppa/brightspace-mcp-server",
-      "breakingSummary": "Built on MCP SDK (^1.26.0); recent release v5.3.1 (up from v5.3.0) updates Developer Tools MCP tool schemas and transport handling (220 releases in last 90d). Pin exact version v5.3.1 in .mcp.json to avoid silent parameter drift.",
+      "breakingSummary": "Built on MCP SDK (^1.26.0); recent release v5.3.4 (up from v5.3.3) updates Developer Tools MCP tool schemas and transport handling (223 releases in last 90d). Pin exact version v5.3.4 in .mcp.json to avoid silent parameter drift.",
       "schemaDriftRisk": "medium",
       "affectedSymbols": [
         "brightspace-auth",
@@ -14138,11 +14138,23 @@
         "tools/call"
       ],
       "migrationBefore": "\"brightspace-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"brightspace-mcp-server@latest\"]\n}",
-      "migrationAfter": "\"brightspace-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"brightspace-mcp-server@5.3.1\"]\n}",
+      "migrationAfter": "\"brightspace-mcp-server\": {\n  \"command\": \"npx\",\n  \"args\": [\"-y\", \"brightspace-mcp-server@5.3.4\"]\n}",
       "description": "MCP server for Brightspace (D2L). Check grades, due dates, assignments, announcements, syllabus, rosters and more via Claude, ChatGPT, Cursor, Windsurf, or any MCP client.",
-      "latestVersion": "5.3.1",
-      "latestPublishedAt": "2026-11-20T09:01:11.181Z",
+      "latestVersion": "5.3.4",
+      "latestPublishedAt": "2026-11-22T14:45:19.669Z",
       "recentVersions": [
+        {
+          "version": "5.3.4",
+          "publishedAt": "2026-11-22T14:45:19.669Z"
+        },
+        {
+          "version": "5.3.3",
+          "publishedAt": "2026-11-21T14:45:42.972Z"
+        },
+        {
+          "version": "5.3.2",
+          "publishedAt": "2026-11-20T21:57:47.079Z"
+        },
         {
           "version": "5.3.1",
           "publishedAt": "2026-11-20T09:01:11.181Z"
@@ -14154,26 +14166,14 @@
         {
           "version": "5.2.25",
           "publishedAt": "2026-11-20T08:44:21.791Z"
-        },
-        {
-          "version": "5.2.24",
-          "publishedAt": "2026-11-20T03:34:28.288Z"
-        },
-        {
-          "version": "5.2.23",
-          "publishedAt": "2026-11-20T02:45:41.067Z"
-        },
-        {
-          "version": "5.2.22",
-          "publishedAt": "2026-11-20T02:28:46.487Z"
         }
       ],
-      "releasesLast90d": 220,
+      "releasesLast90d": 223,
       "dependenciesCount": 10,
       "license": "MIT",
       "registryUrl": "https://www.npmjs.com/package/brightspace-mcp-server",
       "githubUrl": "https://github.com/RohanMuppa/brightspace-mcp-server",
-      "installCommand": "npx -y brightspace-mcp-server@5.3.1",
+      "installCommand": "npx -y brightspace-mcp-server@5.3.4",
       "stabilityScore": 78,
       "stabilityGrade": "B"
     },
